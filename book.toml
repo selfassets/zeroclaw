@@ -1,7 +1,6 @@
 [book]
 authors = ["ZeroClaw Team"]
 language = "en"
-multilingual = false
 src = "docs"
 title = "ZeroClaw Documentation"
 
