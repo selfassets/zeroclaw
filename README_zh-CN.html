@@ -1,0 +1,721 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>简介 - ZeroClaw 文档</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-1169bca1.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-d1e32b83.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">ZeroClaw 文档</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/zeroclaw-labs/zeroclaw" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/zeroclaw-labs/zeroclaw/edit/main/docs/docs/README_zh-CN.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <p align="center">
+  <img src="zeroclaw.png" alt="ZeroClaw" width="200" />
+</p>
+
+<h1 align="center">ZeroClaw 🦀</h1>
+
+<p align="center">
+  <strong>零开销。零妥协。100% Rust。100% 通用。</strong><br>
+  ⚡️ <strong>在 $10 的硬件上运行，甚至 &lt;5MB RAM：比 OpenClaw 少占用 99% 内存，比 Mac mini 便宜 98%！</strong>
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT" /></a>
+  <a href="https://buymeacoffee.com/argenistherose"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Donate-yellow.svg?style=flat&amp;logo=buy-me-a-coffee" alt="Buy Me a Coffee" /></a>
+</p>
+
+<p>快速、小巧且完全自主的 AI 助手基础设施 —— 随处部署，随意替换。</p>
+<pre><code>~3.4MB 二进制文件 · &lt;10ms 启动时间 · 1,017 个测试 · 22+ 提供商 · 8 个 trait · 一切皆可插拔
+</code></pre>
+<h3 id="-特性"><a class="header" href="#-特性">✨ 特性</a></h3>
+<ul>
+<li>🏎️ <strong>超轻量级：</strong> &lt;5MB 内存占用 —— 比 OpenClaw 核心小 99%。</li>
+<li>💰 <strong>极低成本：</strong> 高效且足以在 $10 的硬件上运行 —— 比 Mac mini 便宜 98%。</li>
+<li>⚡ <strong>闪电般快速：</strong> 启动速度快 400 倍，&lt;10ms 启动（即使在 0.6GHz 核心上也只需不到 1 秒）。</li>
+<li>🌍 <strong>真正的便携性：</strong> 单个自包含的二进制文件，跨 ARM, x86 和 RISC-V 运行。</li>
+</ul>
+<h3 id="为什么团队选择-zeroclaw"><a class="header" href="#为什么团队选择-zeroclaw">为什么团队选择 ZeroClaw</a></h3>
+<ul>
+<li><strong>默认精简：</strong> 小巧的 Rust 二进制文件，快速启动，低内存占用。</li>
+<li><strong>设计安全：</strong> 配对机制，严格沙箱，显式允许列表，工作区隔离。</li>
+<li><strong>完全可替换：</strong> 核心系统均为 trait（提供商，通道，工具，记忆，隧道）。</li>
+<li><strong>无锁定：</strong> 支持 OpenAI兼容的提供商 + 可插拔的自定义端点。</li>
+</ul>
+<h2 id="性能基准快照-zeroclaw-vs-openclaw"><a class="header" href="#性能基准快照-zeroclaw-vs-openclaw">性能基准快照 (ZeroClaw vs OpenClaw)</a></h2>
+<p>本地机器快速基准测试 (macOS arm64, 2026年2月) 针对 0.8GHz 边缘硬件进行了标准化。</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th></th><th>OpenClaw</th><th>NanoBot</th><th>PicoClaw</th><th>ZeroClaw 🦀</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>语言</strong></td><td>TypeScript</td><td>Python</td><td>Go</td><td><strong>Rust</strong></td></tr>
+<tr><td><strong>内存 (RAM)</strong></td><td>&gt; 1GB</td><td>&gt; 100MB</td><td>&lt; 10MB</td><td><strong>&lt; 5MB</strong></td></tr>
+<tr><td><strong>启动时间 (0.8GHz 核心)</strong></td><td>&gt; 500s</td><td>&gt; 30s</td><td>&lt; 1s</td><td><strong>&lt; 10ms</strong></td></tr>
+<tr><td><strong>二进制大小</strong></td><td>~28MB (分发版)</td><td>N/A (脚本)</td><td>~8MB</td><td><strong>3.4 MB</strong></td></tr>
+<tr><td><strong>成本</strong></td><td>Mac Mini $599</td><td>Linux SBC ~$50</td><td>Linux Board $10</td><td><strong>任何硬件 $10</strong></td></tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>注意：ZeroClaw 结果是在 release 构建版本中使用 <code>/usr/bin/time -l</code> 测量的。OpenClaw 需要 Node.js 运行时（~390MB 开销）。PicoClaw 和 ZeroClaw 是静态二进制文件。</p>
+</blockquote>
+<p align="center">
+  <img src="zero-claw.jpeg" alt="ZeroClaw vs OpenClaw Comparison" width="800" />
+</p>
+
+<p>在本地复现 ZeroClaw 数据：</p>
+<pre><code class="language-bash">cargo build --release
+ls -lh target/release/zeroclaw
+
+/usr/bin/time -l target/release/zeroclaw --help
+/usr/bin/time -l target/release/zeroclaw status
+</code></pre>
+<h2 id="快速开始"><a class="header" href="#快速开始">快速开始</a></h2>
+<pre><code class="language-bash">git clone https://github.com/zeroclaw-labs/zeroclaw.git
+cd zeroclaw
+cargo build --release
+cargo install --path . --force
+
+# 快速设置（无需提示）
+zeroclaw onboard --api-key sk-... --provider openrouter
+
+# 或者交互式向导
+zeroclaw onboard --interactive
+
+# 或者仅快速修复通道/允许列表
+zeroclaw onboard --channels-only
+
+# 聊天
+zeroclaw agent -m "Hello, ZeroClaw!"
+
+# 交互模式
+zeroclaw agent
+
+# 启动网关（Webhook 服务器）
+zeroclaw gateway                # 默认: 127.0.0.1:8080
+zeroclaw gateway --port 0       # 随机端口（安全加固）
+
+# 启动全自主运行时
+zeroclaw daemon
+
+# 检查状态
+zeroclaw status
+
+# 运行系统诊断
+zeroclaw doctor
+
+# 检查通道健康状况
+zeroclaw channel doctor
+
+# 获取集成设置详情
+zeroclaw integrations info Telegram
+
+# 管理后台服务
+zeroclaw service install
+zeroclaw service status
+
+# 从 OpenClaw 迁移记忆（先安全预览）
+zeroclaw migrate openclaw --dry-run
+zeroclaw migrate openclaw
+</code></pre>
+<blockquote>
+<p><strong>开发回退（无全局安装）：</strong> 在命令前加上 <code>cargo run --release --</code>（例如：<code>cargo run --release -- status</code>）。
+<strong>低内存开发板（例如 Raspberry Pi 3, 1GB RAM）：</strong> 如果内核在编译期间杀死了 rustc，请运行 <code>CARGO_BUILD_JOBS=1 cargo build --release</code>。</p>
+</blockquote>
+<h2 id="架构"><a class="header" href="#架构">架构</a></h2>
+<p>每个子系统都是一个 <strong>trait</strong> —— 通过配置更改实现替换，无需修改代码。</p>
+<p align="center">
+  <img src="docs/architecture.svg" alt="ZeroClaw Architecture" width="900" />
+</p>
+
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>子系统</th><th>Trait</th><th>自带支持</th><th>扩展</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>AI 模型</strong></td><td><code>Provider</code></td><td>22+ 提供商 (OpenRouter, Anthropic, OpenAI, Ollama, Venice, Groq, Mistral, xAI, DeepSeek, Together, Fireworks, Perplexity, Cohere, Bedrock 等)</td><td><code>custom:https://your-api.com</code> — 任何 OpenAI 兼容的 API</td></tr>
+<tr><td><strong>通道</strong></td><td><code>Channel</code></td><td>CLI, Telegram, Discord, Slack, iMessage, Matrix, WhatsApp, Webhook</td><td>任何消息 API</td></tr>
+<tr><td><strong>记忆</strong></td><td><code>Memory</code></td><td>SQLite 混合搜索 (FTS5 + 向量余弦相似度), Markdown</td><td>任何持久化后端</td></tr>
+<tr><td><strong>工具</strong></td><td><code>Tool</code></td><td>shell, file_read, file_write, memory_store, memory_recall, memory_forget, browser_open (Brave + allowlist), browser (agent-browser / rust-native), composio (可选)</td><td>任何能力</td></tr>
+<tr><td><strong>可观测性</strong></td><td><code>Observer</code></td><td>Noop, Log, Multi</td><td>Prometheus, OTel</td></tr>
+<tr><td><strong>运行时</strong></td><td><code>RuntimeAdapter</code></td><td>Native, Docker (沙箱化)</td><td>WASM (计划中；不支持的类型会快速失败)</td></tr>
+<tr><td><strong>安全性</strong></td><td><code>SecurityPolicy</code></td><td>网关配对, 沙箱, 允许列表, 速率限制, 文件系统范围限制, 加密机密</td><td>—</td></tr>
+<tr><td><strong>身份</strong></td><td><code>IdentityConfig</code></td><td>OpenClaw (markdown), AIEOS v1.1 (JSON)</td><td>任何身份格式</td></tr>
+<tr><td><strong>隧道</strong></td><td><code>Tunnel</code></td><td>None, Cloudflare, Tailscale, ngrok, Custom</td><td>任何隧道二进制文件</td></tr>
+<tr><td><strong>心跳</strong></td><td>Engine</td><td>HEARTBEAT.md 周期性任务</td><td>—</td></tr>
+<tr><td><strong>技能</strong></td><td>Loader</td><td>TOML 清单 + SKILL.md 说明</td><td>社区技能包</td></tr>
+<tr><td><strong>集成</strong></td><td>Registry</td><td>9 个类别中的 50+ 个集成</td><td>插件系统</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="运行时支持-当前"><a class="header" href="#运行时支持-当前">运行时支持 (当前)</a></h3>
+<ul>
+<li>✅ 目前支持：<code>runtime.kind = "native"</code> 或 <code>runtime.kind = "docker"</code></li>
+<li>🚧 计划中，尚未实现：WASM / 边缘运行时</li>
+</ul>
+<p>当配置了不支持的 <code>runtime.kind</code> 时，ZeroClaw 现在会以明确的错误退出，而不是静默回退到原生模式。</p>
+<h3 id="记忆系统全栈搜索引擎"><a class="header" href="#记忆系统全栈搜索引擎">记忆系统（全栈搜索引擎）</a></h3>
+<p>全自定义，零外部依赖 —— 无需 Pinecone，无需 Elasticsearch，无需 LangChain：</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>层级</th><th>实现</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>向量数据库</strong></td><td>嵌入存储为 SQLite 中的 BLOB，余弦相似度搜索</td></tr>
+<tr><td><strong>关键词搜索</strong></td><td>带有 BM25 评分的 FTS5 虚拟表</td></tr>
+<tr><td><strong>混合合并</strong></td><td>自定义加权合并函数 (<code>vector.rs</code>)</td></tr>
+<tr><td><strong>嵌入</strong></td><td><code>EmbeddingProvider</code> trait — OpenAI, 自定义 URL, 或 noop</td></tr>
+<tr><td><strong>分块</strong></td><td>基于行的 Markdown 分块器，带有标题保留</td></tr>
+<tr><td><strong>缓存</strong></td><td>SQLite <code>embedding_cache</code> 表，带有 LRU 驱逐</td></tr>
+<tr><td><strong>安全重建索引</strong></td><td>原子重建 FTS5 + 重新嵌入缺失的向量</td></tr>
+</tbody>
+</table>
+</div>
+<p>代理通过工具自动回忆、保存和管理记忆。</p>
+<pre><code class="language-toml">[memory]
+backend = "sqlite"          # "sqlite", "markdown", "none"
+auto_save = true
+embedding_provider = "openai"
+vector_weight = 0.7
+keyword_weight = 0.3
+</code></pre>
+<h2 id="安全性"><a class="header" href="#安全性">安全性</a></h2>
+<p>ZeroClaw 在<strong>每一层</strong>强制执行安全性 —— 不仅仅是沙箱。它通过了社区安全检查清单的所有项目。</p>
+<h3 id="安全检查清单"><a class="header" href="#安全检查清单">安全检查清单</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>#</th><th>项目</th><th>状态</th><th>如何实现</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><strong>网关未公开暴露</strong></td><td>✅</td><td>默认绑定 <code>127.0.0.1</code>。如果没有隧道或显式的 <code>allow_public_bind = true</code>，拒绝 <code>0.0.0.0</code>。</td></tr>
+<tr><td>2</td><td><strong>需要配对</strong></td><td>✅</td><td>启动时的 6 位一次性代码。通过 <code>POST /pair</code> 交换 bearer 令牌。所有 <code>/webhook</code> 请求都需要 <code>Authorization: Bearer &lt;token&gt;</code>。</td></tr>
+<tr><td>3</td><td><strong>文件系统作用域 (无 /)</strong></td><td>✅</td><td>默认 <code>workspace_only = true</code>。阻止 14 个系统目录 + 4 个敏感点文件。阻止空字节注入。通过规范化 + resolved-path 工作区检查防止符号链接逃逸。</td></tr>
+<tr><td>4</td><td><strong>仅通过隧道访问</strong></td><td>✅</td><td>网关在没有活动隧道的情况下拒绝公开绑定。支持 Tailscale, Cloudflare, ngrok 或任何自定义隧道。</td></tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p><strong>运行你自己的 nmap：</strong> <code>nmap -p 1-65535 &lt;your-host&gt;</code> — ZeroClaw 仅绑定到 localhost，因此除非你显式配置隧道，否则不会暴漏任何内容。</p>
+</blockquote>
+<h3 id="通道允许列表-telegram--discord--slack"><a class="header" href="#通道允许列表-telegram--discord--slack">通道允许列表 (Telegram / Discord / Slack)</a></h3>
+<p>入站发送者策略现在是一致的：</p>
+<ul>
+<li>空允许列表 = <strong>拒绝所有入站消息</strong></li>
+<li><code>"*"</code> = <strong>允许所有</strong> (显式加入)</li>
+<li>否则 = 精确匹配允许列表</li>
+</ul>
+<p>默认情况下，这可以保持较低的意外暴露风险。</p>
+<p>推荐的低摩擦设置（安全 + 快速）：</p>
+<ul>
+<li><strong>Telegram:</strong> 将你自己的 <code>@username</code>（不带 <code>@</code>）和/或你的数字 Telegram 用户 ID 加入允许列表。</li>
+<li><strong>Discord:</strong> 将你自己的 Discord 用户 ID 加入允许列表。</li>
+<li><strong>Slack:</strong> 将你自己的 Slack 成员 ID（通常以 <code>U</code> 开头）加入允许列表。</li>
+<li>仅在临时开放测试时使用 <code>"*"</code>。</li>
+</ul>
+<p>如果你不确定使用哪个身份：</p>
+<ol>
+<li>启动通道并向你的机器人发送一条消息。</li>
+<li>阅读警告日志以查看确切的发件人身份。</li>
+<li>将该值添加到允许列表并重新运行仅通道设置。</li>
+</ol>
+<p>如果你在日志中遇到授权警告（例如：<code>ignoring message from unauthorized user</code>），
+仅重新运行通道设置：</p>
+<pre><code class="language-bash">zeroclaw onboard --channels-only
+</code></pre>
+<h3 id="whatsapp-business-cloud-api-设置"><a class="header" href="#whatsapp-business-cloud-api-设置">WhatsApp Business Cloud API 设置</a></h3>
+<p>WhatsApp 使用 Meta 的 Cloud API 和 webhook（基于推送，而不是轮询）：</p>
+<ol>
+<li>
+<p><strong>创建 Meta Business App:</strong></p>
+<ul>
+<li>前往 <a href="https://developers.facebook.com">developers.facebook.com</a></li>
+<li>创建新应用 → 选择 “Business” 类型</li>
+<li>添加 “WhatsApp” 产品</li>
+</ul>
+</li>
+<li>
+<p><strong>获取你的凭据:</strong></p>
+<ul>
+<li><strong>Access Token:</strong> 从 WhatsApp → API Setup → Generate token (或创建一个系统用户以获取永久令牌)</li>
+<li><strong>Phone Number ID:</strong> 从 WhatsApp → API Setup → Phone number ID</li>
+<li><strong>Verify Token:</strong> 你定义这个（任何随机字符串）— Meta 将在 webhook 验证期间发回它</li>
+</ul>
+</li>
+<li>
+<p><strong>配置 ZeroClaw:</strong></p>
+<pre><code class="language-toml">[channels_config.whatsapp]
+access_token = "EAABx..."
+phone_number_id = "123456789012345"
+verify_token = "my-secret-verify-token"
+allowed_numbers = ["+1234567890"]  # E.164 格式, 或 ["*"] 代表所有
+</code></pre>
+</li>
+<li>
+<p><strong>使用隧道启动网关:</strong></p>
+<pre><code class="language-bash">zeroclaw gateway --port 8080
+</code></pre>
+<p>WhatsApp 需要 HTTPS，所以使用隧道 (ngrok, Cloudflare, Tailscale Funnel)。</p>
+</li>
+<li>
+<p><strong>配置 Meta webhook:</strong></p>
+<ul>
+<li>在 Meta 开发者控制台 → WhatsApp → Configuration → Webhook</li>
+<li><strong>Callback URL:</strong> <code>https://your-tunnel-url/whatsapp</code></li>
+<li><strong>Verify Token:</strong> 与配置中的 <code>verify_token</code> 相同</li>
+<li>订阅 <code>messages</code> 字段</li>
+</ul>
+</li>
+<li>
+<p><strong>测试:</strong> 向你的 WhatsApp Business 号码发送消息 — ZeroClaw 将通过 LLM 回复。</p>
+</li>
+</ol>
+<h2 id="配置"><a class="header" href="#配置">配置</a></h2>
+<p>配置：<code>~/.zeroclaw/config.toml</code> (由 <code>onboard</code> 创建)</p>
+<pre><code class="language-toml">api_key = "sk-..."
+default_provider = "openrouter"
+default_model = "anthropic/claude-sonnet-4-20250514"
+default_temperature = 0.7
+
+[memory]
+backend = "sqlite"              # "sqlite", "markdown", "none"
+auto_save = true
+embedding_provider = "openai"   # "openai", "noop"
+vector_weight = 0.7
+keyword_weight = 0.3
+
+[gateway]
+require_pairing = true          # 首次连接需要配对码
+allow_public_bind = false       # 无隧道拒绝 0.0.0.0
+
+[autonomy]
+level = "supervised"            # "readonly", "supervised", "full" (默认: supervised)
+workspace_only = true           # 默认: true — 仅限工作区
+allowed_commands = ["git", "npm", "cargo", "ls", "cat", "grep"]
+forbidden_paths = ["/etc", "/root", "/proc", "/sys", "~/.ssh", "~/.gnupg", "~/.aws"]
+
+[runtime]
+kind = "native"                # "native" 或 "docker"
+
+[runtime.docker]
+image = "alpine:3.20"          # shell 执行的容器镜像
+network = "none"               # docker 网络模式 ("none", "bridge", 等)
+memory_limit_mb = 512          # 可选内存限制 MB
+cpu_limit = 1.0                # 可选 CPU 限制
+read_only_rootfs = true        # 以只读方式挂载根文件系统
+mount_workspace = true         # 将工作区挂载到 /workspace
+allowed_workspace_roots = []   # 工作区挂载验证的可选允许列表
+
+[heartbeat]
+enabled = false
+interval_minutes = 30
+
+[tunnel]
+provider = "none"               # "none", "cloudflare", "tailscale", "ngrok", "custom"
+
+[secrets]
+encrypt = true                  # API 密钥使用本地密钥文件加密
+
+[browser]
+enabled = false                        # 开启 browser_open + browser 工具
+allowed_domains = ["docs.rs"]         # 启用浏览器时必须
+backend = "agent_browser"             # "agent_browser" (默认), "rust_native", "auto"
+native_headless = true                 # 当后端使用 rust-native 时适用
+native_webdriver_url = "http://127.0.0.1:9515" # WebDriver端点 (chromedriver/selenium)
+# native_chrome_path = "/usr/bin/chromium"  # 驱动程序的可选显式浏览器二进制文件
+
+# Rust-native 后端构建标志:
+# cargo build --release --features browser-native
+# 确保 WebDriver 服务器正在运行，例如 chromedriver --port=9515
+
+[composio]
+enabled = false                 # 开启: 1000+ OAuth 应用通过 composio.dev
+# api_key = "cmp_..."          # 可选: 当 [secrets].encrypt = true 时加密存储
+entity_id = "default"         # Composio 工具调用的默认 user_id
+
+[identity]
+format = "openclaw"             # "openclaw" (默认, markdown 文件) 或 "aieos" (JSON)
+# aieos_path = "identity.json"  # AIEOS JSON 文件路径 (相对工作区或是绝对路径)
+# aieos_inline = '{"identity":{"names":{"first":"Nova"}}}'  # 内联 AIEOS JSON
+</code></pre>
+<h2 id="身份系统-支持-aieos"><a class="header" href="#身份系统-支持-aieos">身份系统 (支持 AIEOS)</a></h2>
+<p>ZeroClaw 通过两种格式支持<strong>身份无关</strong>的 AI 人格：</p>
+<h3 id="openclaw-默认"><a class="header" href="#openclaw-默认">OpenClaw (默认)</a></h3>
+<p>工作区中的传统 markdown 文件：</p>
+<ul>
+<li><code>IDENTITY.md</code> — 代理是谁</li>
+<li><code>SOUL.md</code> — 核心个性和价值观</li>
+<li><code>USER.md</code> — 代理正在帮助谁</li>
+<li><code>AGENTS.md</code> — 行为准则</li>
+</ul>
+<h3 id="aieos-ai-实体对象规范"><a class="header" href="#aieos-ai-实体对象规范">AIEOS (AI 实体对象规范)</a></h3>
+<p><a href="https://aieos.org">AIEOS</a> 是便携式 AI 身份的标准化框架。ZeroClaw 支持 AIEOS v1.1 JSON 负载，允许你：</p>
+<ul>
+<li>从 AIEOS 生态系统<strong>导入身份</strong></li>
+<li><strong>导出身份</strong>到其他兼容 AIEOS 的系统</li>
+<li>在不同的 AI 模型之间<strong>保持行为完整性</strong></li>
+</ul>
+<h4 id="启用-aieos"><a class="header" href="#启用-aieos">启用 AIEOS</a></h4>
+<pre><code class="language-toml">[identity]
+format = "aieos"
+aieos_path = "identity.json"  # 相对工作区或是绝对路径
+</code></pre>
+<p>或者内联 JSON：</p>
+<pre><code class="language-toml">[identity]
+format = "aieos"
+aieos_inline = '''
+{
+  "identity": {
+    "names": { "first": "Nova", "nickname": "N" }
+  },
+  "psychology": {
+    "neural_matrix": { "creativity": 0.9, "logic": 0.8 },
+    "traits": { "mbti": "ENTP" },
+    "moral_compass": { "alignment": "Chaotic Good" }
+  },
+  "linguistics": {
+    "text_style": { "formality_level": 0.2, "slang_usage": true }
+  },
+  "motivations": {
+    "core_drive": "Push boundaries and explore possibilities"
+  }
+}
+'''
+</code></pre>
+<h4 id="aieos-schema-章节"><a class="header" href="#aieos-schema-章节">AIEOS Schema 章节</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>章节</th><th>描述</th></tr>
+</thead>
+<tbody>
+<tr><td><code>identity</code></td><td>姓名, 简介, 起源, 居住地</td></tr>
+<tr><td><code>psychology</code></td><td>神经矩阵 (认知权重), MBTI, OCEAN, 道德指南针</td></tr>
+<tr><td><code>linguistics</code></td><td>文本风格, 正式程度, 口头禅, 禁用词</td></tr>
+<tr><td><code>motivations</code></td><td>核心驱动力, 短期/长期目标, 恐惧</td></tr>
+<tr><td><code>capabilities</code></td><td>代理可以访问的技能和工具</td></tr>
+<tr><td><code>physicality</code></td><td>图像生成的视觉描述符</td></tr>
+<tr><td><code>history</code></td><td>起源故事, 教育, 职业</td></tr>
+<tr><td><code>interests</code></td><td>爱好, 收藏, 生活方式</td></tr>
+</tbody>
+</table>
+</div>
+<p>查看 <a href="https://aieos.org">aieos.org</a> 获取完整模式和实时示例。</p>
+<h2 id="网关-api"><a class="header" href="#网关-api">网关 API</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>端点</th><th>方法</th><th>认证</th><th>描述</th></tr>
+</thead>
+<tbody>
+<tr><td><code>/health</code></td><td>GET</td><td>None</td><td>健康检查（总是公开，不泄露机密）</td></tr>
+<tr><td><code>/pair</code></td><td>POST</td><td><code>X-Pairing-Code</code> header</td><td>用一次性代码换取 bearer 令牌</td></tr>
+<tr><td><code>/webhook</code></td><td>POST</td><td><code>Authorization: Bearer &lt;token&gt;</code></td><td>发送消息: <code>{"message": "your prompt"}</code></td></tr>
+<tr><td><code>/whatsapp</code></td><td>GET</td><td>Query params</td><td>Meta webhook 验证 (hub.mode, hub.verify_token, hub.challenge)</td></tr>
+<tr><td><code>/whatsapp</code></td><td>POST</td><td>None (Meta signature)</td><td>WhatsApp 传入消息 webhook</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="命令"><a class="header" href="#命令">命令</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>命令</th><th>描述</th></tr>
+</thead>
+<tbody>
+<tr><td><code>onboard</code></td><td>快速设置 (默认)</td></tr>
+<tr><td><code>onboard --interactive</code></td><td>完整的交互式 7 步向导</td></tr>
+<tr><td><code>onboard --channels-only</code></td><td>仅重新配置通道/允许列表（快速修复流程）</td></tr>
+<tr><td><code>agent -m "..."</code></td><td>单条消息模式</td></tr>
+<tr><td><code>agent</code></td><td>交互式聊天模式</td></tr>
+<tr><td><code>gateway</code></td><td>启动 webhook 服务器 (默认: <code>127.0.0.1:8080</code>)</td></tr>
+<tr><td><code>gateway --port 0</code></td><td>随机端口模式</td></tr>
+<tr><td><code>daemon</code></td><td>启动长期运行的自主运行时</td></tr>
+<tr><td><code>service install/start/stop/status/uninstall</code></td><td>管理用户级后台服务</td></tr>
+<tr><td><code>doctor</code></td><td>诊断 daemon/scheduler/channel 新鲜度</td></tr>
+<tr><td><code>status</code></td><td>显示完整系统状态</td></tr>
+<tr><td><code>channel doctor</code></td><td>运行已配置通道的健康检查</td></tr>
+<tr><td><code>integrations info &lt;name&gt;</code></td><td>显示一个集成的设置/状态详情</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="开发"><a class="header" href="#开发">开发</a></h2>
+<pre><code class="language-bash">cargo build              # 开发构建
+cargo build --release    # Release 构建 (~3.4MB)
+CARGO_BUILD_JOBS=1 cargo build --release    # 低内存回退 (Raspberry Pi 3, 1GB RAM)
+cargo test               # 1,017 个测试
+cargo clippy             # Lint (0 警告)
+cargo fmt                # 格式化
+
+# 运行 SQLite vs Markdown 基准测试
+cargo test --test memory_comparison -- --nocapture
+</code></pre>
+<h3 id="推送前钩子-pre-push-hook"><a class="header" href="#推送前钩子-pre-push-hook">推送前钩子 (Pre-push hook)</a></h3>
+<p>git hook 会在每次推送前运行 <code>cargo fmt --check</code>, <code>cargo clippy -- -D warnings</code>, 和 <code>cargo test</code>。启用一次：</p>
+<pre><code class="language-bash">git config core.hooksPath .githooks
+</code></pre>
+<p>如果需要在开发过程中快速推送并跳过钩子：</p>
+<pre><code class="language-bash">git push --no-verify
+</code></pre>
+<h2 id="协作与文档"><a class="header" href="#协作与文档">协作与文档</a></h2>
+<p>为了高效协作和一致的审查：</p>
+<ul>
+<li>贡献指南: <a href="CONTRIBUTING.html">CONTRIBUTING.md</a></li>
+<li>PR 工作流策略: <a href="docs/pr-workflow.html">docs/pr-workflow.md</a></li>
+<li>审查员手册 (分流 + 深度审查): <a href="docs/reviewer-playbook.html">docs/reviewer-playbook.md</a></li>
+<li>CI 所有权和分流图: <a href="docs/ci-map.html">docs/ci-map.md</a></li>
+<li>安全披露策略: <a href="SECURITY.html">SECURITY.md</a></li>
+</ul>
+<h2 id="支持"><a class="header" href="#支持">支持</a></h2>
+<p>ZeroClaw 是一个充满激情的开源项目。如果你觉得它有用，并希望支持其持续开发、测试硬件以及维护者的咖啡，你可以在这里支持我：</p>
+<p><a href="https://buymeacoffee.com/argenistherose"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Donate-yellow.svg?style=for-the-badge&amp;logo=buy-me-a-coffee" alt="Buy Me a Coffee" /></a></p>
+<h2 id="许可证"><a class="header" href="#许可证">许可证</a></h2>
+<p>MIT — 参见 <a href="LICENSE">LICENSE</a></p>
+<h2 id="贡献"><a class="header" href="#贡献">贡献</a></h2>
+<p>参见 <a href="CONTRIBUTING.html">CONTRIBUTING.md</a>。实现一个 trait，提交 PR：</p>
+<ul>
+<li>CI 工作流指南: <a href="docs/ci-map.html">docs/ci-map.md</a></li>
+<li>新 <code>Provider</code> → <code>src/providers/</code></li>
+<li>新 <code>Channel</code> → <code>src/channels/</code></li>
+<li>新 <code>Observer</code> → <code>src/observability/</code></li>
+<li>新 <code>Tool</code> → <code>src/tools/</code></li>
+<li>新 <code>Memory</code> → <code>src/memory/</code></li>
+<li>新 <code>Tunnel</code> → <code>src/tunnel/</code></li>
+<li>新 <code>Skill</code> → <code>~/.zeroclaw/workspace/skills/&lt;name&gt;/</code></li>
+</ul>
+<hr>
+<p><strong>ZeroClaw</strong> — 零开销。零妥协。随处部署。随意替换。 🦀</p>
+<h2 id="star-历史"><a class="header" href="#star-历史">Star 历史</a></h2>
+<p align="center">
+  <a href="https://www.star-history.com/#zeroclaw-labs/zeroclaw&amp;Date">
+    <img src="https://api.star-history.com/svg?repos=zeroclaw-labs/zeroclaw&amp;type=Date" alt="Star History Chart" />
+  </a>
+</p>
+
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                            <a rel="next prefetch" href="architecture.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+                    <a rel="next prefetch" href="architecture.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

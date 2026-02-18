@@ -1,0 +1,492 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>架构 - ZeroClaw 文档</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-1169bca1.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-d1e32b83.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">ZeroClaw 文档</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/zeroclaw-labs/zeroclaw" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/zeroclaw-labs/zeroclaw/edit/main/docs/docs/architecture.svg" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1100 950" font-family="&#39;Segoe UI&#39;, system-ui, -apple-system, sans-serif">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <fedropshadow dx="0" dy="2" stddeviation="3" flood-opacity="0.15" />
+    </filter>
+    <lineargradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1117" />
+      <stop offset="100%" stop-color="#161b22" />
+    </lineargradient>
+    <lineargradient id="agentGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1e2e" />
+      <stop offset="100%" stop-color="#1e2436" />
+    </lineargradient>
+    <lineargradient id="memGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e" />
+      <stop offset="100%" stop-color="#1e1e36" />
+    </lineargradient>
+    <marker id="arrowBlue" markerwidth="8" markerheight="6" refx="8" refy="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#3b82f6" /></marker>
+    <marker id="arrowAmber" markerwidth="8" markerheight="6" refx="8" refy="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#f59e0b" /></marker>
+    <marker id="arrowGreen" markerwidth="8" markerheight="6" refx="8" refy="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#4ade80" /></marker>
+    <marker id="arrowCyan" markerwidth="8" markerheight="6" refx="8" refy="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#06b6d4" /></marker>
+    <marker id="arrowPurple" markerwidth="8" markerheight="6" refx="8" refy="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#c084fc" /></marker>
+    <marker id="arrowViolet" markerwidth="8" markerheight="6" refx="8" refy="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#8b5cf6" /></marker>
+  </defs>
+  <!-- Background -->
+  <rect width="1100" height="950" rx="12" fill="url(#bgGrad)" />
+  <!-- Title -->
+<p><text x="550" y="38" text-anchor="middle" fill="#e6edf3" font-size="22" font-weight="700">ZeroClaw Architecture</text>
+<text x="550" y="58" text-anchor="middle" fill="#7d8590" font-size="12">Zero overhead. Zero compromise. 100% Rust. 100% Agnostic. 8 pluggable traits.</text></p>
+  <!-- ═══════════ LEFT: Chat Apps ═══════════ -->
+  <rect x="20" y="80" width="150" height="310" rx="10" fill="#1c2333" stroke="#3b82f6" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="95" y="105" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="600">Chat Apps</text>
+  <rect x="35" y="120" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="95" y="137" text-anchor="middle" fill="#60a5fa" font-size="10">Telegram</text>
+  <rect x="35" y="150" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="95" y="167" text-anchor="middle" fill="#818cf8" font-size="10">Discord</text>
+  <rect x="35" y="180" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="95" y="197" text-anchor="middle" fill="#a78bfa" font-size="10">Slack</text>
+  <rect x="35" y="210" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="95" y="227" text-anchor="middle" fill="#c084fc" font-size="10">iMessage</text>
+  <rect x="35" y="240" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="95" y="257" text-anchor="middle" fill="#e879f9" font-size="10">Matrix</text>
+  <rect x="35" y="270" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="95" y="287" text-anchor="middle" fill="#f472b6" font-size="10">Webhook</text>
+  <rect x="35" y="300" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="95" y="317" text-anchor="middle" fill="#fb923c" font-size="10">CLI</text>
+<p><text x="95" y="355" text-anchor="middle" fill="#7d8590" font-size="9" font-style="italic">+ any Channel trait</text></p>
+  <!-- Arrow: Chat Apps → Security -->
+  <line x1="170" y1="230" x2="195" y2="230" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrowBlue)" />
+  <!-- ═══════════ CENTER-LEFT: Security Layer ═══════════ -->
+  <rect x="200" y="80" width="190" height="310" rx="10" fill="#1c2333" stroke="#f59e0b" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="295" y="105" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="600">Security Layer</text>
+  <!-- Gateway Pairing -->
+  <rect x="213" y="120" width="165" height="50" rx="8" fill="#292524" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,2" />
+  <text x="295" y="138" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600">Gateway Pairing</text>
+  <text x="295" y="153" text-anchor="middle" fill="#a8a29e" font-size="8">6-digit OTP + bearer tokens</text>
+  <text x="295" y="164" text-anchor="middle" fill="#a8a29e" font-size="8">constant-time comparison</text>
+  <!-- Auth Gate -->
+  <rect x="213" y="178" width="165" height="45" rx="8" fill="#292524" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,2" />
+  <text x="295" y="196" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600">Auth Gate</text>
+  <text x="295" y="210" text-anchor="middle" fill="#a8a29e" font-size="8">Channel allowlists + webhook_secret</text>
+  <!-- Rate Limiter -->
+  <rect x="213" y="230" width="165" height="45" rx="8" fill="#292524" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,2" />
+  <text x="295" y="248" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600">Rate Limiter</text>
+  <text x="295" y="262" text-anchor="middle" fill="#a8a29e" font-size="8">sliding window, cost/day cap</text>
+  <!-- Filesystem Sandbox -->
+  <rect x="213" y="282" width="165" height="50" rx="8" fill="#292524" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,2" />
+  <text x="295" y="300" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600">Filesystem Sandbox</text>
+  <text x="295" y="314" text-anchor="middle" fill="#a8a29e" font-size="8">path jail + null byte block</text>
+  <text x="295" y="325" text-anchor="middle" fill="#a8a29e" font-size="8">symlink escape detection</text>
+  <!-- Encrypted Secrets -->
+  <rect x="213" y="340" width="165" height="38" rx="8" fill="#292524" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,2" />
+  <text x="295" y="358" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600">Encrypted Secrets</text>
+  <text x="295" y="372" text-anchor="middle" fill="#a8a29e" font-size="8">XOR + local key file (0600)</text>
+  <!-- Arrow: Security → Agent -->
+  <line x1="295" y1="390" x2="295" y2="415" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)" />
+  <!-- ═══════════ CENTER: Tunnel ═══════════ -->
+  <rect x="405" y="80" width="180" height="200" rx="10" fill="#1c2333" stroke="#06b6d4" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="495" y="105" text-anchor="middle" fill="#67e8f9" font-size="13" font-weight="600">Agnostic Tunnel</text>
+  <text x="495" y="120" text-anchor="middle" fill="#7d8590" font-size="9">Bring Your Own</text>
+  <rect x="418" y="132" width="155" height="22" rx="5" fill="#1e293b" />
+  <text x="495" y="148" text-anchor="middle" fill="#22d3ee" font-size="10">Cloudflare</text>
+  <rect x="418" y="160" width="155" height="22" rx="5" fill="#1e293b" />
+  <text x="495" y="176" text-anchor="middle" fill="#22d3ee" font-size="10">Tailscale</text>
+  <rect x="418" y="188" width="155" height="22" rx="5" fill="#1e293b" />
+  <text x="495" y="204" text-anchor="middle" fill="#22d3ee" font-size="10">ngrok</text>
+  <rect x="418" y="216" width="155" height="22" rx="5" fill="#1e293b" />
+  <text x="495" y="232" text-anchor="middle" fill="#22d3ee" font-size="10">Custom (bore, frp, ssh...)</text>
+<p><text x="495" y="265" text-anchor="middle" fill="#7d8590" font-size="9" font-style="italic">+ any Tunnel trait</text></p>
+  <!-- Arrow: Tunnel → Agent -->
+  <line x1="495" y1="280" x2="495" y2="415" stroke="#06b6d4" stroke-width="2" marker-end="url(#arrowCyan)" />
+  <!-- ═══════════ RIGHT: AI Providers ═══════════ -->
+  <rect x="600" y="80" width="480" height="200" rx="10" fill="#1c2333" stroke="#22c55e" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="840" y="105" text-anchor="middle" fill="#4ade80" font-size="13" font-weight="600">AI Providers (22+)</text>
+  <text x="840" y="120" text-anchor="middle" fill="#7d8590" font-size="9">Any OpenAI-compatible API</text>
+  <!-- Provider grid: 4 columns x 4 rows -->
+  <rect x="615" y="132" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="667" y="148" text-anchor="middle" fill="#86efac" font-size="9">OpenRouter</text>
+  <rect x="730" y="132" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="782" y="148" text-anchor="middle" fill="#86efac" font-size="9">Anthropic</text>
+  <rect x="845" y="132" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="897" y="148" text-anchor="middle" fill="#86efac" font-size="9">OpenAI</text>
+  <rect x="960" y="132" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="1012" y="148" text-anchor="middle" fill="#86efac" font-size="9">Ollama</text>
+  <rect x="615" y="160" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="667" y="176" text-anchor="middle" fill="#86efac" font-size="9">Venice</text>
+  <rect x="730" y="160" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="782" y="176" text-anchor="middle" fill="#86efac" font-size="9">Groq</text>
+  <rect x="845" y="160" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="897" y="176" text-anchor="middle" fill="#86efac" font-size="9">Mistral</text>
+  <rect x="960" y="160" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="1012" y="176" text-anchor="middle" fill="#86efac" font-size="9">xAI / Grok</text>
+  <rect x="615" y="188" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="667" y="204" text-anchor="middle" fill="#86efac" font-size="9">DeepSeek</text>
+  <rect x="730" y="188" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="782" y="204" text-anchor="middle" fill="#86efac" font-size="9">Together AI</text>
+  <rect x="845" y="188" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="897" y="204" text-anchor="middle" fill="#86efac" font-size="9">Fireworks</text>
+  <rect x="960" y="188" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="1012" y="204" text-anchor="middle" fill="#86efac" font-size="9">Perplexity</text>
+  <rect x="615" y="216" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="667" y="232" text-anchor="middle" fill="#86efac" font-size="9">Cohere</text>
+  <rect x="730" y="216" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="782" y="232" text-anchor="middle" fill="#86efac" font-size="9">Cloudflare AI</text>
+  <rect x="845" y="216" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="897" y="232" text-anchor="middle" fill="#86efac" font-size="9">Bedrock</text>
+  <rect x="960" y="216" width="105" height="22" rx="5" fill="#1e3a1e" stroke="#4ade80" stroke-width="1" stroke-dasharray="3,2" />
+  <text x="1012" y="232" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="600">custom:URL</text>
+<p><text x="840" y="262" text-anchor="middle" fill="#7d8590" font-size="9" font-style="italic">+ any Provider trait / custom:URL</text></p>
+  <!-- Arrow: Providers → Agent LLM -->
+  <line x1="840" y1="280" x2="560" y2="440" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arrowGreen)" />
+  <!-- ═══════════ CENTER: Agent Loop ═══════════ -->
+  <rect x="20" y="420" width="1060" height="130" rx="12" fill="url(#agentGrad)" stroke="#22c55e" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="550" y="445" text-anchor="middle" fill="#4ade80" font-size="14" font-weight="700">Agent Loop</text>
+  <!-- Message → LLM → Tools → Response flow -->
+  <rect x="50" y="460" width="110" height="42" rx="8" fill="#1a2e1a" stroke="#4ade80" stroke-width="1" />
+  <text x="105" y="478" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">Message</text>
+  <text x="105" y="495" text-anchor="middle" fill="#86efac" font-size="14">In</text>
+  <rect x="200" y="460" width="110" height="42" rx="8" fill="#1a2e1a" stroke="#4ade80" stroke-width="1" />
+  <text x="255" y="478" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">Memory Recall</text>
+  <text x="255" y="495" text-anchor="middle" fill="#86efac" font-size="14">ctx</text>
+  <rect x="350" y="460" width="110" height="42" rx="8" fill="#1a2e1a" stroke="#4ade80" stroke-width="1" />
+  <text x="405" y="478" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">LLM</text>
+  <text x="405" y="495" text-anchor="middle" fill="#86efac" font-size="14">AI</text>
+  <rect x="500" y="460" width="110" height="42" rx="8" fill="#1a2e1a" stroke="#4ade80" stroke-width="1" />
+  <text x="555" y="478" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">Tools</text>
+  <text x="555" y="495" text-anchor="middle" fill="#86efac" font-size="14">exec</text>
+  <rect x="650" y="460" width="110" height="42" rx="8" fill="#1a2e1a" stroke="#4ade80" stroke-width="1" />
+  <text x="705" y="478" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">Memory Save</text>
+  <text x="705" y="495" text-anchor="middle" fill="#86efac" font-size="14">store</text>
+  <rect x="800" y="460" width="110" height="42" rx="8" fill="#1a2e1a" stroke="#4ade80" stroke-width="1" />
+  <text x="855" y="478" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">Response</text>
+  <text x="855" y="495" text-anchor="middle" fill="#86efac" font-size="14">Out</text>
+  <!-- Composio (optional) -->
+  <rect x="950" y="460" width="110" height="42" rx="8" fill="#1a2e1a" stroke="#4ade80" stroke-width="1" stroke-dasharray="4,2" />
+  <text x="1005" y="478" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="600">Composio</text>
+  <text x="1005" y="493" text-anchor="middle" fill="#7d8590" font-size="8">1000+ OAuth</text>
+  <!-- Agent loop arrows -->
+  <line x1="160" y1="481" x2="200" y2="481" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrowGreen)" />
+  <line x1="310" y1="481" x2="350" y2="481" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrowGreen)" />
+  <line x1="460" y1="481" x2="500" y2="481" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrowGreen)" />
+  <line x1="610" y1="481" x2="650" y2="481" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrowGreen)" />
+  <line x1="760" y1="481" x2="800" y2="481" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrowGreen)" />
+  <!-- ═══════════ BOTTOM-LEFT: Memory Search Engine ═══════════ -->
+  <rect x="20" y="570" width="530" height="170" rx="10" fill="url(#memGrad)" stroke="#8b5cf6" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="285" y="595" text-anchor="middle" fill="#c4b5fd" font-size="13" font-weight="700">Memory Search Engine (All Custom)</text>
+  <text x="285" y="610" text-anchor="middle" fill="#7d8590" font-size="9">No Pinecone, no Elasticsearch, no LangChain</text>
+  <!-- Memory layers: 2 columns -->
+  <rect x="35" y="622" width="245" height="24" rx="5" fill="#1e1a2e" stroke="#8b5cf6" stroke-width="0.5" />
+  <text x="45" y="639" fill="#c4b5fd" font-size="9" font-weight="600">Vector DB</text>
+  <text x="157" y="639" text-anchor="middle" fill="#a78bfa" font-size="8">SQLite BLOB + cosine similarity</text>
+  <rect x="290" y="622" width="245" height="24" rx="5" fill="#1e1a2e" stroke="#8b5cf6" stroke-width="0.5" />
+  <text x="300" y="639" fill="#c4b5fd" font-size="9" font-weight="600">Keyword</text>
+  <text x="412" y="639" text-anchor="middle" fill="#a78bfa" font-size="8">FTS5 virtual tables + BM25</text>
+  <rect x="35" y="652" width="245" height="24" rx="5" fill="#1e1a2e" stroke="#8b5cf6" stroke-width="0.5" />
+  <text x="45" y="669" fill="#c4b5fd" font-size="9" font-weight="600">Hybrid Merge</text>
+  <text x="157" y="669" text-anchor="middle" fill="#a78bfa" font-size="8">Weighted vector + keyword fusion</text>
+  <rect x="290" y="652" width="245" height="24" rx="5" fill="#1e1a2e" stroke="#8b5cf6" stroke-width="0.5" />
+  <text x="300" y="669" fill="#c4b5fd" font-size="9" font-weight="600">Embeddings</text>
+  <text x="412" y="669" text-anchor="middle" fill="#a78bfa" font-size="8">OpenAI / custom URL / noop</text>
+  <rect x="35" y="682" width="245" height="24" rx="5" fill="#1e1a2e" stroke="#8b5cf6" stroke-width="0.5" />
+  <text x="45" y="699" fill="#c4b5fd" font-size="9" font-weight="600">Chunking</text>
+  <text x="157" y="699" text-anchor="middle" fill="#a78bfa" font-size="8">Markdown-aware + heading ctx</text>
+  <rect x="290" y="682" width="245" height="24" rx="5" fill="#1e1a2e" stroke="#8b5cf6" stroke-width="0.5" />
+  <text x="300" y="699" fill="#c4b5fd" font-size="9" font-weight="600">Caching</text>
+  <text x="412" y="699" text-anchor="middle" fill="#a78bfa" font-size="8">embedding_cache + LRU eviction</text>
+  <rect x="35" y="712" width="500" height="20" rx="5" fill="#1e1a2e" stroke="#8b5cf6" stroke-width="0.5" />
+  <text x="285" y="726" text-anchor="middle" fill="#a78bfa" font-size="8">Safe Reindex: rebuild FTS5 + re-embed missing vectors atomically | LIKE fallback | Upsert/Delete/Reindex</text>
+  <!-- Arrow: Agent → Memory -->
+  <line x1="255" y1="550" x2="255" y2="570" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrowViolet)" />
+  <!-- ═══════════ BOTTOM-RIGHT: Sandbox + Heartbeat ═══════════ -->
+  <rect x="570" y="570" width="250" height="170" rx="10" fill="#1c2333" stroke="#ef4444" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="695" y="595" text-anchor="middle" fill="#fca5a5" font-size="13" font-weight="600">Sandbox</text>
+<p><text x="695" y="618" text-anchor="middle" fill="#ef4444" font-size="9">Command allowlist</text>
+<text x="695" y="635" text-anchor="middle" fill="#ef4444" font-size="9">Path jail + traversal block</text>
+<text x="695" y="652" text-anchor="middle" fill="#ef4444" font-size="9">Browser domain allowlist</text>
+<text x="695" y="669" text-anchor="middle" fill="#ef4444" font-size="9">Null byte + Symlink escape block</text>
+<text x="695" y="686" text-anchor="middle" fill="#ef4444" font-size="9">System dirs + Dotfiles blocked</text>
+<text x="695" y="706" text-anchor="middle" fill="#ef4444" font-size="9">Default: Supervised + workspace-only</text>
+<text x="695" y="726" text-anchor="middle" fill="#ef4444" font-size="9">Levels: ReadOnly / Supervised / Full</text></p>
+  <!-- Arrow: Agent → Sandbox -->
+  <line x1="695" y1="550" x2="695" y2="570" stroke="#ef4444" stroke-width="2" />
+  <rect x="840" y="570" width="240" height="170" rx="10" fill="#1c2333" stroke="#06b6d4" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="960" y="595" text-anchor="middle" fill="#67e8f9" font-size="13" font-weight="600">Heartbeat &amp; Cron</text>
+<p><text x="960" y="620" text-anchor="middle" fill="#22d3ee" font-size="9">HEARTBEAT.md periodic tasks</text>
+<text x="960" y="640" text-anchor="middle" fill="#22d3ee" font-size="9">Scheduled actions</text>
+<text x="960" y="660" text-anchor="middle" fill="#22d3ee" font-size="9">Skills loader (TOML manifests)</text>
+<text x="960" y="680" text-anchor="middle" fill="#22d3ee" font-size="9">50+ integrations registry</text>
+<text x="960" y="700" text-anchor="middle" fill="#22d3ee" font-size="9">Observability (noop/log/multi)</text></p>
+  <!-- Arrow: Agent → Heartbeat -->
+  <line x1="960" y1="550" x2="960" y2="570" stroke="#06b6d4" stroke-width="2" />
+  <!-- ═══════════ BOTTOM: Setup Wizard ═══════════ -->
+  <rect x="20" y="760" width="1060" height="170" rx="10" fill="#1c2333" stroke="#f472b6" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="550" y="785" text-anchor="middle" fill="#f9a8d4" font-size="14" font-weight="700">Setup Wizard  --  zeroclaw onboard (quick default | --interactive for full wizard)</text>
+  <text x="550" y="802" text-anchor="middle" fill="#7d8590" font-size="10">7 steps, under 60 seconds | Live connection testing | Secure defaults</text>
+  <!-- Wizard steps: 7 -->
+  <rect x="30" y="815" width="130" height="38" rx="8" fill="#2d1f3d" stroke="#c084fc" stroke-width="1" />
+  <text x="95" y="831" text-anchor="middle" fill="#e9d5ff" font-size="8" font-weight="600">1. Workspace</text>
+  <text x="95" y="845" text-anchor="middle" fill="#a78bfa" font-size="7">~/.zeroclaw/</text>
+  <rect x="170" y="815" width="130" height="38" rx="8" fill="#2d1f3d" stroke="#c084fc" stroke-width="1" />
+  <text x="235" y="831" text-anchor="middle" fill="#e9d5ff" font-size="8" font-weight="600">2. AI Provider</text>
+  <text x="235" y="845" text-anchor="middle" fill="#a78bfa" font-size="7">22+ or custom URL</text>
+  <rect x="310" y="815" width="130" height="38" rx="8" fill="#2d1f3d" stroke="#c084fc" stroke-width="1" />
+  <text x="375" y="831" text-anchor="middle" fill="#e9d5ff" font-size="8" font-weight="600">3. Channels</text>
+  <text x="375" y="845" text-anchor="middle" fill="#a78bfa" font-size="7">7 channels + live test</text>
+  <rect x="450" y="815" width="130" height="38" rx="8" fill="#2d1f3d" stroke="#c084fc" stroke-width="1" />
+  <text x="515" y="831" text-anchor="middle" fill="#e9d5ff" font-size="8" font-weight="600">4. Tunnel</text>
+  <text x="515" y="845" text-anchor="middle" fill="#a78bfa" font-size="7">5 providers or skip</text>
+  <rect x="590" y="815" width="130" height="38" rx="8" fill="#2d1f3d" stroke="#c084fc" stroke-width="1" />
+  <text x="655" y="831" text-anchor="middle" fill="#e9d5ff" font-size="8" font-weight="600">5. Tool Mode</text>
+  <text x="655" y="845" text-anchor="middle" fill="#a78bfa" font-size="7">Sovereign / Composio</text>
+  <rect x="730" y="815" width="130" height="38" rx="8" fill="#2d1f3d" stroke="#c084fc" stroke-width="1" />
+  <text x="795" y="831" text-anchor="middle" fill="#e9d5ff" font-size="8" font-weight="600">6. Personalize</text>
+  <text x="795" y="845" text-anchor="middle" fill="#a78bfa" font-size="7">name, style, timezone</text>
+  <rect x="870" y="815" width="130" height="38" rx="8" fill="#2d1f3d" stroke="#c084fc" stroke-width="1" />
+  <text x="935" y="831" text-anchor="middle" fill="#e9d5ff" font-size="8" font-weight="600">7. Scaffold</text>
+  <text x="935" y="845" text-anchor="middle" fill="#a78bfa" font-size="7">8 workspace MD files</text>
+  <!-- Step arrows -->
+  <line x1="160" y1="834" x2="170" y2="834" stroke="#c084fc" stroke-width="1" marker-end="url(#arrowPurple)" />
+  <line x1="300" y1="834" x2="310" y2="834" stroke="#c084fc" stroke-width="1" marker-end="url(#arrowPurple)" />
+  <line x1="440" y1="834" x2="450" y2="834" stroke="#c084fc" stroke-width="1" marker-end="url(#arrowPurple)" />
+  <line x1="580" y1="834" x2="590" y2="834" stroke="#c084fc" stroke-width="1" marker-end="url(#arrowPurple)" />
+  <line x1="720" y1="834" x2="730" y2="834" stroke="#c084fc" stroke-width="1" marker-end="url(#arrowPurple)" />
+  <line x1="860" y1="834" x2="870" y2="834" stroke="#c084fc" stroke-width="1" marker-end="url(#arrowPurple)" />
+  <!-- Wizard output summary -->
+<p><text x="550" y="872" text-anchor="middle" fill="#7d8590" font-size="9">Full summary: Provider, Model, Channels, Tunnel, Composio, Secrets, Gateway, Autonomy, Memory</text></p>
+  <!-- Ready badge -->
+  <rect x="380" y="888" width="340" height="28" rx="14" fill="#166534" stroke="#4ade80" stroke-width="1" />
+  <text x="550" y="907" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="600">Ready -- zeroclaw agent</text>
+  <!-- Footer stats -->
+<p><text x="550" y="942" text-anchor="middle" fill="#7d8590" font-size="10">~3.4MB binary  |  &lt;10ms startup  |  1,050 tests  |  22+ providers  |  8 traits  |  18,900+ lines of Rust  |  0 clippy warnings</text>
+</p>
+</svg>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="README_zh-CN.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="agnostic-security.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="README_zh-CN.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="agnostic-security.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

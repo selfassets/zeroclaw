@@ -1,0 +1,2921 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>ZeroClaw 文档</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-1169bca1.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-d1e32b83.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">ZeroClaw 文档</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/zeroclaw-labs/zeroclaw" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="简介"><a href="#简介" class="header">简介</a></h1>
+<p align="center">
+  <img src="zeroclaw.png" alt="ZeroClaw" width="200" />
+</p>
+
+<h1 align="center">ZeroClaw 🦀</h1>
+
+<p align="center">
+  <strong>零开销。零妥协。100% Rust。100% 通用。</strong><br>
+  ⚡️ <strong>在 $10 的硬件上运行，甚至 &lt;5MB RAM：比 OpenClaw 少占用 99% 内存，比 Mac mini 便宜 98%！</strong>
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT" /></a>
+  <a href="https://buymeacoffee.com/argenistherose"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Donate-yellow.svg?style=flat&amp;logo=buy-me-a-coffee" alt="Buy Me a Coffee" /></a>
+</p>
+
+<p>快速、小巧且完全自主的 AI 助手基础设施 —— 随处部署，随意替换。</p>
+<pre><code>~3.4MB 二进制文件 · &lt;10ms 启动时间 · 1,017 个测试 · 22+ 提供商 · 8 个 trait · 一切皆可插拔
+</code></pre>
+<h3 id="-特性"><a class="header" href="#-特性">✨ 特性</a></h3>
+<ul>
+<li>🏎️ <strong>超轻量级：</strong> &lt;5MB 内存占用 —— 比 OpenClaw 核心小 99%。</li>
+<li>💰 <strong>极低成本：</strong> 高效且足以在 $10 的硬件上运行 —— 比 Mac mini 便宜 98%。</li>
+<li>⚡ <strong>闪电般快速：</strong> 启动速度快 400 倍，&lt;10ms 启动（即使在 0.6GHz 核心上也只需不到 1 秒）。</li>
+<li>🌍 <strong>真正的便携性：</strong> 单个自包含的二进制文件，跨 ARM, x86 和 RISC-V 运行。</li>
+</ul>
+<h3 id="为什么团队选择-zeroclaw"><a class="header" href="#为什么团队选择-zeroclaw">为什么团队选择 ZeroClaw</a></h3>
+<ul>
+<li><strong>默认精简：</strong> 小巧的 Rust 二进制文件，快速启动，低内存占用。</li>
+<li><strong>设计安全：</strong> 配对机制，严格沙箱，显式允许列表，工作区隔离。</li>
+<li><strong>完全可替换：</strong> 核心系统均为 trait（提供商，通道，工具，记忆，隧道）。</li>
+<li><strong>无锁定：</strong> 支持 OpenAI兼容的提供商 + 可插拔的自定义端点。</li>
+</ul>
+<h2 id="性能基准快照-zeroclaw-vs-openclaw"><a class="header" href="#性能基准快照-zeroclaw-vs-openclaw">性能基准快照 (ZeroClaw vs OpenClaw)</a></h2>
+<p>本地机器快速基准测试 (macOS arm64, 2026年2月) 针对 0.8GHz 边缘硬件进行了标准化。</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th></th><th>OpenClaw</th><th>NanoBot</th><th>PicoClaw</th><th>ZeroClaw 🦀</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>语言</strong></td><td>TypeScript</td><td>Python</td><td>Go</td><td><strong>Rust</strong></td></tr>
+<tr><td><strong>内存 (RAM)</strong></td><td>&gt; 1GB</td><td>&gt; 100MB</td><td>&lt; 10MB</td><td><strong>&lt; 5MB</strong></td></tr>
+<tr><td><strong>启动时间 (0.8GHz 核心)</strong></td><td>&gt; 500s</td><td>&gt; 30s</td><td>&lt; 1s</td><td><strong>&lt; 10ms</strong></td></tr>
+<tr><td><strong>二进制大小</strong></td><td>~28MB (分发版)</td><td>N/A (脚本)</td><td>~8MB</td><td><strong>3.4 MB</strong></td></tr>
+<tr><td><strong>成本</strong></td><td>Mac Mini $599</td><td>Linux SBC ~$50</td><td>Linux Board $10</td><td><strong>任何硬件 $10</strong></td></tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>注意：ZeroClaw 结果是在 release 构建版本中使用 <code>/usr/bin/time -l</code> 测量的。OpenClaw 需要 Node.js 运行时（~390MB 开销）。PicoClaw 和 ZeroClaw 是静态二进制文件。</p>
+</blockquote>
+<p align="center">
+  <img src="zero-claw.jpeg" alt="ZeroClaw vs OpenClaw Comparison" width="800" />
+</p>
+
+<p>在本地复现 ZeroClaw 数据：</p>
+<pre><code class="language-bash">cargo build --release
+ls -lh target/release/zeroclaw
+
+/usr/bin/time -l target/release/zeroclaw --help
+/usr/bin/time -l target/release/zeroclaw status
+</code></pre>
+<h2 id="快速开始"><a class="header" href="#快速开始">快速开始</a></h2>
+<pre><code class="language-bash">git clone https://github.com/zeroclaw-labs/zeroclaw.git
+cd zeroclaw
+cargo build --release
+cargo install --path . --force
+
+# 快速设置（无需提示）
+zeroclaw onboard --api-key sk-... --provider openrouter
+
+# 或者交互式向导
+zeroclaw onboard --interactive
+
+# 或者仅快速修复通道/允许列表
+zeroclaw onboard --channels-only
+
+# 聊天
+zeroclaw agent -m "Hello, ZeroClaw!"
+
+# 交互模式
+zeroclaw agent
+
+# 启动网关（Webhook 服务器）
+zeroclaw gateway                # 默认: 127.0.0.1:8080
+zeroclaw gateway --port 0       # 随机端口（安全加固）
+
+# 启动全自主运行时
+zeroclaw daemon
+
+# 检查状态
+zeroclaw status
+
+# 运行系统诊断
+zeroclaw doctor
+
+# 检查通道健康状况
+zeroclaw channel doctor
+
+# 获取集成设置详情
+zeroclaw integrations info Telegram
+
+# 管理后台服务
+zeroclaw service install
+zeroclaw service status
+
+# 从 OpenClaw 迁移记忆（先安全预览）
+zeroclaw migrate openclaw --dry-run
+zeroclaw migrate openclaw
+</code></pre>
+<blockquote>
+<p><strong>开发回退（无全局安装）：</strong> 在命令前加上 <code>cargo run --release --</code>（例如：<code>cargo run --release -- status</code>）。
+<strong>低内存开发板（例如 Raspberry Pi 3, 1GB RAM）：</strong> 如果内核在编译期间杀死了 rustc，请运行 <code>CARGO_BUILD_JOBS=1 cargo build --release</code>。</p>
+</blockquote>
+<h2 id="架构"><a class="header" href="#架构">架构</a></h2>
+<p>每个子系统都是一个 <strong>trait</strong> —— 通过配置更改实现替换，无需修改代码。</p>
+<p align="center">
+  <img src="docs/architecture.svg" alt="ZeroClaw Architecture" width="900" />
+</p>
+
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>子系统</th><th>Trait</th><th>自带支持</th><th>扩展</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>AI 模型</strong></td><td><code>Provider</code></td><td>22+ 提供商 (OpenRouter, Anthropic, OpenAI, Ollama, Venice, Groq, Mistral, xAI, DeepSeek, Together, Fireworks, Perplexity, Cohere, Bedrock 等)</td><td><code>custom:https://your-api.com</code> — 任何 OpenAI 兼容的 API</td></tr>
+<tr><td><strong>通道</strong></td><td><code>Channel</code></td><td>CLI, Telegram, Discord, Slack, iMessage, Matrix, WhatsApp, Webhook</td><td>任何消息 API</td></tr>
+<tr><td><strong>记忆</strong></td><td><code>Memory</code></td><td>SQLite 混合搜索 (FTS5 + 向量余弦相似度), Markdown</td><td>任何持久化后端</td></tr>
+<tr><td><strong>工具</strong></td><td><code>Tool</code></td><td>shell, file_read, file_write, memory_store, memory_recall, memory_forget, browser_open (Brave + allowlist), browser (agent-browser / rust-native), composio (可选)</td><td>任何能力</td></tr>
+<tr><td><strong>可观测性</strong></td><td><code>Observer</code></td><td>Noop, Log, Multi</td><td>Prometheus, OTel</td></tr>
+<tr><td><strong>运行时</strong></td><td><code>RuntimeAdapter</code></td><td>Native, Docker (沙箱化)</td><td>WASM (计划中；不支持的类型会快速失败)</td></tr>
+<tr><td><strong>安全性</strong></td><td><code>SecurityPolicy</code></td><td>网关配对, 沙箱, 允许列表, 速率限制, 文件系统范围限制, 加密机密</td><td>—</td></tr>
+<tr><td><strong>身份</strong></td><td><code>IdentityConfig</code></td><td>OpenClaw (markdown), AIEOS v1.1 (JSON)</td><td>任何身份格式</td></tr>
+<tr><td><strong>隧道</strong></td><td><code>Tunnel</code></td><td>None, Cloudflare, Tailscale, ngrok, Custom</td><td>任何隧道二进制文件</td></tr>
+<tr><td><strong>心跳</strong></td><td>Engine</td><td>HEARTBEAT.md 周期性任务</td><td>—</td></tr>
+<tr><td><strong>技能</strong></td><td>Loader</td><td>TOML 清单 + SKILL.md 说明</td><td>社区技能包</td></tr>
+<tr><td><strong>集成</strong></td><td>Registry</td><td>9 个类别中的 50+ 个集成</td><td>插件系统</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="运行时支持-当前"><a class="header" href="#运行时支持-当前">运行时支持 (当前)</a></h3>
+<ul>
+<li>✅ 目前支持：<code>runtime.kind = "native"</code> 或 <code>runtime.kind = "docker"</code></li>
+<li>🚧 计划中，尚未实现：WASM / 边缘运行时</li>
+</ul>
+<p>当配置了不支持的 <code>runtime.kind</code> 时，ZeroClaw 现在会以明确的错误退出，而不是静默回退到原生模式。</p>
+<h3 id="记忆系统全栈搜索引擎"><a class="header" href="#记忆系统全栈搜索引擎">记忆系统（全栈搜索引擎）</a></h3>
+<p>全自定义，零外部依赖 —— 无需 Pinecone，无需 Elasticsearch，无需 LangChain：</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>层级</th><th>实现</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>向量数据库</strong></td><td>嵌入存储为 SQLite 中的 BLOB，余弦相似度搜索</td></tr>
+<tr><td><strong>关键词搜索</strong></td><td>带有 BM25 评分的 FTS5 虚拟表</td></tr>
+<tr><td><strong>混合合并</strong></td><td>自定义加权合并函数 (<code>vector.rs</code>)</td></tr>
+<tr><td><strong>嵌入</strong></td><td><code>EmbeddingProvider</code> trait — OpenAI, 自定义 URL, 或 noop</td></tr>
+<tr><td><strong>分块</strong></td><td>基于行的 Markdown 分块器，带有标题保留</td></tr>
+<tr><td><strong>缓存</strong></td><td>SQLite <code>embedding_cache</code> 表，带有 LRU 驱逐</td></tr>
+<tr><td><strong>安全重建索引</strong></td><td>原子重建 FTS5 + 重新嵌入缺失的向量</td></tr>
+</tbody>
+</table>
+</div>
+<p>代理通过工具自动回忆、保存和管理记忆。</p>
+<pre><code class="language-toml">[memory]
+backend = "sqlite"          # "sqlite", "markdown", "none"
+auto_save = true
+embedding_provider = "openai"
+vector_weight = 0.7
+keyword_weight = 0.3
+</code></pre>
+<h2 id="安全性"><a class="header" href="#安全性">安全性</a></h2>
+<p>ZeroClaw 在<strong>每一层</strong>强制执行安全性 —— 不仅仅是沙箱。它通过了社区安全检查清单的所有项目。</p>
+<h3 id="安全检查清单"><a class="header" href="#安全检查清单">安全检查清单</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>#</th><th>项目</th><th>状态</th><th>如何实现</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><strong>网关未公开暴露</strong></td><td>✅</td><td>默认绑定 <code>127.0.0.1</code>。如果没有隧道或显式的 <code>allow_public_bind = true</code>，拒绝 <code>0.0.0.0</code>。</td></tr>
+<tr><td>2</td><td><strong>需要配对</strong></td><td>✅</td><td>启动时的 6 位一次性代码。通过 <code>POST /pair</code> 交换 bearer 令牌。所有 <code>/webhook</code> 请求都需要 <code>Authorization: Bearer &lt;token&gt;</code>。</td></tr>
+<tr><td>3</td><td><strong>文件系统作用域 (无 /)</strong></td><td>✅</td><td>默认 <code>workspace_only = true</code>。阻止 14 个系统目录 + 4 个敏感点文件。阻止空字节注入。通过规范化 + resolved-path 工作区检查防止符号链接逃逸。</td></tr>
+<tr><td>4</td><td><strong>仅通过隧道访问</strong></td><td>✅</td><td>网关在没有活动隧道的情况下拒绝公开绑定。支持 Tailscale, Cloudflare, ngrok 或任何自定义隧道。</td></tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p><strong>运行你自己的 nmap：</strong> <code>nmap -p 1-65535 &lt;your-host&gt;</code> — ZeroClaw 仅绑定到 localhost，因此除非你显式配置隧道，否则不会暴漏任何内容。</p>
+</blockquote>
+<h3 id="通道允许列表-telegram--discord--slack"><a class="header" href="#通道允许列表-telegram--discord--slack">通道允许列表 (Telegram / Discord / Slack)</a></h3>
+<p>入站发送者策略现在是一致的：</p>
+<ul>
+<li>空允许列表 = <strong>拒绝所有入站消息</strong></li>
+<li><code>"*"</code> = <strong>允许所有</strong> (显式加入)</li>
+<li>否则 = 精确匹配允许列表</li>
+</ul>
+<p>默认情况下，这可以保持较低的意外暴露风险。</p>
+<p>推荐的低摩擦设置（安全 + 快速）：</p>
+<ul>
+<li><strong>Telegram:</strong> 将你自己的 <code>@username</code>（不带 <code>@</code>）和/或你的数字 Telegram 用户 ID 加入允许列表。</li>
+<li><strong>Discord:</strong> 将你自己的 Discord 用户 ID 加入允许列表。</li>
+<li><strong>Slack:</strong> 将你自己的 Slack 成员 ID（通常以 <code>U</code> 开头）加入允许列表。</li>
+<li>仅在临时开放测试时使用 <code>"*"</code>。</li>
+</ul>
+<p>如果你不确定使用哪个身份：</p>
+<ol>
+<li>启动通道并向你的机器人发送一条消息。</li>
+<li>阅读警告日志以查看确切的发件人身份。</li>
+<li>将该值添加到允许列表并重新运行仅通道设置。</li>
+</ol>
+<p>如果你在日志中遇到授权警告（例如：<code>ignoring message from unauthorized user</code>），
+仅重新运行通道设置：</p>
+<pre><code class="language-bash">zeroclaw onboard --channels-only
+</code></pre>
+<h3 id="whatsapp-business-cloud-api-设置"><a class="header" href="#whatsapp-business-cloud-api-设置">WhatsApp Business Cloud API 设置</a></h3>
+<p>WhatsApp 使用 Meta 的 Cloud API 和 webhook（基于推送，而不是轮询）：</p>
+<ol>
+<li>
+<p><strong>创建 Meta Business App:</strong></p>
+<ul>
+<li>前往 <a href="https://developers.facebook.com">developers.facebook.com</a></li>
+<li>创建新应用 → 选择 “Business” 类型</li>
+<li>添加 “WhatsApp” 产品</li>
+</ul>
+</li>
+<li>
+<p><strong>获取你的凭据:</strong></p>
+<ul>
+<li><strong>Access Token:</strong> 从 WhatsApp → API Setup → Generate token (或创建一个系统用户以获取永久令牌)</li>
+<li><strong>Phone Number ID:</strong> 从 WhatsApp → API Setup → Phone number ID</li>
+<li><strong>Verify Token:</strong> 你定义这个（任何随机字符串）— Meta 将在 webhook 验证期间发回它</li>
+</ul>
+</li>
+<li>
+<p><strong>配置 ZeroClaw:</strong></p>
+<pre><code class="language-toml">[channels_config.whatsapp]
+access_token = "EAABx..."
+phone_number_id = "123456789012345"
+verify_token = "my-secret-verify-token"
+allowed_numbers = ["+1234567890"]  # E.164 格式, 或 ["*"] 代表所有
+</code></pre>
+</li>
+<li>
+<p><strong>使用隧道启动网关:</strong></p>
+<pre><code class="language-bash">zeroclaw gateway --port 8080
+</code></pre>
+<p>WhatsApp 需要 HTTPS，所以使用隧道 (ngrok, Cloudflare, Tailscale Funnel)。</p>
+</li>
+<li>
+<p><strong>配置 Meta webhook:</strong></p>
+<ul>
+<li>在 Meta 开发者控制台 → WhatsApp → Configuration → Webhook</li>
+<li><strong>Callback URL:</strong> <code>https://your-tunnel-url/whatsapp</code></li>
+<li><strong>Verify Token:</strong> 与配置中的 <code>verify_token</code> 相同</li>
+<li>订阅 <code>messages</code> 字段</li>
+</ul>
+</li>
+<li>
+<p><strong>测试:</strong> 向你的 WhatsApp Business 号码发送消息 — ZeroClaw 将通过 LLM 回复。</p>
+</li>
+</ol>
+<h2 id="配置"><a class="header" href="#配置">配置</a></h2>
+<p>配置：<code>~/.zeroclaw/config.toml</code> (由 <code>onboard</code> 创建)</p>
+<pre><code class="language-toml">api_key = "sk-..."
+default_provider = "openrouter"
+default_model = "anthropic/claude-sonnet-4-20250514"
+default_temperature = 0.7
+
+[memory]
+backend = "sqlite"              # "sqlite", "markdown", "none"
+auto_save = true
+embedding_provider = "openai"   # "openai", "noop"
+vector_weight = 0.7
+keyword_weight = 0.3
+
+[gateway]
+require_pairing = true          # 首次连接需要配对码
+allow_public_bind = false       # 无隧道拒绝 0.0.0.0
+
+[autonomy]
+level = "supervised"            # "readonly", "supervised", "full" (默认: supervised)
+workspace_only = true           # 默认: true — 仅限工作区
+allowed_commands = ["git", "npm", "cargo", "ls", "cat", "grep"]
+forbidden_paths = ["/etc", "/root", "/proc", "/sys", "~/.ssh", "~/.gnupg", "~/.aws"]
+
+[runtime]
+kind = "native"                # "native" 或 "docker"
+
+[runtime.docker]
+image = "alpine:3.20"          # shell 执行的容器镜像
+network = "none"               # docker 网络模式 ("none", "bridge", 等)
+memory_limit_mb = 512          # 可选内存限制 MB
+cpu_limit = 1.0                # 可选 CPU 限制
+read_only_rootfs = true        # 以只读方式挂载根文件系统
+mount_workspace = true         # 将工作区挂载到 /workspace
+allowed_workspace_roots = []   # 工作区挂载验证的可选允许列表
+
+[heartbeat]
+enabled = false
+interval_minutes = 30
+
+[tunnel]
+provider = "none"               # "none", "cloudflare", "tailscale", "ngrok", "custom"
+
+[secrets]
+encrypt = true                  # API 密钥使用本地密钥文件加密
+
+[browser]
+enabled = false                        # 开启 browser_open + browser 工具
+allowed_domains = ["docs.rs"]         # 启用浏览器时必须
+backend = "agent_browser"             # "agent_browser" (默认), "rust_native", "auto"
+native_headless = true                 # 当后端使用 rust-native 时适用
+native_webdriver_url = "http://127.0.0.1:9515" # WebDriver端点 (chromedriver/selenium)
+# native_chrome_path = "/usr/bin/chromium"  # 驱动程序的可选显式浏览器二进制文件
+
+# Rust-native 后端构建标志:
+# cargo build --release --features browser-native
+# 确保 WebDriver 服务器正在运行，例如 chromedriver --port=9515
+
+[composio]
+enabled = false                 # 开启: 1000+ OAuth 应用通过 composio.dev
+# api_key = "cmp_..."          # 可选: 当 [secrets].encrypt = true 时加密存储
+entity_id = "default"         # Composio 工具调用的默认 user_id
+
+[identity]
+format = "openclaw"             # "openclaw" (默认, markdown 文件) 或 "aieos" (JSON)
+# aieos_path = "identity.json"  # AIEOS JSON 文件路径 (相对工作区或是绝对路径)
+# aieos_inline = '{"identity":{"names":{"first":"Nova"}}}'  # 内联 AIEOS JSON
+</code></pre>
+<h2 id="身份系统-支持-aieos"><a class="header" href="#身份系统-支持-aieos">身份系统 (支持 AIEOS)</a></h2>
+<p>ZeroClaw 通过两种格式支持<strong>身份无关</strong>的 AI 人格：</p>
+<h3 id="openclaw-默认"><a class="header" href="#openclaw-默认">OpenClaw (默认)</a></h3>
+<p>工作区中的传统 markdown 文件：</p>
+<ul>
+<li><code>IDENTITY.md</code> — 代理是谁</li>
+<li><code>SOUL.md</code> — 核心个性和价值观</li>
+<li><code>USER.md</code> — 代理正在帮助谁</li>
+<li><code>AGENTS.md</code> — 行为准则</li>
+</ul>
+<h3 id="aieos-ai-实体对象规范"><a class="header" href="#aieos-ai-实体对象规范">AIEOS (AI 实体对象规范)</a></h3>
+<p><a href="https://aieos.org">AIEOS</a> 是便携式 AI 身份的标准化框架。ZeroClaw 支持 AIEOS v1.1 JSON 负载，允许你：</p>
+<ul>
+<li>从 AIEOS 生态系统<strong>导入身份</strong></li>
+<li><strong>导出身份</strong>到其他兼容 AIEOS 的系统</li>
+<li>在不同的 AI 模型之间<strong>保持行为完整性</strong></li>
+</ul>
+<h4 id="启用-aieos"><a class="header" href="#启用-aieos">启用 AIEOS</a></h4>
+<pre><code class="language-toml">[identity]
+format = "aieos"
+aieos_path = "identity.json"  # 相对工作区或是绝对路径
+</code></pre>
+<p>或者内联 JSON：</p>
+<pre><code class="language-toml">[identity]
+format = "aieos"
+aieos_inline = '''
+{
+  "identity": {
+    "names": { "first": "Nova", "nickname": "N" }
+  },
+  "psychology": {
+    "neural_matrix": { "creativity": 0.9, "logic": 0.8 },
+    "traits": { "mbti": "ENTP" },
+    "moral_compass": { "alignment": "Chaotic Good" }
+  },
+  "linguistics": {
+    "text_style": { "formality_level": 0.2, "slang_usage": true }
+  },
+  "motivations": {
+    "core_drive": "Push boundaries and explore possibilities"
+  }
+}
+'''
+</code></pre>
+<h4 id="aieos-schema-章节"><a class="header" href="#aieos-schema-章节">AIEOS Schema 章节</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>章节</th><th>描述</th></tr>
+</thead>
+<tbody>
+<tr><td><code>identity</code></td><td>姓名, 简介, 起源, 居住地</td></tr>
+<tr><td><code>psychology</code></td><td>神经矩阵 (认知权重), MBTI, OCEAN, 道德指南针</td></tr>
+<tr><td><code>linguistics</code></td><td>文本风格, 正式程度, 口头禅, 禁用词</td></tr>
+<tr><td><code>motivations</code></td><td>核心驱动力, 短期/长期目标, 恐惧</td></tr>
+<tr><td><code>capabilities</code></td><td>代理可以访问的技能和工具</td></tr>
+<tr><td><code>physicality</code></td><td>图像生成的视觉描述符</td></tr>
+<tr><td><code>history</code></td><td>起源故事, 教育, 职业</td></tr>
+<tr><td><code>interests</code></td><td>爱好, 收藏, 生活方式</td></tr>
+</tbody>
+</table>
+</div>
+<p>查看 <a href="https://aieos.org">aieos.org</a> 获取完整模式和实时示例。</p>
+<h2 id="网关-api"><a class="header" href="#网关-api">网关 API</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>端点</th><th>方法</th><th>认证</th><th>描述</th></tr>
+</thead>
+<tbody>
+<tr><td><code>/health</code></td><td>GET</td><td>None</td><td>健康检查（总是公开，不泄露机密）</td></tr>
+<tr><td><code>/pair</code></td><td>POST</td><td><code>X-Pairing-Code</code> header</td><td>用一次性代码换取 bearer 令牌</td></tr>
+<tr><td><code>/webhook</code></td><td>POST</td><td><code>Authorization: Bearer &lt;token&gt;</code></td><td>发送消息: <code>{"message": "your prompt"}</code></td></tr>
+<tr><td><code>/whatsapp</code></td><td>GET</td><td>Query params</td><td>Meta webhook 验证 (hub.mode, hub.verify_token, hub.challenge)</td></tr>
+<tr><td><code>/whatsapp</code></td><td>POST</td><td>None (Meta signature)</td><td>WhatsApp 传入消息 webhook</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="命令"><a class="header" href="#命令">命令</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>命令</th><th>描述</th></tr>
+</thead>
+<tbody>
+<tr><td><code>onboard</code></td><td>快速设置 (默认)</td></tr>
+<tr><td><code>onboard --interactive</code></td><td>完整的交互式 7 步向导</td></tr>
+<tr><td><code>onboard --channels-only</code></td><td>仅重新配置通道/允许列表（快速修复流程）</td></tr>
+<tr><td><code>agent -m "..."</code></td><td>单条消息模式</td></tr>
+<tr><td><code>agent</code></td><td>交互式聊天模式</td></tr>
+<tr><td><code>gateway</code></td><td>启动 webhook 服务器 (默认: <code>127.0.0.1:8080</code>)</td></tr>
+<tr><td><code>gateway --port 0</code></td><td>随机端口模式</td></tr>
+<tr><td><code>daemon</code></td><td>启动长期运行的自主运行时</td></tr>
+<tr><td><code>service install/start/stop/status/uninstall</code></td><td>管理用户级后台服务</td></tr>
+<tr><td><code>doctor</code></td><td>诊断 daemon/scheduler/channel 新鲜度</td></tr>
+<tr><td><code>status</code></td><td>显示完整系统状态</td></tr>
+<tr><td><code>channel doctor</code></td><td>运行已配置通道的健康检查</td></tr>
+<tr><td><code>integrations info &lt;name&gt;</code></td><td>显示一个集成的设置/状态详情</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="开发"><a class="header" href="#开发">开发</a></h2>
+<pre><code class="language-bash">cargo build              # 开发构建
+cargo build --release    # Release 构建 (~3.4MB)
+CARGO_BUILD_JOBS=1 cargo build --release    # 低内存回退 (Raspberry Pi 3, 1GB RAM)
+cargo test               # 1,017 个测试
+cargo clippy             # Lint (0 警告)
+cargo fmt                # 格式化
+
+# 运行 SQLite vs Markdown 基准测试
+cargo test --test memory_comparison -- --nocapture
+</code></pre>
+<h3 id="推送前钩子-pre-push-hook"><a class="header" href="#推送前钩子-pre-push-hook">推送前钩子 (Pre-push hook)</a></h3>
+<p>git hook 会在每次推送前运行 <code>cargo fmt --check</code>, <code>cargo clippy -- -D warnings</code>, 和 <code>cargo test</code>。启用一次：</p>
+<pre><code class="language-bash">git config core.hooksPath .githooks
+</code></pre>
+<p>如果需要在开发过程中快速推送并跳过钩子：</p>
+<pre><code class="language-bash">git push --no-verify
+</code></pre>
+<h2 id="协作与文档"><a class="header" href="#协作与文档">协作与文档</a></h2>
+<p>为了高效协作和一致的审查：</p>
+<ul>
+<li>贡献指南: <a href="CONTRIBUTING.html">CONTRIBUTING.md</a></li>
+<li>PR 工作流策略: <a href="docs/pr-workflow.html">docs/pr-workflow.md</a></li>
+<li>审查员手册 (分流 + 深度审查): <a href="docs/reviewer-playbook.html">docs/reviewer-playbook.md</a></li>
+<li>CI 所有权和分流图: <a href="docs/ci-map.html">docs/ci-map.md</a></li>
+<li>安全披露策略: <a href="SECURITY.html">SECURITY.md</a></li>
+</ul>
+<h2 id="支持"><a class="header" href="#支持">支持</a></h2>
+<p>ZeroClaw 是一个充满激情的开源项目。如果你觉得它有用，并希望支持其持续开发、测试硬件以及维护者的咖啡，你可以在这里支持我：</p>
+<p><a href="https://buymeacoffee.com/argenistherose"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Donate-yellow.svg?style=for-the-badge&amp;logo=buy-me-a-coffee" alt="Buy Me a Coffee" /></a></p>
+<h2 id="许可证"><a class="header" href="#许可证">许可证</a></h2>
+<p>MIT — 参见 <a href="LICENSE">LICENSE</a></p>
+<h2 id="贡献"><a class="header" href="#贡献">贡献</a></h2>
+<p>参见 <a href="CONTRIBUTING.html">CONTRIBUTING.md</a>。实现一个 trait，提交 PR：</p>
+<ul>
+<li>CI 工作流指南: <a href="docs/ci-map.html">docs/ci-map.md</a></li>
+<li>新 <code>Provider</code> → <code>src/providers/</code></li>
+<li>新 <code>Channel</code> → <code>src/channels/</code></li>
+<li>新 <code>Observer</code> → <code>src/observability/</code></li>
+<li>新 <code>Tool</code> → <code>src/tools/</code></li>
+<li>新 <code>Memory</code> → <code>src/memory/</code></li>
+<li>新 <code>Tunnel</code> → <code>src/tunnel/</code></li>
+<li>新 <code>Skill</code> → <code>~/.zeroclaw/workspace/skills/&lt;name&gt;/</code></li>
+</ul>
+<hr>
+<p><strong>ZeroClaw</strong> — 零开销。零妥协。随处部署。随意替换。 🦀</p>
+<h2 id="star-历史"><a class="header" href="#star-历史">Star 历史</a></h2>
+<p align="center">
+  <a href="https://www.star-history.com/#zeroclaw-labs/zeroclaw&amp;Date">
+    <img src="https://api.star-history.com/svg?repos=zeroclaw-labs/zeroclaw&amp;type=Date" alt="Star History Chart" />
+  </a>
+</p>
+
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="架构-1"><a href="#架构-1" class="header">架构</a></h1>
+<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1100 950" font-family="&#39;Segoe UI&#39;, system-ui, -apple-system, sans-serif">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <fedropshadow dx="0" dy="2" stddeviation="3" flood-opacity="0.15" />
+    </filter>
+    <lineargradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1117" />
+      <stop offset="100%" stop-color="#161b22" />
+    </lineargradient>
+    <lineargradient id="agentGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1e2e" />
+      <stop offset="100%" stop-color="#1e2436" />
+    </lineargradient>
+    <lineargradient id="memGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e" />
+      <stop offset="100%" stop-color="#1e1e36" />
+    </lineargradient>
+    <marker id="arrowBlue" markerwidth="8" markerheight="6" refx="8" refy="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#3b82f6" /></marker>
+    <marker id="arrowAmber" markerwidth="8" markerheight="6" refx="8" refy="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#f59e0b" /></marker>
+    <marker id="arrowGreen" markerwidth="8" markerheight="6" refx="8" refy="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#4ade80" /></marker>
+    <marker id="arrowCyan" markerwidth="8" markerheight="6" refx="8" refy="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#06b6d4" /></marker>
+    <marker id="arrowPurple" markerwidth="8" markerheight="6" refx="8" refy="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#c084fc" /></marker>
+    <marker id="arrowViolet" markerwidth="8" markerheight="6" refx="8" refy="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#8b5cf6" /></marker>
+  </defs>
+  <!-- Background -->
+  <rect width="1100" height="950" rx="12" fill="url(#bgGrad)" />
+  <!-- Title -->
+<p><text x="550" y="38" text-anchor="middle" fill="#e6edf3" font-size="22" font-weight="700">ZeroClaw Architecture</text>
+<text x="550" y="58" text-anchor="middle" fill="#7d8590" font-size="12">Zero overhead. Zero compromise. 100% Rust. 100% Agnostic. 8 pluggable traits.</text></p>
+  <!-- ═══════════ LEFT: Chat Apps ═══════════ -->
+  <rect x="20" y="80" width="150" height="310" rx="10" fill="#1c2333" stroke="#3b82f6" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="95" y="105" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="600">Chat Apps</text>
+  <rect x="35" y="120" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="95" y="137" text-anchor="middle" fill="#60a5fa" font-size="10">Telegram</text>
+  <rect x="35" y="150" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="95" y="167" text-anchor="middle" fill="#818cf8" font-size="10">Discord</text>
+  <rect x="35" y="180" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="95" y="197" text-anchor="middle" fill="#a78bfa" font-size="10">Slack</text>
+  <rect x="35" y="210" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="95" y="227" text-anchor="middle" fill="#c084fc" font-size="10">iMessage</text>
+  <rect x="35" y="240" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="95" y="257" text-anchor="middle" fill="#e879f9" font-size="10">Matrix</text>
+  <rect x="35" y="270" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="95" y="287" text-anchor="middle" fill="#f472b6" font-size="10">Webhook</text>
+  <rect x="35" y="300" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="95" y="317" text-anchor="middle" fill="#fb923c" font-size="10">CLI</text>
+<p><text x="95" y="355" text-anchor="middle" fill="#7d8590" font-size="9" font-style="italic">+ any Channel trait</text></p>
+  <!-- Arrow: Chat Apps → Security -->
+  <line x1="170" y1="230" x2="195" y2="230" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrowBlue)" />
+  <!-- ═══════════ CENTER-LEFT: Security Layer ═══════════ -->
+  <rect x="200" y="80" width="190" height="310" rx="10" fill="#1c2333" stroke="#f59e0b" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="295" y="105" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="600">Security Layer</text>
+  <!-- Gateway Pairing -->
+  <rect x="213" y="120" width="165" height="50" rx="8" fill="#292524" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,2" />
+  <text x="295" y="138" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600">Gateway Pairing</text>
+  <text x="295" y="153" text-anchor="middle" fill="#a8a29e" font-size="8">6-digit OTP + bearer tokens</text>
+  <text x="295" y="164" text-anchor="middle" fill="#a8a29e" font-size="8">constant-time comparison</text>
+  <!-- Auth Gate -->
+  <rect x="213" y="178" width="165" height="45" rx="8" fill="#292524" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,2" />
+  <text x="295" y="196" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600">Auth Gate</text>
+  <text x="295" y="210" text-anchor="middle" fill="#a8a29e" font-size="8">Channel allowlists + webhook_secret</text>
+  <!-- Rate Limiter -->
+  <rect x="213" y="230" width="165" height="45" rx="8" fill="#292524" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,2" />
+  <text x="295" y="248" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600">Rate Limiter</text>
+  <text x="295" y="262" text-anchor="middle" fill="#a8a29e" font-size="8">sliding window, cost/day cap</text>
+  <!-- Filesystem Sandbox -->
+  <rect x="213" y="282" width="165" height="50" rx="8" fill="#292524" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,2" />
+  <text x="295" y="300" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600">Filesystem Sandbox</text>
+  <text x="295" y="314" text-anchor="middle" fill="#a8a29e" font-size="8">path jail + null byte block</text>
+  <text x="295" y="325" text-anchor="middle" fill="#a8a29e" font-size="8">symlink escape detection</text>
+  <!-- Encrypted Secrets -->
+  <rect x="213" y="340" width="165" height="38" rx="8" fill="#292524" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,2" />
+  <text x="295" y="358" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600">Encrypted Secrets</text>
+  <text x="295" y="372" text-anchor="middle" fill="#a8a29e" font-size="8">XOR + local key file (0600)</text>
+  <!-- Arrow: Security → Agent -->
+  <line x1="295" y1="390" x2="295" y2="415" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)" />
+  <!-- ═══════════ CENTER: Tunnel ═══════════ -->
+  <rect x="405" y="80" width="180" height="200" rx="10" fill="#1c2333" stroke="#06b6d4" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="495" y="105" text-anchor="middle" fill="#67e8f9" font-size="13" font-weight="600">Agnostic Tunnel</text>
+  <text x="495" y="120" text-anchor="middle" fill="#7d8590" font-size="9">Bring Your Own</text>
+  <rect x="418" y="132" width="155" height="22" rx="5" fill="#1e293b" />
+  <text x="495" y="148" text-anchor="middle" fill="#22d3ee" font-size="10">Cloudflare</text>
+  <rect x="418" y="160" width="155" height="22" rx="5" fill="#1e293b" />
+  <text x="495" y="176" text-anchor="middle" fill="#22d3ee" font-size="10">Tailscale</text>
+  <rect x="418" y="188" width="155" height="22" rx="5" fill="#1e293b" />
+  <text x="495" y="204" text-anchor="middle" fill="#22d3ee" font-size="10">ngrok</text>
+  <rect x="418" y="216" width="155" height="22" rx="5" fill="#1e293b" />
+  <text x="495" y="232" text-anchor="middle" fill="#22d3ee" font-size="10">Custom (bore, frp, ssh...)</text>
+<p><text x="495" y="265" text-anchor="middle" fill="#7d8590" font-size="9" font-style="italic">+ any Tunnel trait</text></p>
+  <!-- Arrow: Tunnel → Agent -->
+  <line x1="495" y1="280" x2="495" y2="415" stroke="#06b6d4" stroke-width="2" marker-end="url(#arrowCyan)" />
+  <!-- ═══════════ RIGHT: AI Providers ═══════════ -->
+  <rect x="600" y="80" width="480" height="200" rx="10" fill="#1c2333" stroke="#22c55e" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="840" y="105" text-anchor="middle" fill="#4ade80" font-size="13" font-weight="600">AI Providers (22+)</text>
+  <text x="840" y="120" text-anchor="middle" fill="#7d8590" font-size="9">Any OpenAI-compatible API</text>
+  <!-- Provider grid: 4 columns x 4 rows -->
+  <rect x="615" y="132" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="667" y="148" text-anchor="middle" fill="#86efac" font-size="9">OpenRouter</text>
+  <rect x="730" y="132" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="782" y="148" text-anchor="middle" fill="#86efac" font-size="9">Anthropic</text>
+  <rect x="845" y="132" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="897" y="148" text-anchor="middle" fill="#86efac" font-size="9">OpenAI</text>
+  <rect x="960" y="132" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="1012" y="148" text-anchor="middle" fill="#86efac" font-size="9">Ollama</text>
+  <rect x="615" y="160" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="667" y="176" text-anchor="middle" fill="#86efac" font-size="9">Venice</text>
+  <rect x="730" y="160" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="782" y="176" text-anchor="middle" fill="#86efac" font-size="9">Groq</text>
+  <rect x="845" y="160" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="897" y="176" text-anchor="middle" fill="#86efac" font-size="9">Mistral</text>
+  <rect x="960" y="160" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="1012" y="176" text-anchor="middle" fill="#86efac" font-size="9">xAI / Grok</text>
+  <rect x="615" y="188" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="667" y="204" text-anchor="middle" fill="#86efac" font-size="9">DeepSeek</text>
+  <rect x="730" y="188" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="782" y="204" text-anchor="middle" fill="#86efac" font-size="9">Together AI</text>
+  <rect x="845" y="188" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="897" y="204" text-anchor="middle" fill="#86efac" font-size="9">Fireworks</text>
+  <rect x="960" y="188" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="1012" y="204" text-anchor="middle" fill="#86efac" font-size="9">Perplexity</text>
+  <rect x="615" y="216" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="667" y="232" text-anchor="middle" fill="#86efac" font-size="9">Cohere</text>
+  <rect x="730" y="216" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="782" y="232" text-anchor="middle" fill="#86efac" font-size="9">Cloudflare AI</text>
+  <rect x="845" y="216" width="105" height="22" rx="5" fill="#1a2e1a" />
+  <text x="897" y="232" text-anchor="middle" fill="#86efac" font-size="9">Bedrock</text>
+  <rect x="960" y="216" width="105" height="22" rx="5" fill="#1e3a1e" stroke="#4ade80" stroke-width="1" stroke-dasharray="3,2" />
+  <text x="1012" y="232" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="600">custom:URL</text>
+<p><text x="840" y="262" text-anchor="middle" fill="#7d8590" font-size="9" font-style="italic">+ any Provider trait / custom:URL</text></p>
+  <!-- Arrow: Providers → Agent LLM -->
+  <line x1="840" y1="280" x2="560" y2="440" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arrowGreen)" />
+  <!-- ═══════════ CENTER: Agent Loop ═══════════ -->
+  <rect x="20" y="420" width="1060" height="130" rx="12" fill="url(#agentGrad)" stroke="#22c55e" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="550" y="445" text-anchor="middle" fill="#4ade80" font-size="14" font-weight="700">Agent Loop</text>
+  <!-- Message → LLM → Tools → Response flow -->
+  <rect x="50" y="460" width="110" height="42" rx="8" fill="#1a2e1a" stroke="#4ade80" stroke-width="1" />
+  <text x="105" y="478" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">Message</text>
+  <text x="105" y="495" text-anchor="middle" fill="#86efac" font-size="14">In</text>
+  <rect x="200" y="460" width="110" height="42" rx="8" fill="#1a2e1a" stroke="#4ade80" stroke-width="1" />
+  <text x="255" y="478" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">Memory Recall</text>
+  <text x="255" y="495" text-anchor="middle" fill="#86efac" font-size="14">ctx</text>
+  <rect x="350" y="460" width="110" height="42" rx="8" fill="#1a2e1a" stroke="#4ade80" stroke-width="1" />
+  <text x="405" y="478" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">LLM</text>
+  <text x="405" y="495" text-anchor="middle" fill="#86efac" font-size="14">AI</text>
+  <rect x="500" y="460" width="110" height="42" rx="8" fill="#1a2e1a" stroke="#4ade80" stroke-width="1" />
+  <text x="555" y="478" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">Tools</text>
+  <text x="555" y="495" text-anchor="middle" fill="#86efac" font-size="14">exec</text>
+  <rect x="650" y="460" width="110" height="42" rx="8" fill="#1a2e1a" stroke="#4ade80" stroke-width="1" />
+  <text x="705" y="478" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">Memory Save</text>
+  <text x="705" y="495" text-anchor="middle" fill="#86efac" font-size="14">store</text>
+  <rect x="800" y="460" width="110" height="42" rx="8" fill="#1a2e1a" stroke="#4ade80" stroke-width="1" />
+  <text x="855" y="478" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">Response</text>
+  <text x="855" y="495" text-anchor="middle" fill="#86efac" font-size="14">Out</text>
+  <!-- Composio (optional) -->
+  <rect x="950" y="460" width="110" height="42" rx="8" fill="#1a2e1a" stroke="#4ade80" stroke-width="1" stroke-dasharray="4,2" />
+  <text x="1005" y="478" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="600">Composio</text>
+  <text x="1005" y="493" text-anchor="middle" fill="#7d8590" font-size="8">1000+ OAuth</text>
+  <!-- Agent loop arrows -->
+  <line x1="160" y1="481" x2="200" y2="481" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrowGreen)" />
+  <line x1="310" y1="481" x2="350" y2="481" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrowGreen)" />
+  <line x1="460" y1="481" x2="500" y2="481" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrowGreen)" />
+  <line x1="610" y1="481" x2="650" y2="481" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrowGreen)" />
+  <line x1="760" y1="481" x2="800" y2="481" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrowGreen)" />
+  <!-- ═══════════ BOTTOM-LEFT: Memory Search Engine ═══════════ -->
+  <rect x="20" y="570" width="530" height="170" rx="10" fill="url(#memGrad)" stroke="#8b5cf6" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="285" y="595" text-anchor="middle" fill="#c4b5fd" font-size="13" font-weight="700">Memory Search Engine (All Custom)</text>
+  <text x="285" y="610" text-anchor="middle" fill="#7d8590" font-size="9">No Pinecone, no Elasticsearch, no LangChain</text>
+  <!-- Memory layers: 2 columns -->
+  <rect x="35" y="622" width="245" height="24" rx="5" fill="#1e1a2e" stroke="#8b5cf6" stroke-width="0.5" />
+  <text x="45" y="639" fill="#c4b5fd" font-size="9" font-weight="600">Vector DB</text>
+  <text x="157" y="639" text-anchor="middle" fill="#a78bfa" font-size="8">SQLite BLOB + cosine similarity</text>
+  <rect x="290" y="622" width="245" height="24" rx="5" fill="#1e1a2e" stroke="#8b5cf6" stroke-width="0.5" />
+  <text x="300" y="639" fill="#c4b5fd" font-size="9" font-weight="600">Keyword</text>
+  <text x="412" y="639" text-anchor="middle" fill="#a78bfa" font-size="8">FTS5 virtual tables + BM25</text>
+  <rect x="35" y="652" width="245" height="24" rx="5" fill="#1e1a2e" stroke="#8b5cf6" stroke-width="0.5" />
+  <text x="45" y="669" fill="#c4b5fd" font-size="9" font-weight="600">Hybrid Merge</text>
+  <text x="157" y="669" text-anchor="middle" fill="#a78bfa" font-size="8">Weighted vector + keyword fusion</text>
+  <rect x="290" y="652" width="245" height="24" rx="5" fill="#1e1a2e" stroke="#8b5cf6" stroke-width="0.5" />
+  <text x="300" y="669" fill="#c4b5fd" font-size="9" font-weight="600">Embeddings</text>
+  <text x="412" y="669" text-anchor="middle" fill="#a78bfa" font-size="8">OpenAI / custom URL / noop</text>
+  <rect x="35" y="682" width="245" height="24" rx="5" fill="#1e1a2e" stroke="#8b5cf6" stroke-width="0.5" />
+  <text x="45" y="699" fill="#c4b5fd" font-size="9" font-weight="600">Chunking</text>
+  <text x="157" y="699" text-anchor="middle" fill="#a78bfa" font-size="8">Markdown-aware + heading ctx</text>
+  <rect x="290" y="682" width="245" height="24" rx="5" fill="#1e1a2e" stroke="#8b5cf6" stroke-width="0.5" />
+  <text x="300" y="699" fill="#c4b5fd" font-size="9" font-weight="600">Caching</text>
+  <text x="412" y="699" text-anchor="middle" fill="#a78bfa" font-size="8">embedding_cache + LRU eviction</text>
+  <rect x="35" y="712" width="500" height="20" rx="5" fill="#1e1a2e" stroke="#8b5cf6" stroke-width="0.5" />
+  <text x="285" y="726" text-anchor="middle" fill="#a78bfa" font-size="8">Safe Reindex: rebuild FTS5 + re-embed missing vectors atomically | LIKE fallback | Upsert/Delete/Reindex</text>
+  <!-- Arrow: Agent → Memory -->
+  <line x1="255" y1="550" x2="255" y2="570" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrowViolet)" />
+  <!-- ═══════════ BOTTOM-RIGHT: Sandbox + Heartbeat ═══════════ -->
+  <rect x="570" y="570" width="250" height="170" rx="10" fill="#1c2333" stroke="#ef4444" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="695" y="595" text-anchor="middle" fill="#fca5a5" font-size="13" font-weight="600">Sandbox</text>
+<p><text x="695" y="618" text-anchor="middle" fill="#ef4444" font-size="9">Command allowlist</text>
+<text x="695" y="635" text-anchor="middle" fill="#ef4444" font-size="9">Path jail + traversal block</text>
+<text x="695" y="652" text-anchor="middle" fill="#ef4444" font-size="9">Browser domain allowlist</text>
+<text x="695" y="669" text-anchor="middle" fill="#ef4444" font-size="9">Null byte + Symlink escape block</text>
+<text x="695" y="686" text-anchor="middle" fill="#ef4444" font-size="9">System dirs + Dotfiles blocked</text>
+<text x="695" y="706" text-anchor="middle" fill="#ef4444" font-size="9">Default: Supervised + workspace-only</text>
+<text x="695" y="726" text-anchor="middle" fill="#ef4444" font-size="9">Levels: ReadOnly / Supervised / Full</text></p>
+  <!-- Arrow: Agent → Sandbox -->
+  <line x1="695" y1="550" x2="695" y2="570" stroke="#ef4444" stroke-width="2" />
+  <rect x="840" y="570" width="240" height="170" rx="10" fill="#1c2333" stroke="#06b6d4" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="960" y="595" text-anchor="middle" fill="#67e8f9" font-size="13" font-weight="600">Heartbeat &amp; Cron</text>
+<p><text x="960" y="620" text-anchor="middle" fill="#22d3ee" font-size="9">HEARTBEAT.md periodic tasks</text>
+<text x="960" y="640" text-anchor="middle" fill="#22d3ee" font-size="9">Scheduled actions</text>
+<text x="960" y="660" text-anchor="middle" fill="#22d3ee" font-size="9">Skills loader (TOML manifests)</text>
+<text x="960" y="680" text-anchor="middle" fill="#22d3ee" font-size="9">50+ integrations registry</text>
+<text x="960" y="700" text-anchor="middle" fill="#22d3ee" font-size="9">Observability (noop/log/multi)</text></p>
+  <!-- Arrow: Agent → Heartbeat -->
+  <line x1="960" y1="550" x2="960" y2="570" stroke="#06b6d4" stroke-width="2" />
+  <!-- ═══════════ BOTTOM: Setup Wizard ═══════════ -->
+  <rect x="20" y="760" width="1060" height="170" rx="10" fill="#1c2333" stroke="#f472b6" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="550" y="785" text-anchor="middle" fill="#f9a8d4" font-size="14" font-weight="700">Setup Wizard  --  zeroclaw onboard (quick default | --interactive for full wizard)</text>
+  <text x="550" y="802" text-anchor="middle" fill="#7d8590" font-size="10">7 steps, under 60 seconds | Live connection testing | Secure defaults</text>
+  <!-- Wizard steps: 7 -->
+  <rect x="30" y="815" width="130" height="38" rx="8" fill="#2d1f3d" stroke="#c084fc" stroke-width="1" />
+  <text x="95" y="831" text-anchor="middle" fill="#e9d5ff" font-size="8" font-weight="600">1. Workspace</text>
+  <text x="95" y="845" text-anchor="middle" fill="#a78bfa" font-size="7">~/.zeroclaw/</text>
+  <rect x="170" y="815" width="130" height="38" rx="8" fill="#2d1f3d" stroke="#c084fc" stroke-width="1" />
+  <text x="235" y="831" text-anchor="middle" fill="#e9d5ff" font-size="8" font-weight="600">2. AI Provider</text>
+  <text x="235" y="845" text-anchor="middle" fill="#a78bfa" font-size="7">22+ or custom URL</text>
+  <rect x="310" y="815" width="130" height="38" rx="8" fill="#2d1f3d" stroke="#c084fc" stroke-width="1" />
+  <text x="375" y="831" text-anchor="middle" fill="#e9d5ff" font-size="8" font-weight="600">3. Channels</text>
+  <text x="375" y="845" text-anchor="middle" fill="#a78bfa" font-size="7">7 channels + live test</text>
+  <rect x="450" y="815" width="130" height="38" rx="8" fill="#2d1f3d" stroke="#c084fc" stroke-width="1" />
+  <text x="515" y="831" text-anchor="middle" fill="#e9d5ff" font-size="8" font-weight="600">4. Tunnel</text>
+  <text x="515" y="845" text-anchor="middle" fill="#a78bfa" font-size="7">5 providers or skip</text>
+  <rect x="590" y="815" width="130" height="38" rx="8" fill="#2d1f3d" stroke="#c084fc" stroke-width="1" />
+  <text x="655" y="831" text-anchor="middle" fill="#e9d5ff" font-size="8" font-weight="600">5. Tool Mode</text>
+  <text x="655" y="845" text-anchor="middle" fill="#a78bfa" font-size="7">Sovereign / Composio</text>
+  <rect x="730" y="815" width="130" height="38" rx="8" fill="#2d1f3d" stroke="#c084fc" stroke-width="1" />
+  <text x="795" y="831" text-anchor="middle" fill="#e9d5ff" font-size="8" font-weight="600">6. Personalize</text>
+  <text x="795" y="845" text-anchor="middle" fill="#a78bfa" font-size="7">name, style, timezone</text>
+  <rect x="870" y="815" width="130" height="38" rx="8" fill="#2d1f3d" stroke="#c084fc" stroke-width="1" />
+  <text x="935" y="831" text-anchor="middle" fill="#e9d5ff" font-size="8" font-weight="600">7. Scaffold</text>
+  <text x="935" y="845" text-anchor="middle" fill="#a78bfa" font-size="7">8 workspace MD files</text>
+  <!-- Step arrows -->
+  <line x1="160" y1="834" x2="170" y2="834" stroke="#c084fc" stroke-width="1" marker-end="url(#arrowPurple)" />
+  <line x1="300" y1="834" x2="310" y2="834" stroke="#c084fc" stroke-width="1" marker-end="url(#arrowPurple)" />
+  <line x1="440" y1="834" x2="450" y2="834" stroke="#c084fc" stroke-width="1" marker-end="url(#arrowPurple)" />
+  <line x1="580" y1="834" x2="590" y2="834" stroke="#c084fc" stroke-width="1" marker-end="url(#arrowPurple)" />
+  <line x1="720" y1="834" x2="730" y2="834" stroke="#c084fc" stroke-width="1" marker-end="url(#arrowPurple)" />
+  <line x1="860" y1="834" x2="870" y2="834" stroke="#c084fc" stroke-width="1" marker-end="url(#arrowPurple)" />
+  <!-- Wizard output summary -->
+<p><text x="550" y="872" text-anchor="middle" fill="#7d8590" font-size="9">Full summary: Provider, Model, Channels, Tunnel, Composio, Secrets, Gateway, Autonomy, Memory</text></p>
+  <!-- Ready badge -->
+  <rect x="380" y="888" width="340" height="28" rx="14" fill="#166534" stroke="#4ade80" stroke-width="1" />
+  <text x="550" y="907" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="600">Ready -- zeroclaw agent</text>
+  <!-- Footer stats -->
+<p><text x="550" y="942" text-anchor="middle" fill="#7d8590" font-size="10">~3.4MB binary  |  &lt;10ms startup  |  1,050 tests  |  22+ providers  |  8 traits  |  18,900+ lines of Rust  |  0 clippy warnings</text>
+</p>
+</svg><div style="break-before: page; page-break-before: always;"></div>
+<h1 id="agnostic-security-zero-impact-on-portability"><a class="header" href="#agnostic-security-zero-impact-on-portability">Agnostic Security: Zero Impact on Portability</a></h1>
+<blockquote>
+<p>⚠️ <strong>Status: Proposal / Roadmap</strong></p>
+<p>This document describes proposed approaches and may include hypothetical commands or config.
+For current runtime behavior, see <a href="config-reference.html">config-reference.md</a>, <a href="operations-runbook.html">operations-runbook.md</a>, and <a href="troubleshooting.html">troubleshooting.md</a>.</p>
+</blockquote>
+<h2 id="core-question-will-security-features-break"><a class="header" href="#core-question-will-security-features-break">Core Question: Will security features break…</a></h2>
+<ol>
+<li>❓ Fast cross-compilation builds?</li>
+<li>❓ Pluggable architecture (swap anything)?</li>
+<li>❓ Hardware agnosticism (ARM, x86, RISC-V)?</li>
+<li>❓ Small hardware support (&lt;5MB RAM, $10 boards)?</li>
+</ol>
+<p><strong>Answer: NO to all</strong> — Security is designed as <strong>optional feature flags</strong> with <strong>platform-specific conditional compilation</strong>.</p>
+<hr>
+<h2 id="1-build-speed-feature-gated-security"><a class="header" href="#1-build-speed-feature-gated-security">1. Build Speed: Feature-Gated Security</a></h2>
+<h3 id="cargotoml-security-features-behind-features"><a class="header" href="#cargotoml-security-features-behind-features">Cargo.toml: Security Features Behind Features</a></h3>
+<pre><code class="language-toml">[features]
+default = ["basic-security"]
+
+# Basic security (always on, zero overhead)
+basic-security = []
+
+# Platform-specific sandboxing (opt-in per platform)
+sandbox-landlock = []   # Linux only
+sandbox-firejail = []  # Linux only
+sandbox-bubblewrap = []# macOS/Linux
+sandbox-docker = []    # All platforms (heavy)
+
+# Full security suite (for production builds)
+security-full = [
+    "basic-security",
+    "sandbox-landlock",
+    "resource-monitoring",
+    "audit-logging",
+]
+
+# Resource &amp; audit monitoring
+resource-monitoring = []
+audit-logging = []
+
+# Development builds (fastest, no extra deps)
+dev = []
+</code></pre>
+<h3 id="build-commands-choose-your-profile"><a class="header" href="#build-commands-choose-your-profile">Build Commands (Choose Your Profile)</a></h3>
+<pre><code class="language-bash"># Ultra-fast dev build (no security extras)
+cargo build --profile dev
+
+# Release build with basic security (default)
+cargo build --release
+# → Includes: allowlist, path blocking, injection protection
+# → Excludes: Landlock, Firejail, audit logging
+
+# Production build with full security
+cargo build --release --features security-full
+# → Includes: Everything
+
+# Platform-specific sandbox only
+cargo build --release --features sandbox-landlock  # Linux
+cargo build --release --features sandbox-docker    # All platforms
+</code></pre>
+<h3 id="conditional-compilation-zero-overhead-when-disabled"><a class="header" href="#conditional-compilation-zero-overhead-when-disabled">Conditional Compilation: Zero Overhead When Disabled</a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// src/security/mod.rs
+
+#[cfg(feature = "sandbox-landlock")]
+mod landlock;
+#[cfg(feature = "sandbox-landlock")]
+pub use landlock::LandlockSandbox;
+
+#[cfg(feature = "sandbox-firejail")]
+mod firejail;
+#[cfg(feature = "sandbox-firejail")]
+pub use firejail::FirejailSandbox;
+
+// Always-include basic security (no feature flag)
+pub mod policy;  // allowlist, path blocking, injection protection
+<span class="boring">}</span></code></pre>
+<p><strong>Result</strong>: When features are disabled, the code isn’t even compiled — <strong>zero binary bloat</strong>.</p>
+<hr>
+<h2 id="2-pluggable-architecture-security-is-a-trait-too"><a class="header" href="#2-pluggable-architecture-security-is-a-trait-too">2. Pluggable Architecture: Security Is a Trait Too</a></h2>
+<h3 id="security-backend-trait-swappable-like-everything-else"><a class="header" href="#security-backend-trait-swappable-like-everything-else">Security Backend Trait (Swappable Like Everything Else)</a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// src/security/traits.rs
+
+#[async_trait]
+pub trait Sandbox: Send + Sync {
+    /// Wrap a command with sandbox protection
+    fn wrap_command(&amp;self, cmd: &amp;mut std::process::Command) -&gt; std::io::Result&lt;()&gt;;
+
+    /// Check if sandbox is available on this platform
+    fn is_available(&amp;self) -&gt; bool;
+
+    /// Human-readable name
+    fn name(&amp;self) -&gt; &amp;str;
+}
+
+// No-op sandbox (always available)
+pub struct NoopSandbox;
+
+impl Sandbox for NoopSandbox {
+    fn wrap_command(&amp;self, _cmd: &amp;mut std::process::Command) -&gt; std::io::Result&lt;()&gt; {
+        Ok(())  // Pass through unchanged
+    }
+
+    fn is_available(&amp;self) -&gt; bool { true }
+    fn name(&amp;self) -&gt; &amp;str { "none" }
+}
+<span class="boring">}</span></code></pre>
+<h3 id="factory-pattern-auto-select-based-on-features"><a class="header" href="#factory-pattern-auto-select-based-on-features">Factory Pattern: Auto-Select Based on Features</a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// src/security/factory.rs
+
+pub fn create_sandbox() -&gt; Box&lt;dyn Sandbox&gt; {
+    #[cfg(feature = "sandbox-landlock")]
+    {
+        if LandlockSandbox::is_available() {
+            return Box::new(LandlockSandbox::new());
+        }
+    }
+
+    #[cfg(feature = "sandbox-firejail")]
+    {
+        if FirejailSandbox::is_available() {
+            return Box::new(FirejailSandbox::new());
+        }
+    }
+
+    #[cfg(feature = "sandbox-bubblewrap")]
+    {
+        if BubblewrapSandbox::is_available() {
+            return Box::new(BubblewrapSandbox::new());
+        }
+    }
+
+    #[cfg(feature = "sandbox-docker")]
+    {
+        if DockerSandbox::is_available() {
+            return Box::new(DockerSandbox::new());
+        }
+    }
+
+    // Fallback: always available
+    Box::new(NoopSandbox)
+}
+<span class="boring">}</span></code></pre>
+<p><strong>Just like providers, channels, and memory — security is pluggable!</strong></p>
+<hr>
+<h2 id="3-hardware-agnosticism-same-binary-different-platforms"><a class="header" href="#3-hardware-agnosticism-same-binary-different-platforms">3. Hardware Agnosticism: Same Binary, Different Platforms</a></h2>
+<h3 id="cross-platform-behavior-matrix"><a class="header" href="#cross-platform-behavior-matrix">Cross-Platform Behavior Matrix</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Platform</th><th>Builds On</th><th>Runtime Behavior</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Linux ARM</strong> (Raspberry Pi)</td><td>✅ Yes</td><td>Landlock → None (graceful)</td></tr>
+<tr><td><strong>Linux x86_64</strong></td><td>✅ Yes</td><td>Landlock → Firejail → None</td></tr>
+<tr><td><strong>macOS ARM</strong> (M1/M2)</td><td>✅ Yes</td><td>Bubblewrap → None</td></tr>
+<tr><td><strong>macOS x86_64</strong></td><td>✅ Yes</td><td>Bubblewrap → None</td></tr>
+<tr><td><strong>Windows ARM</strong></td><td>✅ Yes</td><td>None (app-layer)</td></tr>
+<tr><td><strong>Windows x86_64</strong></td><td>✅ Yes</td><td>None (app-layer)</td></tr>
+<tr><td><strong>RISC-V Linux</strong></td><td>✅ Yes</td><td>Landlock → None</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="how-it-works-runtime-detection"><a class="header" href="#how-it-works-runtime-detection">How It Works: Runtime Detection</a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// src/security/detect.rs
+
+impl SandboxingStrategy {
+    /// Choose best available sandbox AT RUNTIME
+    pub fn detect() -&gt; SandboxingStrategy {
+        #[cfg(target_os = "linux")]
+        {
+            // Try Landlock first (kernel feature detection)
+            if Self::probe_landlock() {
+                return SandboxingStrategy::Landlock;
+            }
+
+            // Try Firejail (user-space tool detection)
+            if Self::probe_firejail() {
+                return SandboxingStrategy::Firejail;
+            }
+        }
+
+        #[cfg(target_os = "macos")]
+        {
+            if Self::probe_bubblewrap() {
+                return SandboxingStrategy::Bubblewrap;
+            }
+        }
+
+        // Always available fallback
+        SandboxingStrategy::ApplicationLayer
+    }
+}
+<span class="boring">}</span></code></pre>
+<p><strong>Same binary runs everywhere</strong> — it just adapts its protection level based on what’s available.</p>
+<hr>
+<h2 id="4-small-hardware-memory-impact-analysis"><a class="header" href="#4-small-hardware-memory-impact-analysis">4. Small Hardware: Memory Impact Analysis</a></h2>
+<h3 id="binary-size-impact-estimated"><a class="header" href="#binary-size-impact-estimated">Binary Size Impact (Estimated)</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Feature</th><th>Code Size</th><th>RAM Overhead</th><th>Status</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Base ZeroClaw</strong></td><td>3.4MB</td><td>&lt;5MB</td><td>✅ Current</td></tr>
+<tr><td><strong>+ Landlock</strong></td><td>+50KB</td><td>+100KB</td><td>✅ Linux 5.13+</td></tr>
+<tr><td><strong>+ Firejail wrapper</strong></td><td>+20KB</td><td>+0KB (external)</td><td>✅ Linux + firejail</td></tr>
+<tr><td><strong>+ Memory monitoring</strong></td><td>+30KB</td><td>+50KB</td><td>✅ All platforms</td></tr>
+<tr><td><strong>+ Audit logging</strong></td><td>+40KB</td><td>+200KB (buffered)</td><td>✅ All platforms</td></tr>
+<tr><td><strong>Full security</strong></td><td>+140KB</td><td>+350KB</td><td>✅ Still &lt;6MB total</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="10-hardware-compatibility"><a class="header" href="#10-hardware-compatibility">$10 Hardware Compatibility</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Hardware</th><th>RAM</th><th>ZeroClaw (base)</th><th>ZeroClaw (full security)</th><th>Status</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Raspberry Pi Zero</strong></td><td>512MB</td><td>✅ 2%</td><td>✅ 2.5%</td><td>Works</td></tr>
+<tr><td><strong>Orange Pi Zero</strong></td><td>512MB</td><td>✅ 2%</td><td>✅ 2.5%</td><td>Works</td></tr>
+<tr><td><strong>NanoPi NEO</strong></td><td>256MB</td><td>✅ 4%</td><td>✅ 5%</td><td>Works</td></tr>
+<tr><td><strong>C.H.I.P.</strong></td><td>512MB</td><td>✅ 2%</td><td>✅ 2.5%</td><td>Works</td></tr>
+<tr><td><strong>Rock64</strong></td><td>1GB</td><td>✅ 1%</td><td>✅ 1.2%</td><td>Works</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Even with full security, ZeroClaw uses &lt;5% of RAM on $10 boards.</strong></p>
+<hr>
+<h2 id="5-agnostic-swaps-everything-remains-pluggable"><a class="header" href="#5-agnostic-swaps-everything-remains-pluggable">5. Agnostic Swaps: Everything Remains Pluggable</a></h2>
+<h3 id="zeroclaws-core-promise-swap-anything"><a class="header" href="#zeroclaws-core-promise-swap-anything">ZeroClaw’s Core Promise: Swap Anything</a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Providers (already pluggable)
+Box&lt;dyn Provider&gt;
+
+// Channels (already pluggable)
+Box&lt;dyn Channel&gt;
+
+// Memory (already pluggable)
+Box&lt;dyn MemoryBackend&gt;
+
+// Tunnels (already pluggable)
+Box&lt;dyn Tunnel&gt;
+
+// NOW ALSO: Security (newly pluggable)
+Box&lt;dyn Sandbox&gt;
+Box&lt;dyn Auditor&gt;
+Box&lt;dyn ResourceMonitor&gt;
+<span class="boring">}</span></code></pre>
+<h3 id="swap-security-backends-via-config"><a class="header" href="#swap-security-backends-via-config">Swap Security Backends via Config</a></h3>
+<pre><code class="language-toml"># Use no sandbox (fastest, app-layer only)
+[security.sandbox]
+backend = "none"
+
+# Use Landlock (Linux kernel LSM, native)
+[security.sandbox]
+backend = "landlock"
+
+# Use Firejail (user-space, needs firejail installed)
+[security.sandbox]
+backend = "firejail"
+
+# Use Docker (heaviest, most isolated)
+[security.sandbox]
+backend = "docker"
+</code></pre>
+<p><strong>Just like swapping OpenAI for Gemini, or SQLite for PostgreSQL.</strong></p>
+<hr>
+<h2 id="6-dependency-impact-minimal-new-deps"><a class="header" href="#6-dependency-impact-minimal-new-deps">6. Dependency Impact: Minimal New Deps</a></h2>
+<h3 id="current-dependencies-for-context"><a class="header" href="#current-dependencies-for-context">Current Dependencies (for context)</a></h3>
+<pre><code>reqwest, tokio, serde, anyhow, uuid, chrono, rusqlite,
+axum, tracing, opentelemetry, ...
+</code></pre>
+<h3 id="security-feature-dependencies"><a class="header" href="#security-feature-dependencies">Security Feature Dependencies</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Feature</th><th>New Dependencies</th><th>Platform</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Landlock</strong></td><td><code>landlock</code> crate (pure Rust)</td><td>Linux only</td></tr>
+<tr><td><strong>Firejail</strong></td><td>None (external binary)</td><td>Linux only</td></tr>
+<tr><td><strong>Bubblewrap</strong></td><td>None (external binary)</td><td>macOS/Linux</td></tr>
+<tr><td><strong>Docker</strong></td><td><code>bollard</code> crate (Docker API)</td><td>All platforms</td></tr>
+<tr><td><strong>Memory monitoring</strong></td><td>None (std::alloc)</td><td>All platforms</td></tr>
+<tr><td><strong>Audit logging</strong></td><td>None (already have hmac/sha2)</td><td>All platforms</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Result</strong>: Most features add <strong>zero new Rust dependencies</strong> — they either:</p>
+<ol>
+<li>Use pure-Rust crates (landlock)</li>
+<li>Wrap external binaries (Firejail, Bubblewrap)</li>
+<li>Use existing deps (hmac, sha2 already in Cargo.toml)</li>
+</ol>
+<hr>
+<h2 id="summary-core-value-propositions-preserved"><a class="header" href="#summary-core-value-propositions-preserved">Summary: Core Value Propositions Preserved</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Value Prop</th><th>Before</th><th>After (with security)</th><th>Status</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>&lt;5MB RAM</strong></td><td>✅ &lt;5MB</td><td>✅ &lt;6MB (worst case)</td><td>✅ Preserved</td></tr>
+<tr><td><strong>&lt;10ms startup</strong></td><td>✅ &lt;10ms</td><td>✅ &lt;15ms (detection)</td><td>✅ Preserved</td></tr>
+<tr><td><strong>3.4MB binary</strong></td><td>✅ 3.4MB</td><td>✅ 3.5MB (with all features)</td><td>✅ Preserved</td></tr>
+<tr><td><strong>ARM + x86 + RISC-V</strong></td><td>✅ All</td><td>✅ All</td><td>✅ Preserved</td></tr>
+<tr><td><strong>$10 hardware</strong></td><td>✅ Works</td><td>✅ Works</td><td>✅ Preserved</td></tr>
+<tr><td><strong>Pluggable everything</strong></td><td>✅ Yes</td><td>✅ Yes (security too)</td><td>✅ Enhanced</td></tr>
+<tr><td><strong>Cross-platform</strong></td><td>✅ Yes</td><td>✅ Yes</td><td>✅ Preserved</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="the-key-feature-flags--conditional-compilation"><a class="header" href="#the-key-feature-flags--conditional-compilation">The Key: Feature Flags + Conditional Compilation</a></h2>
+<pre><code class="language-bash"># Developer build (fastest, no extra features)
+cargo build --profile dev
+
+# Standard release (your current build)
+cargo build --release
+
+# Production with full security
+cargo build --release --features security-full
+
+# Target specific hardware
+cargo build --release --target aarch64-unknown-linux-gnu  # Raspberry Pi
+cargo build --release --target riscv64gc-unknown-linux-gnu # RISC-V
+cargo build --release --target armv7-unknown-linux-gnueabihf  # ARMv7
+</code></pre>
+<p><strong>Every target, every platform, every use case — still fast, still small, still agnostic.</strong></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="frictionless-security-zero-impact-on-wizard"><a class="header" href="#frictionless-security-zero-impact-on-wizard">Frictionless Security: Zero Impact on Wizard</a></h1>
+<blockquote>
+<p>⚠️ <strong>Status: Proposal / Roadmap</strong></p>
+<p>This document describes proposed approaches and may include hypothetical commands or config.
+For current runtime behavior, see <a href="config-reference.html">config-reference.md</a>, <a href="operations-runbook.html">operations-runbook.md</a>, and <a href="troubleshooting.html">troubleshooting.md</a>.</p>
+</blockquote>
+<h2 id="core-principle"><a class="header" href="#core-principle">Core Principle</a></h2>
+<blockquote>
+<p><strong>“Security features should be like airbags — present, protective, and invisible until needed.”</strong></p>
+</blockquote>
+<h2 id="design-silent-auto-detection"><a class="header" href="#design-silent-auto-detection">Design: Silent Auto-Detection</a></h2>
+<h3 id="1-no-new-wizard-steps-stays-9-steps--60-seconds"><a class="header" href="#1-no-new-wizard-steps-stays-9-steps--60-seconds">1. No New Wizard Steps (Stays 9 Steps, &lt; 60 Seconds)</a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Wizard remains UNCHANGED
+// Security features auto-detect in background
+
+pub fn run_wizard() -&gt; Result&lt;Config&gt; {
+    // ... existing 9 steps, no changes ...
+
+    let config = Config {
+        // ... existing fields ...
+
+        // NEW: Auto-detected security (not shown in wizard)
+        security: SecurityConfig::autodetect(),  // Silent!
+    };
+
+    config.save()?;
+    Ok(config)
+}
+<span class="boring">}</span></code></pre>
+<h3 id="2-auto-detection-logic-runs-once-at-first-start"><a class="header" href="#2-auto-detection-logic-runs-once-at-first-start">2. Auto-Detection Logic (Runs Once at First Start)</a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// src/security/detect.rs
+
+impl SecurityConfig {
+    /// Detect available sandboxing and enable automatically
+    /// Returns smart defaults based on platform + available tools
+    pub fn autodetect() -&gt; Self {
+        Self {
+            // Sandbox: prefer Landlock (native), then Firejail, then none
+            sandbox: SandboxConfig::autodetect(),
+
+            // Resource limits: always enable monitoring
+            resources: ResourceLimits::default(),
+
+            // Audit: enable by default, log to config dir
+            audit: AuditConfig::default(),
+
+            // Everything else: safe defaults
+            ..SecurityConfig::default()
+        }
+    }
+}
+
+impl SandboxConfig {
+    pub fn autodetect() -&gt; Self {
+        #[cfg(target_os = "linux")]
+        {
+            // Prefer Landlock (native, no dependency)
+            if Self::probe_landlock() {
+                return Self {
+                    enabled: true,
+                    backend: SandboxBackend::Landlock,
+                    ..Self::default()
+                };
+            }
+
+            // Fallback: Firejail if installed
+            if Self::probe_firejail() {
+                return Self {
+                    enabled: true,
+                    backend: SandboxBackend::Firejail,
+                    ..Self::default()
+                };
+            }
+        }
+
+        #[cfg(target_os = "macos")]
+        {
+            // Try Bubblewrap on macOS
+            if Self::probe_bubblewrap() {
+                return Self {
+                    enabled: true,
+                    backend: SandboxBackend::Bubblewrap,
+                    ..Self::default()
+                };
+            }
+        }
+
+        // Fallback: disabled (but still has application-layer security)
+        Self {
+            enabled: false,
+            backend: SandboxBackend::None,
+            ..Self::default()
+        }
+    }
+
+    #[cfg(target_os = "linux")]
+    fn probe_landlock() -&gt; bool {
+        // Try creating a minimal Landlock ruleset
+        // If it works, kernel supports Landlock
+        landlock::Ruleset::new()
+            .set_access_fs(landlock::AccessFS::read_file)
+            .add_path(Path::new("/tmp"), landlock::AccessFS::read_file)
+            .map(|ruleset| ruleset.restrict_self().is_ok())
+            .unwrap_or(false)
+    }
+
+    fn probe_firejail() -&gt; bool {
+        // Check if firejail command exists
+        std::process::Command::new("firejail")
+            .arg("--version")
+            .output()
+            .map(|o| o.status.success())
+            .unwrap_or(false)
+    }
+}
+<span class="boring">}</span></code></pre>
+<h3 id="3-first-run-silent-logging"><a class="header" href="#3-first-run-silent-logging">3. First Run: Silent Logging</a></h3>
+<pre><code class="language-bash">$ zeroclaw agent -m "hello"
+
+# First time: silent detection
+[INFO] Detecting security features...
+[INFO] ✓ Landlock sandbox enabled (kernel 6.2+)
+[INFO] ✓ Memory monitoring active (512MB limit)
+[INFO] ✓ Audit logging enabled (~/.config/zeroclaw/audit.log)
+
+# Subsequent runs: quiet
+$ zeroclaw agent -m "hello"
+[agent] Thinking...
+</code></pre>
+<h3 id="4-config-file-all-defaults-hidden"><a class="header" href="#4-config-file-all-defaults-hidden">4. Config File: All Defaults Hidden</a></h3>
+<pre><code class="language-toml"># ~/.config/zeroclaw/config.toml
+
+# These sections are NOT written unless user customizes
+# [security.sandbox]
+# enabled = true  # (default, auto-detected)
+# backend = "landlock"  # (default, auto-detected)
+
+# [security.resources]
+# max_memory_mb = 512  # (default)
+
+# [security.audit]
+# enabled = true  # (default)
+</code></pre>
+<p>Only when user changes something:</p>
+<pre><code class="language-toml">[security.sandbox]
+enabled = false  # User explicitly disabled
+
+[security.resources]
+max_memory_mb = 1024  # User increased limit
+</code></pre>
+<h3 id="5-advanced-users-explicit-control"><a class="header" href="#5-advanced-users-explicit-control">5. Advanced Users: Explicit Control</a></h3>
+<pre><code class="language-bash"># Check what's active
+$ zeroclaw security --status
+Security Status:
+  ✓ Sandbox: Landlock (Linux kernel 6.2)
+  ✓ Memory monitoring: 512MB limit
+  ✓ Audit logging: ~/.config/zeroclaw/audit.log
+  → 47 events logged today
+
+# Disable sandbox explicitly (writes to config)
+$ zeroclaw config set security.sandbox.enabled false
+
+# Enable specific backend
+$ zeroclaw config set security.sandbox.backend firejail
+
+# Adjust limits
+$ zeroclaw config set security.resources.max_memory_mb 2048
+</code></pre>
+<h3 id="6-graceful-degradation"><a class="header" href="#6-graceful-degradation">6. Graceful Degradation</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Platform</th><th>Best Available</th><th>Fallback</th><th>Worst Case</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Linux 5.13+</strong></td><td>Landlock</td><td>None</td><td>App-layer only</td></tr>
+<tr><td><strong>Linux (any)</strong></td><td>Firejail</td><td>Landlock</td><td>App-layer only</td></tr>
+<tr><td><strong>macOS</strong></td><td>Bubblewrap</td><td>None</td><td>App-layer only</td></tr>
+<tr><td><strong>Windows</strong></td><td>None</td><td>-</td><td>App-layer only</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>App-layer security is always present</strong> — this is the existing allowlist/path blocking/injection protection that’s already comprehensive.</p>
+<hr>
+<h2 id="config-schema-extension"><a class="header" href="#config-schema-extension">Config Schema Extension</a></h2>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// src/config/schema.rs
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SecurityConfig {
+    /// Sandbox configuration (auto-detected if not set)
+    #[serde(default)]
+    pub sandbox: SandboxConfig,
+
+    /// Resource limits (defaults applied if not set)
+    #[serde(default)]
+    pub resources: ResourceLimits,
+
+    /// Audit logging (enabled by default)
+    #[serde(default)]
+    pub audit: AuditConfig,
+}
+
+impl Default for SecurityConfig {
+    fn default() -&gt; Self {
+        Self {
+            sandbox: SandboxConfig::autodetect(),  // Silent detection!
+            resources: ResourceLimits::default(),
+            audit: AuditConfig::default(),
+        }
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SandboxConfig {
+    /// Enable sandboxing (default: auto-detected)
+    #[serde(default)]
+    pub enabled: Option&lt;bool&gt;,  // None = auto-detect
+
+    /// Sandbox backend (default: auto-detect)
+    #[serde(default)]
+    pub backend: SandboxBackend,
+
+    /// Custom Firejail args (optional)
+    #[serde(default)]
+    pub firejail_args: Vec&lt;String&gt;,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum SandboxBackend {
+    Auto,       // Auto-detect (default)
+    Landlock,   // Linux kernel LSM
+    Firejail,   // User-space sandbox
+    Bubblewrap, // User namespaces
+    Docker,     // Container (heavy)
+    None,       // Disabled
+}
+
+impl Default for SandboxBackend {
+    fn default() -&gt; Self {
+        Self::Auto  // Always auto-detect by default
+    }
+}
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="user-experience-comparison"><a class="header" href="#user-experience-comparison">User Experience Comparison</a></h2>
+<h3 id="before-current"><a class="header" href="#before-current">Before (Current)</a></h3>
+<pre><code class="language-bash">$ zeroclaw onboard
+[1/9] Workspace Setup...
+[2/9] AI Provider...
+...
+[9/9] Workspace Files...
+✓ Security: Supervised | workspace-scoped
+</code></pre>
+<h3 id="after-with-frictionless-security"><a class="header" href="#after-with-frictionless-security">After (With Frictionless Security)</a></h3>
+<pre><code class="language-bash">$ zeroclaw onboard
+[1/9] Workspace Setup...
+[2/9] AI Provider...
+...
+[9/9] Workspace Files...
+✓ Security: Supervised | workspace-scoped | Landlock sandbox ✓
+# ↑ Just one extra word, silent auto-detection!
+</code></pre>
+<h3 id="advanced-user-explicit-control"><a class="header" href="#advanced-user-explicit-control">Advanced User (Explicit Control)</a></h3>
+<pre><code class="language-bash">$ zeroclaw onboard --security-level paranoid
+[1/9] Workspace Setup...
+...
+✓ Security: Paranoid | Landlock + Firejail | Audit signed
+</code></pre>
+<hr>
+<h2 id="backward-compatibility"><a class="header" href="#backward-compatibility">Backward Compatibility</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Scenario</th><th>Behavior</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Existing config</strong></td><td>Works unchanged, new features opt-in</td></tr>
+<tr><td><strong>New install</strong></td><td>Auto-detects and enables available security</td></tr>
+<tr><td><strong>No sandbox available</strong></td><td>Falls back to app-layer (still secure)</td></tr>
+<tr><td><strong>User disables</strong></td><td>One config flag: <code>sandbox.enabled = false</code></td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>✅ <strong>Zero impact on wizard</strong> — stays 9 steps, &lt; 60 seconds
+✅ <strong>Zero new prompts</strong> — silent auto-detection
+✅ <strong>Zero breaking changes</strong> — backward compatible
+✅ <strong>Opt-out available</strong> — explicit config flags
+✅ <strong>Status visibility</strong> — <code>zeroclaw security --status</code></p>
+<p>The wizard remains “quick setup universal applications” — security is just <strong>quietly better</strong>.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="zeroclaw-sandboxing-strategies"><a class="header" href="#zeroclaw-sandboxing-strategies">ZeroClaw Sandboxing Strategies</a></h1>
+<blockquote>
+<p>⚠️ <strong>Status: Proposal / Roadmap</strong></p>
+<p>This document describes proposed approaches and may include hypothetical commands or config.
+For current runtime behavior, see <a href="config-reference.html">config-reference.md</a>, <a href="operations-runbook.html">operations-runbook.md</a>, and <a href="troubleshooting.html">troubleshooting.md</a>.</p>
+</blockquote>
+<h2 id="problem"><a class="header" href="#problem">Problem</a></h2>
+<p>ZeroClaw currently has application-layer security (allowlists, path blocking, command injection protection) but lacks OS-level containment. If an attacker is on the allowlist, they can run any allowed command with zeroclaw’s user permissions.</p>
+<h2 id="proposed-solutions"><a class="header" href="#proposed-solutions">Proposed Solutions</a></h2>
+<h3 id="option-1-firejail-integration-recommended-for-linux"><a class="header" href="#option-1-firejail-integration-recommended-for-linux">Option 1: Firejail Integration (Recommended for Linux)</a></h3>
+<p>Firejail provides user-space sandboxing with minimal overhead.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// src/security/firejail.rs
+use std::process::Command;
+
+pub struct FirejailSandbox {
+    enabled: bool,
+}
+
+impl FirejailSandbox {
+    pub fn new() -&gt; Self {
+        let enabled = which::which("firejail").is_ok();
+        Self { enabled }
+    }
+
+    pub fn wrap_command(&amp;self, cmd: &amp;mut Command) -&gt; &amp;mut Command {
+        if !self.enabled {
+            return cmd;
+        }
+
+        // Firejail wraps any command with sandboxing
+        let mut jail = Command::new("firejail");
+        jail.args([
+            "--private=home",           // New home directory
+            "--private-dev",            // Minimal /dev
+            "--nosound",                // No audio
+            "--no3d",                   // No 3D acceleration
+            "--novideo",                // No video devices
+            "--nowheel",                // No input devices
+            "--notv",                   // No TV devices
+            "--noprofile",              // Skip profile loading
+            "--quiet",                  // Suppress warnings
+        ]);
+
+        // Append original command
+        if let Some(program) = cmd.get_program().to_str() {
+            jail.arg(program);
+        }
+        for arg in cmd.get_args() {
+            if let Some(s) = arg.to_str() {
+                jail.arg(s);
+            }
+        }
+
+        // Replace original command with firejail wrapper
+        *cmd = jail;
+        cmd
+    }
+}
+<span class="boring">}</span></code></pre>
+<p><strong>Config option:</strong></p>
+<pre><code class="language-toml">[security]
+enable_sandbox = true
+sandbox_backend = "firejail"  # or "none", "bubblewrap", "docker"
+</code></pre>
+<hr>
+<h3 id="option-2-bubblewrap-portable-no-root-required"><a class="header" href="#option-2-bubblewrap-portable-no-root-required">Option 2: Bubblewrap (Portable, no root required)</a></h3>
+<p>Bubblewrap uses user namespaces to create containers.</p>
+<pre><code class="language-bash"># Install bubblewrap
+sudo apt install bubblewrap
+
+# Wrap command:
+bwrap --ro-bind /usr /usr \
+      --dev /dev \
+      --proc /proc \
+      --bind /workspace /workspace \
+      --unshare-all \
+      --share-net \
+      --die-with-parent \
+      -- /bin/sh -c "command"
+</code></pre>
+<hr>
+<h3 id="option-3-docker-in-docker-heavyweight-but-complete-isolation"><a class="header" href="#option-3-docker-in-docker-heavyweight-but-complete-isolation">Option 3: Docker-in-Docker (Heavyweight but complete isolation)</a></h3>
+<p>Run agent tools inside ephemeral containers.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub struct DockerSandbox {
+    image: String,
+}
+
+impl DockerSandbox {
+    pub async fn execute(&amp;self, command: &amp;str, workspace: &amp;Path) -&gt; Result&lt;String&gt; {
+        let output = Command::new("docker")
+            .args([
+                "run", "--rm",
+                "--memory", "512m",
+                "--cpus", "1.0",
+                "--network", "none",
+                "--volume", &amp;format!("{}:/workspace", workspace.display()),
+                &amp;self.image,
+                "sh", "-c", command
+            ])
+            .output()
+            .await?;
+
+        Ok(String::from_utf8_lossy(&amp;output.stdout).to_string())
+    }
+}
+<span class="boring">}</span></code></pre>
+<hr>
+<h3 id="option-4-landlock-linux-kernel-lsm-rust-native"><a class="header" href="#option-4-landlock-linux-kernel-lsm-rust-native">Option 4: Landlock (Linux Kernel LSM, Rust native)</a></h3>
+<p>Landlock provides file system access control without containers.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use landlock::{Ruleset, AccessFS};
+
+pub fn apply_landlock() -&gt; Result&lt;()&gt; {
+    let ruleset = Ruleset::new()
+        .set_access_fs(AccessFS::read_file | AccessFS::write_file)
+        .add_path(Path::new("/workspace"), AccessFS::read_file | AccessFS::write_file)?
+        .add_path(Path::new("/tmp"), AccessFS::read_file | AccessFS::write_file)?
+        .restrict_self()?;
+
+    Ok(())
+}
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="priority-implementation-order"><a class="header" href="#priority-implementation-order">Priority Implementation Order</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Phase</th><th>Solution</th><th>Effort</th><th>Security Gain</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>P0</strong></td><td>Landlock (Linux only, native)</td><td>Low</td><td>High (filesystem)</td></tr>
+<tr><td><strong>P1</strong></td><td>Firejail integration</td><td>Low</td><td>Very High</td></tr>
+<tr><td><strong>P2</strong></td><td>Bubblewrap wrapper</td><td>Medium</td><td>Very High</td></tr>
+<tr><td><strong>P3</strong></td><td>Docker sandbox mode</td><td>High</td><td>Complete</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="config-schema-extension-1"><a class="header" href="#config-schema-extension-1">Config Schema Extension</a></h2>
+<pre><code class="language-toml">[security.sandbox]
+enabled = true
+backend = "auto"  # auto | firejail | bubblewrap | landlock | docker | none
+
+# Firejail-specific
+[security.sandbox.firejail]
+extra_args = ["--seccomp", "--caps.drop=all"]
+
+# Landlock-specific
+[security.sandbox.landlock]
+readonly_paths = ["/usr", "/bin", "/lib"]
+readwrite_paths = ["$HOME/workspace", "/tmp/zeroclaw"]
+</code></pre>
+<h2 id="testing-strategy"><a class="header" href="#testing-strategy">Testing Strategy</a></h2>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[cfg(test)]
+mod tests {
+    #[test]
+    fn sandbox_blocks_path_traversal() {
+        // Try to read /etc/passwd through sandbox
+        let result = sandboxed_execute("cat /etc/passwd");
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn sandbox_allows_workspace_access() {
+        let result = sandboxed_execute("ls /workspace");
+        assert!(result.is_ok());
+    }
+
+    #[test]
+    fn sandbox_no_network_isolation() {
+        // Ensure network is blocked when configured
+        let result = sandboxed_execute("curl http://example.com");
+        assert!(result.is_err());
+    }
+}
+<span class="boring">}</span></code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="audit-logging-for-zeroclaw"><a class="header" href="#audit-logging-for-zeroclaw">Audit Logging for ZeroClaw</a></h1>
+<blockquote>
+<p>⚠️ <strong>Status: Proposal / Roadmap</strong></p>
+<p>This document describes proposed approaches and may include hypothetical commands or config.
+For current runtime behavior, see <a href="config-reference.html">config-reference.md</a>, <a href="operations-runbook.html">operations-runbook.md</a>, and <a href="troubleshooting.html">troubleshooting.md</a>.</p>
+</blockquote>
+<h2 id="problem-1"><a class="header" href="#problem-1">Problem</a></h2>
+<p>ZeroClaw logs actions but lacks tamper-evident audit trails for:</p>
+<ul>
+<li>Who executed what command</li>
+<li>When and from which channel</li>
+<li>What resources were accessed</li>
+<li>Whether security policies were triggered</li>
+</ul>
+<hr>
+<h2 id="proposed-audit-log-format"><a class="header" href="#proposed-audit-log-format">Proposed Audit Log Format</a></h2>
+<pre><code class="language-json">{
+  "timestamp": "2026-02-16T12:34:56Z",
+  "event_id": "evt_1a2b3c4d",
+  "event_type": "command_execution",
+  "actor": {
+    "channel": "telegram",
+    "user_id": "123456789",
+    "username": "@alice"
+  },
+  "action": {
+    "command": "ls -la",
+    "risk_level": "low",
+    "approved": false,
+    "allowed": true
+  },
+  "result": {
+    "success": true,
+    "exit_code": 0,
+    "duration_ms": 15
+  },
+  "security": {
+    "policy_violation": false,
+    "rate_limit_remaining": 19
+  },
+  "signature": "SHA256:abc123..."  // HMAC for tamper evidence
+}
+</code></pre>
+<hr>
+<h2 id="implementation"><a class="header" href="#implementation">Implementation</a></h2>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// src/security/audit.rs
+use serde::{Deserialize, Serialize};
+use std::io::Write;
+use std::path::PathBuf;
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AuditEvent {
+    pub timestamp: String,
+    pub event_id: String,
+    pub event_type: AuditEventType,
+    pub actor: Actor,
+    pub action: Action,
+    pub result: ExecutionResult,
+    pub security: SecurityContext,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum AuditEventType {
+    CommandExecution,
+    FileAccess,
+    ConfigurationChange,
+    AuthSuccess,
+    AuthFailure,
+    PolicyViolation,
+}
+
+pub struct AuditLogger {
+    log_path: PathBuf,
+    signing_key: Option&lt;hmac::Hmac&lt;sha2::Sha256&gt;&gt;,
+}
+
+impl AuditLogger {
+    pub fn log(&amp;self, event: &amp;AuditEvent) -&gt; anyhow::Result&lt;()&gt; {
+        let mut line = serde_json::to_string(event)?;
+
+        // Add HMAC signature if key configured
+        if let Some(ref key) = self.signing_key {
+            let signature = compute_hmac(key, line.as_bytes());
+            line.push_str(&amp;format!("\n\"signature\": \"{}\"", signature));
+        }
+
+        let mut file = std::fs::OpenOptions::new()
+            .create(true)
+            .append(true)
+            .open(&amp;self.log_path)?;
+
+        writeln!(file, "{}", line)?;
+        file.sync_all()?;  // Force flush for durability
+        Ok(())
+    }
+
+    pub fn search(&amp;self, filter: AuditFilter) -&gt; Vec&lt;AuditEvent&gt; {
+        // Search log file by filter criteria
+        todo!()
+    }
+}
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="config-schema"><a class="header" href="#config-schema">Config Schema</a></h2>
+<pre><code class="language-toml">[security.audit]
+enabled = true
+log_path = "~/.config/zeroclaw/audit.log"
+max_size_mb = 100
+rotate = "daily"  # daily | weekly | size
+
+# Tamper evidence
+sign_events = true
+signing_key_path = "~/.config/zeroclaw/audit.key"
+
+# What to log
+log_commands = true
+log_file_access = true
+log_auth_events = true
+log_policy_violations = true
+</code></pre>
+<hr>
+<h2 id="audit-query-cli"><a class="header" href="#audit-query-cli">Audit Query CLI</a></h2>
+<pre><code class="language-bash"># Show all commands executed by @alice
+zeroclaw audit --user @alice
+
+# Show all high-risk commands
+zeroclaw audit --risk high
+
+# Show violations from last 24 hours
+zeroclaw audit --since 24h --violations-only
+
+# Export to JSON for analysis
+zeroclaw audit --format json --output audit.json
+
+# Verify log integrity
+zeroclaw audit --verify-signatures
+</code></pre>
+<hr>
+<h2 id="log-rotation"><a class="header" href="#log-rotation">Log Rotation</a></h2>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn rotate_audit_log(log_path: &amp;PathBuf, max_size: u64) -&gt; anyhow::Result&lt;()&gt; {
+    let metadata = std::fs::metadata(log_path)?;
+    if metadata.len() &lt; max_size {
+        return Ok(());
+    }
+
+    // Rotate: audit.log -&gt; audit.log.1 -&gt; audit.log.2 -&gt; ...
+    let stem = log_path.file_stem().unwrap_or_default();
+    let extension = log_path.extension().and_then(|s| s.to_str()).unwrap_or("log");
+
+    for i in (1..10).rev() {
+        let old_name = format!("{}.{}.{}", stem, i, extension);
+        let new_name = format!("{}.{}.{}", stem, i + 1, extension);
+        let _ = std::fs::rename(old_name, new_name);
+    }
+
+    let rotated = format!("{}.1.{}", stem, extension);
+    std::fs::rename(log_path, &amp;rotated)?;
+
+    Ok(())
+}
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="implementation-priority"><a class="header" href="#implementation-priority">Implementation Priority</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Phase</th><th>Feature</th><th>Effort</th><th>Security Value</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>P0</strong></td><td>Basic event logging</td><td>Low</td><td>Medium</td></tr>
+<tr><td><strong>P1</strong></td><td>Query CLI</td><td>Medium</td><td>Medium</td></tr>
+<tr><td><strong>P2</strong></td><td>HMAC signing</td><td>Medium</td><td>High</td></tr>
+<tr><td><strong>P3</strong></td><td>Log rotation + archival</td><td>Low</td><td>Medium</td></tr>
+</tbody>
+</table>
+</div>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="resource-limits-for-zeroclaw"><a class="header" href="#resource-limits-for-zeroclaw">Resource Limits for ZeroClaw</a></h1>
+<blockquote>
+<p>⚠️ <strong>Status: Proposal / Roadmap</strong></p>
+<p>This document describes proposed approaches and may include hypothetical commands or config.
+For current runtime behavior, see <a href="config-reference.html">config-reference.md</a>, <a href="operations-runbook.html">operations-runbook.md</a>, and <a href="troubleshooting.html">troubleshooting.md</a>.</p>
+</blockquote>
+<h2 id="problem-2"><a class="header" href="#problem-2">Problem</a></h2>
+<p>ZeroClaw has rate limiting (20 actions/hour) but no resource caps. A runaway agent could:</p>
+<ul>
+<li>Exhaust available memory</li>
+<li>Spin CPU at 100%</li>
+<li>Fill disk with logs/output</li>
+</ul>
+<hr>
+<h2 id="proposed-solutions-1"><a class="header" href="#proposed-solutions-1">Proposed Solutions</a></h2>
+<h3 id="option-1-cgroups-v2-linux-recommended"><a class="header" href="#option-1-cgroups-v2-linux-recommended">Option 1: cgroups v2 (Linux, Recommended)</a></h3>
+<p>Automatically create a cgroup for zeroclaw with limits.</p>
+<pre><code class="language-bash"># Create systemd service with limits
+[Service]
+MemoryMax=512M
+CPUQuota=100%
+IOReadBandwidthMax=/dev/sda 10M
+IOWriteBandwidthMax=/dev/sda 10M
+TasksMax=100
+</code></pre>
+<h3 id="option-2-tokiotaskdeadlock-detection"><a class="header" href="#option-2-tokiotaskdeadlock-detection">Option 2: tokio::task::deadlock detection</a></h3>
+<p>Prevent task starvation.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use tokio::time::{timeout, Duration};
+
+pub async fn execute_with_timeout&lt;F, T&gt;(
+    fut: F,
+    cpu_time_limit: Duration,
+    memory_limit: usize,
+) -&gt; Result&lt;T&gt;
+where
+    F: Future&lt;Output = Result&lt;T&gt;&gt;,
+{
+    // CPU timeout
+    timeout(cpu_time_limit, fut).await?
+}
+<span class="boring">}</span></code></pre>
+<h3 id="option-3-memory-monitoring"><a class="header" href="#option-3-memory-monitoring">Option 3: Memory monitoring</a></h3>
+<p>Track heap usage and kill if over limit.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::alloc::{GlobalAlloc, Layout, System};
+
+struct LimitedAllocator&lt;A&gt; {
+    inner: A,
+    max_bytes: usize,
+    used: std::sync::atomic::AtomicUsize,
+}
+
+unsafe impl&lt;A: GlobalAlloc&gt; GlobalAlloc for LimitedAllocator&lt;A&gt; {
+    unsafe fn alloc(&amp;self, layout: Layout) -&gt; *mut u8 {
+        let current = self.used.fetch_add(layout.size(), std::sync::atomic::Ordering::Relaxed);
+        if current + layout.size() &gt; self.max_bytes {
+            std::process::abort();
+        }
+        self.inner.alloc(layout)
+    }
+}
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="config-schema-1"><a class="header" href="#config-schema-1">Config Schema</a></h2>
+<pre><code class="language-toml">[resources]
+# Memory limits (in MB)
+max_memory_mb = 512
+max_memory_per_command_mb = 128
+
+# CPU limits
+max_cpu_percent = 50
+max_cpu_time_seconds = 60
+
+# Disk I/O limits
+max_log_size_mb = 100
+max_temp_storage_mb = 500
+
+# Process limits
+max_subprocesses = 10
+max_open_files = 100
+</code></pre>
+<hr>
+<h2 id="implementation-priority-1"><a class="header" href="#implementation-priority-1">Implementation Priority</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Phase</th><th>Feature</th><th>Effort</th><th>Impact</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>P0</strong></td><td>Memory monitoring + kill</td><td>Low</td><td>High</td></tr>
+<tr><td><strong>P1</strong></td><td>CPU timeout per command</td><td>Low</td><td>High</td></tr>
+<tr><td><strong>P2</strong></td><td>cgroups integration (Linux)</td><td>Medium</td><td>Very High</td></tr>
+<tr><td><strong>P3</strong></td><td>Disk I/O limits</td><td>Medium</td><td>Medium</td></tr>
+</tbody>
+</table>
+</div>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="zeroclaw-security-improvement-roadmap"><a class="header" href="#zeroclaw-security-improvement-roadmap">ZeroClaw Security Improvement Roadmap</a></h1>
+<blockquote>
+<p>⚠️ <strong>Status: Proposal / Roadmap</strong></p>
+<p>This document describes proposed approaches and may include hypothetical commands or config.
+For current runtime behavior, see <a href="config-reference.html">config-reference.md</a>, <a href="operations-runbook.html">operations-runbook.md</a>, and <a href="troubleshooting.html">troubleshooting.md</a>.</p>
+</blockquote>
+<h2 id="current-state-strong-foundation"><a class="header" href="#current-state-strong-foundation">Current State: Strong Foundation</a></h2>
+<p>ZeroClaw already has <strong>excellent application-layer security</strong>:</p>
+<p>✅ Command allowlist (not blocklist)
+✅ Path traversal protection
+✅ Command injection blocking (<code>$(...)</code>, backticks, <code>&amp;&amp;</code>, <code>&gt;</code>)
+✅ Secret isolation (API keys not leaked to shell)
+✅ Rate limiting (20 actions/hour)
+✅ Channel authorization (empty = deny all, <code>*</code> = allow all)
+✅ Risk classification (Low/Medium/High)
+✅ Environment variable sanitization
+✅ Forbidden paths blocking
+✅ Comprehensive test coverage (1,017 tests)</p>
+<h2 id="whats-missing-os-level-containment"><a class="header" href="#whats-missing-os-level-containment">What’s Missing: OS-Level Containment</a></h2>
+<p>🔴 No OS-level sandboxing (chroot, containers, namespaces)
+🔴 No resource limits (CPU, memory, disk I/O caps)
+🔴 No tamper-evident audit logging
+🔴 No syscall filtering (seccomp)</p>
+<hr>
+<h2 id="comparison-zeroclaw-vs-picoclaw-vs-production-grade"><a class="header" href="#comparison-zeroclaw-vs-picoclaw-vs-production-grade">Comparison: ZeroClaw vs PicoClaw vs Production Grade</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Feature</th><th>PicoClaw</th><th>ZeroClaw Now</th><th>ZeroClaw + Roadmap</th><th>Production Target</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Binary Size</strong></td><td>~8MB</td><td><strong>3.4MB</strong> ✅</td><td>3.5-4MB</td><td>&lt; 5MB</td></tr>
+<tr><td><strong>RAM Usage</strong></td><td>&lt; 10MB</td><td><strong>&lt; 5MB</strong> ✅</td><td>&lt; 10MB</td><td>&lt; 20MB</td></tr>
+<tr><td><strong>Startup Time</strong></td><td>&lt; 1s</td><td><strong>&lt; 10ms</strong> ✅</td><td>&lt; 50ms</td><td>&lt; 100ms</td></tr>
+<tr><td><strong>Command Allowlist</strong></td><td>Unknown</td><td>✅ Yes</td><td>✅ Yes</td><td>✅ Yes</td></tr>
+<tr><td><strong>Path Blocking</strong></td><td>Unknown</td><td>✅ Yes</td><td>✅ Yes</td><td>✅ Yes</td></tr>
+<tr><td><strong>Injection Protection</strong></td><td>Unknown</td><td>✅ Yes</td><td>✅ Yes</td><td>✅ Yes</td></tr>
+<tr><td><strong>OS Sandbox</strong></td><td>No</td><td>❌ No</td><td>✅ Firejail/Landlock</td><td>✅ Container/namespaces</td></tr>
+<tr><td><strong>Resource Limits</strong></td><td>No</td><td>❌ No</td><td>✅ cgroups/Monitor</td><td>✅ Full cgroups</td></tr>
+<tr><td><strong>Audit Logging</strong></td><td>No</td><td>❌ No</td><td>✅ HMAC-signed</td><td>✅ SIEM integration</td></tr>
+<tr><td><strong>Security Score</strong></td><td>C</td><td><strong>B+</strong></td><td><strong>A-</strong></td><td><strong>A+</strong></td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="implementation-roadmap"><a class="header" href="#implementation-roadmap">Implementation Roadmap</a></h2>
+<h3 id="phase-1-quick-wins-1-2-weeks"><a class="header" href="#phase-1-quick-wins-1-2-weeks">Phase 1: Quick Wins (1-2 weeks)</a></h3>
+<p><strong>Goal</strong>: Address critical gaps with minimal complexity</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Task</th><th>File</th><th>Effort</th><th>Impact</th></tr>
+</thead>
+<tbody>
+<tr><td>Landlock filesystem sandbox</td><td><code>src/security/landlock.rs</code></td><td>2 days</td><td>High</td></tr>
+<tr><td>Memory monitoring + OOM kill</td><td><code>src/resources/memory.rs</code></td><td>1 day</td><td>High</td></tr>
+<tr><td>CPU timeout per command</td><td><code>src/tools/shell.rs</code></td><td>1 day</td><td>High</td></tr>
+<tr><td>Basic audit logging</td><td><code>src/security/audit.rs</code></td><td>2 days</td><td>Medium</td></tr>
+<tr><td>Config schema updates</td><td><code>src/config/schema.rs</code></td><td>1 day</td><td>-</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Deliverables</strong>:</p>
+<ul>
+<li>Linux: Filesystem access restricted to workspace</li>
+<li>All platforms: Memory/CPU guards against runaway commands</li>
+<li>All platforms: Tamper-evident audit trail</li>
+</ul>
+<hr>
+<h3 id="phase-2-platform-integration-2-3-weeks"><a class="header" href="#phase-2-platform-integration-2-3-weeks">Phase 2: Platform Integration (2-3 weeks)</a></h3>
+<p><strong>Goal</strong>: Deep OS integration for production-grade isolation</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Task</th><th>Effort</th><th>Impact</th></tr>
+</thead>
+<tbody>
+<tr><td>Firejail auto-detection + wrapping</td><td>3 days</td><td>Very High</td></tr>
+<tr><td>Bubblewrap wrapper for macOS/*nix</td><td>4 days</td><td>Very High</td></tr>
+<tr><td>cgroups v2 systemd integration</td><td>3 days</td><td>High</td></tr>
+<tr><td>seccomp syscall filtering</td><td>5 days</td><td>High</td></tr>
+<tr><td>Audit log query CLI</td><td>2 days</td><td>Medium</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Deliverables</strong>:</p>
+<ul>
+<li>Linux: Full container-like isolation via Firejail</li>
+<li>macOS: Bubblewrap filesystem isolation</li>
+<li>Linux: cgroups resource enforcement</li>
+<li>Linux: Syscall allowlisting</li>
+</ul>
+<hr>
+<h3 id="phase-3-production-hardening-1-2-weeks"><a class="header" href="#phase-3-production-hardening-1-2-weeks">Phase 3: Production Hardening (1-2 weeks)</a></h3>
+<p><strong>Goal</strong>: Enterprise security features</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Task</th><th>Effort</th><th>Impact</th></tr>
+</thead>
+<tbody>
+<tr><td>Docker sandbox mode option</td><td>3 days</td><td>High</td></tr>
+<tr><td>Certificate pinning for channels</td><td>2 days</td><td>Medium</td></tr>
+<tr><td>Signed config verification</td><td>2 days</td><td>Medium</td></tr>
+<tr><td>SIEM-compatible audit export</td><td>2 days</td><td>Medium</td></tr>
+<tr><td>Security self-test (<code>zeroclaw audit --check</code>)</td><td>1 day</td><td>Low</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Deliverables</strong>:</p>
+<ul>
+<li>Optional Docker-based execution isolation</li>
+<li>HTTPS certificate pinning for channel webhooks</li>
+<li>Config file signature verification</li>
+<li>JSON/CSV audit export for external analysis</li>
+</ul>
+<hr>
+<h2 id="new-config-schema-preview"><a class="header" href="#new-config-schema-preview">New Config Schema Preview</a></h2>
+<pre><code class="language-toml">[security]
+level = "strict"  # relaxed | default | strict | paranoid
+
+# Sandbox configuration
+[security.sandbox]
+enabled = true
+backend = "auto"  # auto | firejail | bubblewrap | landlock | docker | none
+
+# Resource limits
+[resources]
+max_memory_mb = 512
+max_memory_per_command_mb = 128
+max_cpu_percent = 50
+max_cpu_time_seconds = 60
+max_subprocesses = 10
+
+# Audit logging
+[security.audit]
+enabled = true
+log_path = "~/.config/zeroclaw/audit.log"
+sign_events = true
+max_size_mb = 100
+
+# Autonomy (existing, enhanced)
+[autonomy]
+level = "supervised"  # readonly | supervised | full
+allowed_commands = ["git", "ls", "cat", "grep", "find"]
+forbidden_paths = ["/etc", "/root", "~/.ssh"]
+require_approval_for_medium_risk = true
+block_high_risk_commands = true
+max_actions_per_hour = 20
+</code></pre>
+<hr>
+<h2 id="cli-commands-preview"><a class="header" href="#cli-commands-preview">CLI Commands Preview</a></h2>
+<pre><code class="language-bash"># Security status check
+zeroclaw security --check
+# → ✓ Sandbox: Firejail active
+# → ✓ Audit logging enabled (42 events today)
+# → → Resource limits: 512MB mem, 50% CPU
+
+# Audit log queries
+zeroclaw audit --user @alice --since 24h
+zeroclaw audit --risk high --violations-only
+zeroclaw audit --verify-signatures
+
+# Sandbox test
+zeroclaw sandbox --test
+# → Testing isolation...
+#   ✓ Cannot read /etc/passwd
+#   ✓ Cannot access ~/.ssh
+#   ✓ Can read /workspace
+</code></pre>
+<hr>
+<h2 id="summary-1"><a class="header" href="#summary-1">Summary</a></h2>
+<p><strong>ZeroClaw is already more secure than PicoClaw</strong> with:</p>
+<ul>
+<li>50% smaller binary (3.4MB vs 8MB)</li>
+<li>50% less RAM (&lt; 5MB vs &lt; 10MB)</li>
+<li>100x faster startup (&lt; 10ms vs &lt; 1s)</li>
+<li>Comprehensive security policy engine</li>
+<li>Extensive test coverage</li>
+</ul>
+<p><strong>By implementing this roadmap</strong>, ZeroClaw becomes:</p>
+<ul>
+<li>Production-grade with OS-level sandboxing</li>
+<li>Resource-aware with memory/CPU guards</li>
+<li>Audit-ready with tamper-evident logging</li>
+<li>Enterprise-ready with configurable security levels</li>
+</ul>
+<p><strong>Estimated effort</strong>: 4-7 weeks for full implementation
+<strong>Value</strong>: Transforms ZeroClaw from “safe for testing” to “safe for production”</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="zeroclaw-pr-workflow-high-volume-collaboration"><a class="header" href="#zeroclaw-pr-workflow-high-volume-collaboration">ZeroClaw PR Workflow (High-Volume Collaboration)</a></h1>
+<p>This document defines how ZeroClaw handles high PR volume while maintaining:</p>
+<ul>
+<li>High performance</li>
+<li>High efficiency</li>
+<li>High stability</li>
+<li>High extensibility</li>
+<li>High sustainability</li>
+<li>High security</li>
+</ul>
+<p>Related references:</p>
+<ul>
+<li><a href="README.html"><code>docs/README.md</code></a> for documentation taxonomy and navigation.</li>
+<li><a href="#ci-workflow-map"><code>docs/ci-map.md</code></a> for per-workflow ownership, triggers, and triage flow.</li>
+<li><a href="#reviewer-playbook"><code>docs/reviewer-playbook.md</code></a> for day-to-day reviewer execution.</li>
+</ul>
+<h2 id="0-summary"><a class="header" href="#0-summary">0. Summary</a></h2>
+<ul>
+<li><strong>Purpose:</strong> provide a deterministic, risk-based PR operating model for high-throughput collaboration.</li>
+<li><strong>Audience:</strong> contributors, maintainers, and agent-assisted reviewers.</li>
+<li><strong>Scope:</strong> repository settings, PR lifecycle, readiness contracts, risk routing, queue discipline, and recovery protocol.</li>
+<li><strong>Non-goals:</strong> replacing branch protection configuration or CI workflow source files as implementation authority.</li>
+</ul>
+<hr>
+<h2 id="1-fast-path-by-pr-situation"><a class="header" href="#1-fast-path-by-pr-situation">1. Fast Path by PR Situation</a></h2>
+<p>Use this section to route quickly before full deep review.</p>
+<h3 id="11-intake-is-incomplete"><a class="header" href="#11-intake-is-incomplete">1.1 Intake is incomplete</a></h3>
+<ol>
+<li>Request template completion and missing evidence in one checklist comment.</li>
+<li>Stop deep review until intake blockers are resolved.</li>
+</ol>
+<p>Go to:</p>
+<ul>
+<li><a href="#51-definition-of-ready-dor-before-requesting-review">Section 5.1</a></li>
+</ul>
+<h3 id="12-ci-required-gate-failing"><a class="header" href="#12-ci-required-gate-failing">1.2 <code>CI Required Gate</code> failing</a></h3>
+<ol>
+<li>Route failure through CI map and fix deterministic gates first.</li>
+<li>Re-evaluate risk only after CI returns coherent signal.</li>
+</ol>
+<p>Go to:</p>
+<ul>
+<li><a href="#ci-workflow-map">docs/ci-map.md</a></li>
+<li><a href="#42-step-b-validation">Section 4.2</a></li>
+</ul>
+<h3 id="13-high-risk-path-touched"><a class="header" href="#13-high-risk-path-touched">1.3 High-risk path touched</a></h3>
+<ol>
+<li>Escalate to deep review lane.</li>
+<li>Require explicit rollback, failure-mode evidence, and security boundary checks.</li>
+</ol>
+<p>Go to:</p>
+<ul>
+<li><a href="#9-security-and-stability-rules">Section 9</a></li>
+<li><a href="#reviewer-playbook">docs/reviewer-playbook.md</a></li>
+</ul>
+<h3 id="14-pr-is-superseded-or-duplicate"><a class="header" href="#14-pr-is-superseded-or-duplicate">1.4 PR is superseded or duplicate</a></h3>
+<ol>
+<li>Require explicit supersede linkage and queue cleanup.</li>
+<li>Close superseded PR after maintainer confirmation.</li>
+</ol>
+<p>Go to:</p>
+<ul>
+<li><a href="#82-backlog-pressure-controls">Section 8.2</a></li>
+</ul>
+<hr>
+<h2 id="2-governance-goals-and-control-loop"><a class="header" href="#2-governance-goals-and-control-loop">2. Governance Goals and Control Loop</a></h2>
+<h3 id="21-governance-goals"><a class="header" href="#21-governance-goals">2.1 Governance goals</a></h3>
+<ol>
+<li>Keep merge throughput predictable under heavy PR load.</li>
+<li>Keep CI signal quality high (fast feedback, low false positives).</li>
+<li>Keep security review explicit for risky surfaces.</li>
+<li>Keep changes easy to reason about and easy to revert.</li>
+<li>Keep repository artifacts free of personal/sensitive data leakage.</li>
+</ol>
+<h3 id="22-governance-design-logic-control-loop"><a class="header" href="#22-governance-design-logic-control-loop">2.2 Governance design logic (control loop)</a></h3>
+<p>This workflow is intentionally layered to reduce reviewer load while keeping accountability clear:</p>
+<ol>
+<li><strong>Intake classification:</strong> path/size/risk/module labels route the PR to the right review depth.</li>
+<li><strong>Deterministic validation:</strong> merge gate depends on reproducible checks, not subjective comments.</li>
+<li><strong>Risk-based review depth:</strong> high-risk paths trigger deep review; low-risk paths stay fast.</li>
+<li><strong>Rollback-first merge contract:</strong> every merge path includes concrete recovery steps.</li>
+</ol>
+<p>Automation assists with triage and guardrails, but final merge accountability remains with human maintainers and PR authors.</p>
+<hr>
+<h2 id="3-required-repository-settings"><a class="header" href="#3-required-repository-settings">3. Required Repository Settings</a></h2>
+<p>Maintain these branch protection rules on <code>main</code>:</p>
+<ul>
+<li>Require status checks before merge.</li>
+<li>Require check <code>CI Required Gate</code>.</li>
+<li>Require pull request reviews before merge.</li>
+<li>Require CODEOWNERS review for protected paths.</li>
+<li>For <code>.github/workflows/**</code>, require owner approval via <code>CI Required Gate</code> (<code>WORKFLOW_OWNER_LOGINS</code>) and keep branch/ruleset bypass limited to org owners.</li>
+<li>Dismiss stale approvals when new commits are pushed.</li>
+<li>Restrict force-push on protected branches.</li>
+</ul>
+<hr>
+<h2 id="4-pr-lifecycle-runbook"><a class="header" href="#4-pr-lifecycle-runbook">4. PR Lifecycle Runbook</a></h2>
+<h3 id="41-step-a-intake"><a class="header" href="#41-step-a-intake">4.1 Step A: Intake</a></h3>
+<ul>
+<li>Contributor opens PR with full <code>.github/pull_request_template.md</code>.</li>
+<li><code>PR Labeler</code> applies scope/path labels + size labels + risk labels + module labels (for example <code>channel:telegram</code>, <code>provider:kimi</code>, <code>tool:shell</code>) and contributor tiers by merged PR count (<code>trusted</code> &gt;=5, <code>experienced</code> &gt;=10, <code>principal</code> &gt;=20, <code>distinguished</code> &gt;=50), while de-duplicating less-specific scope labels when a more specific module label is present.</li>
+<li>For all module prefixes, module labels are compacted to reduce noise: one specific module keeps <code>prefix:component</code>, but multiple specifics collapse to the base scope label <code>prefix</code>.</li>
+<li>Label ordering is priority-first: <code>risk:*</code> -&gt; <code>size:*</code> -&gt; contributor tier -&gt; module/path labels.</li>
+<li>Maintainers can run <code>PR Labeler</code> manually (<code>workflow_dispatch</code>) in <code>audit</code> mode for drift visibility or <code>repair</code> mode to normalize managed label metadata repository-wide.</li>
+<li>Hovering a label in GitHub shows its auto-managed description (rule/threshold summary).</li>
+<li>Managed label colors are arranged by display order to create a smooth gradient across long label rows.</li>
+<li><code>PR Auto Responder</code> posts first-time guidance, handles label-driven routing for low-signal items, and auto-applies issue contributor tiers using the same thresholds as <code>PR Labeler</code> (<code>trusted</code> &gt;=5, <code>experienced</code> &gt;=10, <code>principal</code> &gt;=20, <code>distinguished</code> &gt;=50).</li>
+</ul>
+<h3 id="42-step-b-validation"><a class="header" href="#42-step-b-validation">4.2 Step B: Validation</a></h3>
+<ul>
+<li><code>CI Required Gate</code> is the merge gate.</li>
+<li>Docs-only PRs use fast-path and skip heavy Rust jobs.</li>
+<li>Non-doc PRs must pass lint, tests, and release build smoke check.</li>
+</ul>
+<h3 id="43-step-c-review"><a class="header" href="#43-step-c-review">4.3 Step C: Review</a></h3>
+<ul>
+<li>Reviewers prioritize by risk and size labels.</li>
+<li>Security-sensitive paths (<code>src/security</code>, <code>src/runtime</code>, <code>src/gateway</code>, and CI workflows) require maintainer attention.</li>
+<li>Large PRs (<code>size: L</code>/<code>size: XL</code>) should be split unless strongly justified.</li>
+</ul>
+<h3 id="44-step-d-merge"><a class="header" href="#44-step-d-merge">4.4 Step D: Merge</a></h3>
+<ul>
+<li>Prefer <strong>squash merge</strong> to keep history compact.</li>
+<li>PR title should follow Conventional Commit style.</li>
+<li>Merge only when rollback path is documented.</li>
+</ul>
+<hr>
+<h2 id="5-pr-readiness-contracts-dor--dod"><a class="header" href="#5-pr-readiness-contracts-dor--dod">5. PR Readiness Contracts (DoR / DoD)</a></h2>
+<h3 id="51-definition-of-ready-dor-before-requesting-review"><a class="header" href="#51-definition-of-ready-dor-before-requesting-review">5.1 Definition of Ready (DoR) before requesting review</a></h3>
+<ul>
+<li>PR template fully completed.</li>
+<li>Scope boundary is explicit (what changed / what did not).</li>
+<li>Validation evidence attached (not just “CI will check”).</li>
+<li>Security and rollback fields completed for risky paths.</li>
+<li>Privacy/data-hygiene checks are completed and test language is neutral/project-scoped.</li>
+<li>If identity-like wording appears in tests/examples, it is normalized to ZeroClaw/project-native labels.</li>
+</ul>
+<h3 id="52-definition-of-done-dod-merge-ready"><a class="header" href="#52-definition-of-done-dod-merge-ready">5.2 Definition of Done (DoD) merge-ready</a></h3>
+<ul>
+<li><code>CI Required Gate</code> is green.</li>
+<li>Required reviewers approved (including CODEOWNERS paths).</li>
+<li>Risk class labels match touched paths.</li>
+<li>Migration/compatibility impact is documented.</li>
+<li>Rollback path is concrete and fast.</li>
+</ul>
+<hr>
+<h2 id="6-pr-size-and-batching-policy"><a class="header" href="#6-pr-size-and-batching-policy">6. PR Size and Batching Policy</a></h2>
+<h3 id="61-size-tiers"><a class="header" href="#61-size-tiers">6.1 Size tiers</a></h3>
+<ul>
+<li><code>size: XS</code> &lt;= 80 changed lines</li>
+<li><code>size: S</code> &lt;= 250 changed lines</li>
+<li><code>size: M</code> &lt;= 500 changed lines</li>
+<li><code>size: L</code> &lt;= 1000 changed lines</li>
+<li><code>size: XL</code> &gt; 1000 changed lines</li>
+</ul>
+<h3 id="62-policy"><a class="header" href="#62-policy">6.2 Policy</a></h3>
+<ul>
+<li>Target <code>XS/S/M</code> by default.</li>
+<li><code>L/XL</code> PRs need explicit justification and tighter test evidence.</li>
+<li>If a large feature is unavoidable, split into stacked PRs.</li>
+</ul>
+<h3 id="63-automation-behavior"><a class="header" href="#63-automation-behavior">6.3 Automation behavior</a></h3>
+<ul>
+<li><code>PR Labeler</code> applies <code>size:*</code> labels from effective changed lines.</li>
+<li>Docs-only/lockfile-heavy PRs are normalized to avoid size inflation.</li>
+</ul>
+<hr>
+<h2 id="7-aiagent-contribution-policy"><a class="header" href="#7-aiagent-contribution-policy">7. AI/Agent Contribution Policy</a></h2>
+<p>AI-assisted PRs are welcome, and review can also be agent-assisted.</p>
+<h3 id="71-required"><a class="header" href="#71-required">7.1 Required</a></h3>
+<ol>
+<li>Clear PR summary with scope boundary.</li>
+<li>Explicit test/validation evidence.</li>
+<li>Security impact and rollback notes for risky changes.</li>
+</ol>
+<h3 id="72-recommended"><a class="header" href="#72-recommended">7.2 Recommended</a></h3>
+<ol>
+<li>Brief tool/workflow notes when automation materially influenced the change.</li>
+<li>Optional prompt/plan snippets for reproducibility.</li>
+</ol>
+<p>We do <strong>not</strong> require contributors to quantify AI-vs-human line ownership.</p>
+<h3 id="73-review-emphasis-for-ai-heavy-prs"><a class="header" href="#73-review-emphasis-for-ai-heavy-prs">7.3 Review emphasis for AI-heavy PRs</a></h3>
+<ul>
+<li>Contract compatibility.</li>
+<li>Security boundaries.</li>
+<li>Error handling and fallback behavior.</li>
+<li>Performance and memory regressions.</li>
+</ul>
+<hr>
+<h2 id="8-review-sla-and-queue-discipline"><a class="header" href="#8-review-sla-and-queue-discipline">8. Review SLA and Queue Discipline</a></h2>
+<ul>
+<li>First maintainer triage target: within 48 hours.</li>
+<li>If PR is blocked, maintainer leaves one actionable checklist.</li>
+<li><code>stale</code> automation is used to keep queue healthy; maintainers can apply <code>no-stale</code> when needed.</li>
+<li><code>pr-hygiene</code> automation checks open PRs every 12 hours and posts a nudge when a PR has no new commits for 48+ hours and is either behind <code>main</code> or missing/failing <code>CI Required Gate</code> on the head commit.</li>
+</ul>
+<h3 id="81-queue-budget-controls"><a class="header" href="#81-queue-budget-controls">8.1 Queue budget controls</a></h3>
+<ul>
+<li>Use a review queue budget: limit concurrent deep-review PRs per maintainer and keep the rest in triage state.</li>
+<li>For stacked work, require explicit <code>Depends on #...</code> so review order is deterministic.</li>
+</ul>
+<h3 id="82-backlog-pressure-controls"><a class="header" href="#82-backlog-pressure-controls">8.2 Backlog pressure controls</a></h3>
+<ul>
+<li>If a new PR replaces an older open PR, require <code>Supersedes #...</code> and close the older one after maintainer confirmation.</li>
+<li>Mark dormant/redundant PRs with <code>stale-candidate</code> or <code>superseded</code> to reduce duplicate review effort.</li>
+</ul>
+<h3 id="83-issue-triage-discipline"><a class="header" href="#83-issue-triage-discipline">8.3 Issue triage discipline</a></h3>
+<ul>
+<li><code>r:needs-repro</code> for incomplete bug reports (request deterministic repro before deep triage).</li>
+<li><code>r:support</code> for usage/help items better handled outside bug backlog.</li>
+<li><code>invalid</code> / <code>duplicate</code> labels trigger <strong>issue-only</strong> closing automation with guidance.</li>
+</ul>
+<h3 id="84-automation-side-effect-guards"><a class="header" href="#84-automation-side-effect-guards">8.4 Automation side-effect guards</a></h3>
+<ul>
+<li><code>PR Auto Responder</code> deduplicates label-based comments to avoid spam.</li>
+<li>Automated close routes are limited to issues, not PRs.</li>
+<li>Maintainers can freeze automated risk recalculation with <code>risk: manual</code> when context demands human override.</li>
+</ul>
+<hr>
+<h2 id="9-security-and-stability-rules"><a class="header" href="#9-security-and-stability-rules">9. Security and Stability Rules</a></h2>
+<p>Changes in these areas require stricter review and stronger test evidence:</p>
+<ul>
+<li><code>src/security/**</code></li>
+<li>Runtime process management.</li>
+<li>Gateway ingress/authentication behavior (<code>src/gateway/**</code>).</li>
+<li>Filesystem access boundaries.</li>
+<li>Network/authentication behavior.</li>
+<li>GitHub workflows and release pipeline.</li>
+<li>Tools with execution capability (<code>src/tools/**</code>).</li>
+</ul>
+<h3 id="91-minimum-for-risky-prs"><a class="header" href="#91-minimum-for-risky-prs">9.1 Minimum for risky PRs</a></h3>
+<ul>
+<li>Threat/risk statement.</li>
+<li>Mitigation notes.</li>
+<li>Rollback steps.</li>
+</ul>
+<h3 id="92-recommended-for-high-risk-prs"><a class="header" href="#92-recommended-for-high-risk-prs">9.2 Recommended for high-risk PRs</a></h3>
+<ul>
+<li>Include a focused test proving boundary behavior.</li>
+<li>Include one explicit failure-mode scenario and expected degradation.</li>
+</ul>
+<p>For agent-assisted contributions, reviewers should also verify the author demonstrates understanding of runtime behavior and blast radius.</p>
+<hr>
+<h2 id="10-failure-recovery-protocol"><a class="header" href="#10-failure-recovery-protocol">10. Failure Recovery Protocol</a></h2>
+<p>If a merged PR causes regressions:</p>
+<ol>
+<li>Revert PR immediately on <code>main</code>.</li>
+<li>Open a follow-up issue with root-cause analysis.</li>
+<li>Re-introduce fix only with regression tests.</li>
+</ol>
+<p>Prefer fast restore of service quality over delayed perfect fixes.</p>
+<hr>
+<h2 id="11-maintainer-merge-checklist"><a class="header" href="#11-maintainer-merge-checklist">11. Maintainer Merge Checklist</a></h2>
+<ul>
+<li>Scope is focused and understandable.</li>
+<li>CI gate is green.</li>
+<li>Docs-quality checks are green when docs changed.</li>
+<li>Security impact fields are complete.</li>
+<li>Privacy/data-hygiene fields are complete and evidence is redacted/anonymized.</li>
+<li>Agent workflow notes are sufficient for reproducibility (if automation was used).</li>
+<li>Rollback plan is explicit.</li>
+<li>Commit title follows Conventional Commits.</li>
+</ul>
+<hr>
+<h2 id="12-agent-review-operating-model"><a class="header" href="#12-agent-review-operating-model">12. Agent Review Operating Model</a></h2>
+<p>To keep review quality stable under high PR volume, use a two-lane review model.</p>
+<h3 id="121-lane-a-fast-triage-agent-friendly"><a class="header" href="#121-lane-a-fast-triage-agent-friendly">12.1 Lane A: fast triage (agent-friendly)</a></h3>
+<ul>
+<li>Confirm PR template completeness.</li>
+<li>Confirm CI gate signal (<code>CI Required Gate</code>).</li>
+<li>Confirm risk class via labels and touched paths.</li>
+<li>Confirm rollback statement exists.</li>
+<li>Confirm privacy/data-hygiene section and neutral wording requirements are satisfied.</li>
+<li>Confirm any required identity-like wording uses ZeroClaw/project-native terminology.</li>
+</ul>
+<h3 id="122-lane-b-deep-review-risk-based"><a class="header" href="#122-lane-b-deep-review-risk-based">12.2 Lane B: deep review (risk-based)</a></h3>
+<p>Required for high-risk changes (security/runtime/gateway/CI):</p>
+<ul>
+<li>Validate threat model assumptions.</li>
+<li>Validate failure mode and degradation behavior.</li>
+<li>Validate backward compatibility and migration impact.</li>
+<li>Validate observability/logging impact.</li>
+</ul>
+<hr>
+<h2 id="13-queue-priority-and-label-discipline"><a class="header" href="#13-queue-priority-and-label-discipline">13. Queue Priority and Label Discipline</a></h2>
+<h3 id="131-triage-order-recommendation"><a class="header" href="#131-triage-order-recommendation">13.1 Triage order recommendation</a></h3>
+<ol>
+<li><code>size: XS</code>/<code>size: S</code> + bug/security fixes.</li>
+<li><code>size: M</code> focused changes.</li>
+<li><code>size: L</code>/<code>size: XL</code> split requests or staged review.</li>
+</ol>
+<h3 id="132-label-discipline"><a class="header" href="#132-label-discipline">13.2 Label discipline</a></h3>
+<ul>
+<li>Path labels identify subsystem ownership quickly.</li>
+<li>Size labels drive batching strategy.</li>
+<li>Risk labels drive review depth (<code>risk: low/medium/high</code>).</li>
+<li>Module labels (<code>&lt;module&gt;: &lt;component&gt;</code>) improve reviewer routing for integration-specific changes and future newly-added modules.</li>
+<li><code>risk: manual</code> allows maintainers to preserve a human risk judgment when automation lacks context.</li>
+<li><code>no-stale</code> is reserved for accepted-but-blocked work.</li>
+</ul>
+<hr>
+<h2 id="14-agent-handoff-contract"><a class="header" href="#14-agent-handoff-contract">14. Agent Handoff Contract</a></h2>
+<p>When one agent hands off to another (or to a maintainer), include:</p>
+<ol>
+<li>Scope boundary (what changed / what did not).</li>
+<li>Validation evidence.</li>
+<li>Open risks and unknowns.</li>
+<li>Suggested next action.</li>
+</ol>
+<p>This keeps context loss low and avoids repeated deep dives.</p>
+<hr>
+<h2 id="15-related-docs"><a class="header" href="#15-related-docs">15. Related Docs</a></h2>
+<ul>
+<li><a href="README.html">README.md</a> — documentation taxonomy and navigation.</li>
+<li><a href="#ci-workflow-map">ci-map.md</a> — CI workflow ownership and triage map.</li>
+<li><a href="#reviewer-playbook">reviewer-playbook.md</a> — reviewer execution model.</li>
+<li><a href="actions-source-policy.html">actions-source-policy.md</a> — action source allowlist policy.</li>
+</ul>
+<hr>
+<h2 id="16-maintenance-notes"><a class="header" href="#16-maintenance-notes">16. Maintenance Notes</a></h2>
+<ul>
+<li><strong>Owner:</strong> maintainers responsible for collaboration governance and merge quality.</li>
+<li><strong>Update trigger:</strong> branch protection changes, label/risk policy changes, queue governance updates, or agent review process changes.</li>
+<li><strong>Last reviewed:</strong> 2026-02-18.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="reviewer-playbook"><a class="header" href="#reviewer-playbook">Reviewer Playbook</a></h1>
+<p>This playbook is the operational companion to <a href="#zeroclaw-pr-workflow-high-volume-collaboration"><code>docs/pr-workflow.md</code></a>.
+For broader documentation navigation, use <a href="README.html"><code>docs/README.md</code></a>.</p>
+<h2 id="0-summary-1"><a class="header" href="#0-summary-1">0. Summary</a></h2>
+<ul>
+<li><strong>Purpose:</strong> define a deterministic reviewer operating model that keeps review quality high under heavy PR volume.</li>
+<li><strong>Audience:</strong> maintainers, reviewers, and agent-assisted reviewers.</li>
+<li><strong>Scope:</strong> intake triage, risk-to-depth routing, deep-review checks, automation overrides, and handoff protocol.</li>
+<li><strong>Non-goals:</strong> replacing PR policy authority in <code>CONTRIBUTING.md</code> or workflow authority in CI files.</li>
+</ul>
+<hr>
+<h2 id="1-fast-path-by-review-situation"><a class="header" href="#1-fast-path-by-review-situation">1. Fast Path by Review Situation</a></h2>
+<p>Use this section to route quickly before reading full detail.</p>
+<h3 id="11-intake-fails-in-first-5-minutes"><a class="header" href="#11-intake-fails-in-first-5-minutes">1.1 Intake fails in first 5 minutes</a></h3>
+<ol>
+<li>Leave one actionable checklist comment.</li>
+<li>Stop deep review until intake blockers are fixed.</li>
+</ol>
+<p>Go to:</p>
+<ul>
+<li><a href="#31-five-minute-intake-triage">Section 3.1</a></li>
+</ul>
+<h3 id="12-risk-is-high-or-unclear"><a class="header" href="#12-risk-is-high-or-unclear">1.2 Risk is high or unclear</a></h3>
+<ol>
+<li>Treat as <code>risk: high</code> by default.</li>
+<li>Require deep review and explicit rollback evidence.</li>
+</ol>
+<p>Go to:</p>
+<ul>
+<li><a href="#2-review-depth-decision-matrix">Section 2</a></li>
+<li><a href="#33-deep-review-checklist-high-risk">Section 3.3</a></li>
+</ul>
+<h3 id="13-automation-output-is-wrongnoisy"><a class="header" href="#13-automation-output-is-wrongnoisy">1.3 Automation output is wrong/noisy</a></h3>
+<ol>
+<li>Apply override protocol (<code>risk: manual</code>, dedupe comments/labels).</li>
+<li>Continue review with explicit rationale.</li>
+</ol>
+<p>Go to:</p>
+<ul>
+<li><a href="#5-automation-override-protocol">Section 5</a></li>
+</ul>
+<h3 id="14-need-review-handoff"><a class="header" href="#14-need-review-handoff">1.4 Need review handoff</a></h3>
+<ol>
+<li>Handoff with scope/risk/validation/blockers.</li>
+<li>Assign concrete next action.</li>
+</ol>
+<p>Go to:</p>
+<ul>
+<li><a href="#6-handoff-protocol">Section 6</a></li>
+</ul>
+<hr>
+<h2 id="2-review-depth-decision-matrix"><a class="header" href="#2-review-depth-decision-matrix">2. Review Depth Decision Matrix</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Risk label</th><th>Typical touched paths</th><th>Minimum review depth</th><th>Required evidence</th></tr>
+</thead>
+<tbody>
+<tr><td><code>risk: low</code></td><td>docs/tests/chore, isolated non-runtime changes</td><td>1 reviewer + CI gate</td><td>coherent local validation + no behavior ambiguity</td></tr>
+<tr><td><code>risk: medium</code></td><td><code>src/providers/**</code>, <code>src/channels/**</code>, <code>src/memory/**</code>, <code>src/config/**</code></td><td>1 subsystem-aware reviewer + behavior verification</td><td>focused scenario proof + explicit side effects</td></tr>
+<tr><td><code>risk: high</code></td><td><code>src/security/**</code>, <code>src/runtime/**</code>, <code>src/gateway/**</code>, <code>src/tools/**</code>, <code>.github/workflows/**</code></td><td>fast triage + deep review + rollback readiness</td><td>security/failure-mode checks + rollback clarity</td></tr>
+</tbody>
+</table>
+</div>
+<p>When uncertain, treat as <code>risk: high</code>.</p>
+<p>If automated risk labeling is contextually wrong, maintainers can apply <code>risk: manual</code> and set the final <code>risk:*</code> label explicitly.</p>
+<hr>
+<h2 id="3-standard-review-workflow"><a class="header" href="#3-standard-review-workflow">3. Standard Review Workflow</a></h2>
+<h3 id="31-five-minute-intake-triage"><a class="header" href="#31-five-minute-intake-triage">3.1 Five-minute intake triage</a></h3>
+<p>For every new PR:</p>
+<ol>
+<li>Confirm template completeness (<code>summary</code>, <code>validation</code>, <code>security</code>, <code>rollback</code>).</li>
+<li>Confirm labels are present and plausible:
+<ul>
+<li><code>size:*</code>, <code>risk:*</code></li>
+<li>scope labels (for example <code>provider</code>, <code>channel</code>, <code>security</code>)</li>
+<li>module-scoped labels (<code>channel:*</code>, <code>provider:*</code>, <code>tool:*</code>)</li>
+<li>contributor tier labels when applicable</li>
+</ul>
+</li>
+<li>Confirm CI signal status (<code>CI Required Gate</code>).</li>
+<li>Confirm scope is one concern (reject mixed mega-PRs unless justified).</li>
+<li>Confirm privacy/data-hygiene and neutral test wording requirements are satisfied.</li>
+</ol>
+<p>If any intake requirement fails, leave one actionable checklist comment instead of deep review.</p>
+<h3 id="32-fast-lane-checklist-all-prs"><a class="header" href="#32-fast-lane-checklist-all-prs">3.2 Fast-lane checklist (all PRs)</a></h3>
+<ul>
+<li>Scope boundary is explicit and believable.</li>
+<li>Validation commands are present and results are coherent.</li>
+<li>User-facing behavior changes are documented.</li>
+<li>Author demonstrates understanding of behavior and blast radius (especially for agent-assisted PRs).</li>
+<li>Rollback path is concrete (not just “revert”).</li>
+<li>Compatibility/migration impacts are clear.</li>
+<li>No personal/sensitive data leakage in diff artifacts; examples/tests remain neutral and project-scoped.</li>
+<li>If identity-like wording exists, it uses ZeroClaw/project-native roles (not personal or real-world identities).</li>
+<li>Naming and architecture boundaries follow project contracts (<code>AGENTS.md</code>, <code>CONTRIBUTING.md</code>).</li>
+</ul>
+<h3 id="33-deep-review-checklist-high-risk"><a class="header" href="#33-deep-review-checklist-high-risk">3.3 Deep review checklist (high risk)</a></h3>
+<p>For high-risk PRs, verify at least one concrete example in each category:</p>
+<ul>
+<li><strong>Security boundaries:</strong> deny-by-default behavior preserved, no accidental scope broadening.</li>
+<li><strong>Failure modes:</strong> error handling is explicit and degrades safely.</li>
+<li><strong>Contract stability:</strong> CLI/config/API compatibility preserved or migration documented.</li>
+<li><strong>Observability:</strong> failures are diagnosable without leaking secrets.</li>
+<li><strong>Rollback safety:</strong> revert path and blast radius are clear.</li>
+</ul>
+<h3 id="34-review-comment-outcome-style"><a class="header" href="#34-review-comment-outcome-style">3.4 Review comment outcome style</a></h3>
+<p>Prefer checklist-style comments with one explicit outcome:</p>
+<ul>
+<li><strong>Ready to merge</strong> (say why).</li>
+<li><strong>Needs author action</strong> (ordered blocker list).</li>
+<li><strong>Needs deeper security/runtime review</strong> (state exact risk and requested evidence).</li>
+</ul>
+<p>Avoid vague comments that create avoidable back-and-forth latency.</p>
+<hr>
+<h2 id="4-issue-triage-and-backlog-governance"><a class="header" href="#4-issue-triage-and-backlog-governance">4. Issue Triage and Backlog Governance</a></h2>
+<h3 id="41-issue-triage-label-playbook"><a class="header" href="#41-issue-triage-label-playbook">4.1 Issue triage label playbook</a></h3>
+<p>Use labels to keep backlog actionable:</p>
+<ul>
+<li><code>r:needs-repro</code> for incomplete bug reports.</li>
+<li><code>r:support</code> for usage/support questions better routed outside bug backlog.</li>
+<li><code>duplicate</code> / <code>invalid</code> for non-actionable duplicates/noise.</li>
+<li><code>no-stale</code> for accepted work waiting on external blockers.</li>
+<li>Request redaction when logs/payloads include personal identifiers or sensitive data.</li>
+</ul>
+<h3 id="42-pr-backlog-pruning-protocol"><a class="header" href="#42-pr-backlog-pruning-protocol">4.2 PR backlog pruning protocol</a></h3>
+<p>When review demand exceeds capacity, apply this order:</p>
+<ol>
+<li>Keep active bug/security PRs (<code>size: XS/S</code>) at the top of queue.</li>
+<li>Ask overlapping PRs to consolidate; close older ones as <code>superseded</code> after acknowledgement.</li>
+<li>Mark dormant PRs as <code>stale-candidate</code> before stale closure window starts.</li>
+<li>Require rebase + fresh validation before reopening stale/superseded technical work.</li>
+</ol>
+<hr>
+<h2 id="5-automation-override-protocol"><a class="header" href="#5-automation-override-protocol">5. Automation Override Protocol</a></h2>
+<p>Use this when automation output creates review side effects:</p>
+<ol>
+<li><strong>Incorrect risk label:</strong> add <code>risk: manual</code>, then set intended <code>risk:*</code> label.</li>
+<li><strong>Incorrect auto-close on issue triage:</strong> reopen issue, remove route label, leave one clarifying comment.</li>
+<li><strong>Label spam/noise:</strong> keep one canonical maintainer comment and remove redundant route labels.</li>
+<li><strong>Ambiguous PR scope:</strong> request split before deep review.</li>
+</ol>
+<hr>
+<h2 id="6-handoff-protocol"><a class="header" href="#6-handoff-protocol">6. Handoff Protocol</a></h2>
+<p>If handing off review to another maintainer/agent, include:</p>
+<ol>
+<li>Scope summary.</li>
+<li>Current risk class and rationale.</li>
+<li>What has been validated already.</li>
+<li>Open blockers.</li>
+<li>Suggested next action.</li>
+</ol>
+<hr>
+<h2 id="7-weekly-queue-hygiene"><a class="header" href="#7-weekly-queue-hygiene">7. Weekly Queue Hygiene</a></h2>
+<ul>
+<li>Review stale queue and apply <code>no-stale</code> only to accepted-but-blocked work.</li>
+<li>Prioritize <code>size: XS/S</code> bug/security PRs first.</li>
+<li>Convert recurring support issues into docs updates and auto-response guidance.</li>
+</ul>
+<hr>
+<h2 id="8-related-docs"><a class="header" href="#8-related-docs">8. Related Docs</a></h2>
+<ul>
+<li><a href="README.html">README.md</a> — documentation taxonomy and navigation.</li>
+<li><a href="#zeroclaw-pr-workflow-high-volume-collaboration">pr-workflow.md</a> — governance workflow and merge contract.</li>
+<li><a href="#ci-workflow-map">ci-map.md</a> — CI ownership and triage map.</li>
+<li><a href="actions-source-policy.html">actions-source-policy.md</a> — action source allowlist policy.</li>
+</ul>
+<hr>
+<h2 id="9-maintenance-notes"><a class="header" href="#9-maintenance-notes">9. Maintenance Notes</a></h2>
+<ul>
+<li><strong>Owner:</strong> maintainers responsible for review quality and queue throughput.</li>
+<li><strong>Update trigger:</strong> PR policy changes, risk-routing model changes, or automation override behavior changes.</li>
+<li><strong>Last reviewed:</strong> 2026-02-18.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="ci-workflow-map"><a class="header" href="#ci-workflow-map">CI Workflow Map</a></h1>
+<p>This document explains what each GitHub workflow does, when it runs, and whether it should block merges.</p>
+<p>For event-by-event delivery behavior across PR, merge, push, and release, see <a href="../.github/workflows/main-branch-flow.html"><code>.github/workflows/main-branch-flow.md</code></a>.</p>
+<h2 id="merge-blocking-vs-optional"><a class="header" href="#merge-blocking-vs-optional">Merge-Blocking vs Optional</a></h2>
+<p>Merge-blocking checks should stay small and deterministic. Optional checks are useful for automation and maintenance, but should not block normal development.</p>
+<h3 id="merge-blocking"><a class="header" href="#merge-blocking">Merge-Blocking</a></h3>
+<ul>
+<li><code>.github/workflows/ci-run.yml</code> (<code>CI</code>)
+<ul>
+<li>Purpose: Rust validation (<code>cargo fmt --all -- --check</code>, <code>cargo clippy --locked --all-targets -- -D clippy::correctness</code>, strict delta lint gate on changed Rust lines, <code>test</code>, release build smoke) + docs quality checks when docs change (<code>markdownlint</code> blocks only issues on changed lines; link check scans only links added on changed lines)</li>
+<li>Additional behavior: PRs that change <code>.github/workflows/**</code> require at least one approving review from a login in <code>WORKFLOW_OWNER_LOGINS</code> (repository variable fallback: <code>theonlyhennygod,willsarg</code>)</li>
+<li>Additional behavior: lint gates run before <code>test</code>/<code>build</code>; when lint/docs gates fail on PRs, CI posts an actionable feedback comment with failing gate names and local fix commands</li>
+<li>Merge gate: <code>CI Required Gate</code></li>
+</ul>
+</li>
+<li><code>.github/workflows/workflow-sanity.yml</code> (<code>Workflow Sanity</code>)
+<ul>
+<li>Purpose: lint GitHub workflow files (<code>actionlint</code>, tab checks)</li>
+<li>Recommended for workflow-changing PRs</li>
+</ul>
+</li>
+<li><code>.github/workflows/pr-intake-checks.yml</code> (<code>PR Intake Checks</code>)
+<ul>
+<li>Purpose: safe pre-CI PR checks (template completeness, added-line tabs/trailing-whitespace/conflict markers) with immediate sticky feedback comment</li>
+</ul>
+</li>
+</ul>
+<h3 id="non-blocking-but-important"><a class="header" href="#non-blocking-but-important">Non-Blocking but Important</a></h3>
+<ul>
+<li><code>.github/workflows/pub-docker-img.yml</code> (<code>Docker</code>)
+<ul>
+<li>Purpose: PR Docker smoke check and publish images on <code>main</code> pushes (build-input paths), tag pushes (<code>v*</code>), and manual dispatch</li>
+</ul>
+</li>
+<li><code>.github/workflows/sec-audit.yml</code> (<code>Security Audit</code>)
+<ul>
+<li>Purpose: dependency advisories (<code>rustsec/audit-check</code>, pinned SHA) and policy/license checks (<code>cargo deny</code>)</li>
+</ul>
+</li>
+<li><code>.github/workflows/sec-codeql.yml</code> (<code>CodeQL Analysis</code>)
+<ul>
+<li>Purpose: scheduled/manual static analysis for security findings</li>
+</ul>
+</li>
+<li><code>.github/workflows/pub-release.yml</code> (<code>Release</code>)
+<ul>
+<li>Purpose: build tagged release artifacts and publish GitHub releases</li>
+</ul>
+</li>
+<li><code>.github/workflows/pr-label-policy-check.yml</code> (<code>Label Policy Sanity</code>)
+<ul>
+<li>Purpose: validate shared contributor-tier policy in <code>.github/label-policy.json</code> and ensure label workflows consume that policy</li>
+</ul>
+</li>
+<li><code>.github/workflows/test-rust-build.yml</code> (<code>Rust Reusable Job</code>)
+<ul>
+<li>Purpose: reusable Rust setup/cache + command runner for workflow-call consumers</li>
+</ul>
+</li>
+</ul>
+<h3 id="optional-repository-automation"><a class="header" href="#optional-repository-automation">Optional Repository Automation</a></h3>
+<ul>
+<li><code>.github/workflows/pr-labeler.yml</code> (<code>PR Labeler</code>)
+<ul>
+<li>Purpose: scope/path labels + size/risk labels + fine-grained module labels (<code>&lt;module&gt;: &lt;component&gt;</code>)</li>
+<li>Additional behavior: label descriptions are auto-managed as hover tooltips to explain each auto-judgment rule</li>
+<li>Additional behavior: provider-related keywords in provider/config/onboard/integration changes are promoted to <code>provider:*</code> labels (for example <code>provider:kimi</code>, <code>provider:deepseek</code>)</li>
+<li>Additional behavior: hierarchical de-duplication keeps only the most specific scope labels (for example <code>tool:composio</code> suppresses <code>tool:core</code> and <code>tool</code>)</li>
+<li>Additional behavior: module namespaces are compacted — one specific module keeps <code>prefix:component</code>; multiple specifics collapse to just <code>prefix</code></li>
+<li>Additional behavior: applies contributor tiers on PRs by merged PR count (<code>trusted</code> &gt;=5, <code>experienced</code> &gt;=10, <code>principal</code> &gt;=20, <code>distinguished</code> &gt;=50)</li>
+<li>Additional behavior: final label set is priority-sorted (<code>risk:*</code> first, then <code>size:*</code>, then contributor tier, then module/path labels)</li>
+<li>Additional behavior: managed label colors follow display order to produce a smooth left-to-right gradient when many labels are present</li>
+<li>Manual governance: supports <code>workflow_dispatch</code> with <code>mode=audit|repair</code> to inspect/fix managed label metadata drift across the whole repository</li>
+<li>Additional behavior: risk + size labels are auto-corrected on manual PR label edits (<code>labeled</code>/<code>unlabeled</code> events); apply <code>risk: manual</code> when maintainers intentionally override automated risk selection</li>
+<li>High-risk heuristic paths: <code>src/security/**</code>, <code>src/runtime/**</code>, <code>src/gateway/**</code>, <code>src/tools/**</code>, <code>.github/workflows/**</code></li>
+<li>Guardrail: maintainers can apply <code>risk: manual</code> to freeze automated risk recalculation</li>
+</ul>
+</li>
+<li><code>.github/workflows/pr-auto-response.yml</code> (<code>PR Auto Responder</code>)
+<ul>
+<li>Purpose: first-time contributor onboarding + label-driven response routing (<code>r:support</code>, <code>r:needs-repro</code>, etc.)</li>
+<li>Additional behavior: applies contributor tiers on issues by merged PR count (<code>trusted</code> &gt;=5, <code>experienced</code> &gt;=10, <code>principal</code> &gt;=20, <code>distinguished</code> &gt;=50), matching PR tier thresholds exactly</li>
+<li>Additional behavior: contributor-tier labels are treated as automation-managed (manual add/remove on PR/issue is auto-corrected)</li>
+<li>Guardrail: label-based close routes are issue-only; PRs are never auto-closed by route labels</li>
+</ul>
+</li>
+<li><code>.github/workflows/pr-check-stale.yml</code> (<code>Stale</code>)
+<ul>
+<li>Purpose: stale issue/PR lifecycle automation</li>
+</ul>
+</li>
+<li><code>.github/dependabot.yml</code> (<code>Dependabot</code>)
+<ul>
+<li>Purpose: grouped, rate-limited dependency update PRs (Cargo + GitHub Actions)</li>
+</ul>
+</li>
+<li><code>.github/workflows/pr-check-status.yml</code> (<code>PR Hygiene</code>)
+<ul>
+<li>Purpose: nudge stale-but-active PRs to rebase/re-run required checks before queue starvation</li>
+</ul>
+</li>
+</ul>
+<h2 id="trigger-map"><a class="header" href="#trigger-map">Trigger Map</a></h2>
+<ul>
+<li><code>CI</code>: push to <code>main</code>, PRs to <code>main</code></li>
+<li><code>Docker</code>: push to <code>main</code> when Docker build inputs change, tag push (<code>v*</code>), matching PRs, manual dispatch</li>
+<li><code>Release</code>: tag push (<code>v*</code>)</li>
+<li><code>Security Audit</code>: push to <code>main</code>, PRs to <code>main</code>, weekly schedule</li>
+<li><code>Workflow Sanity</code>: PR/push when <code>.github/workflows/**</code>, <code>.github/*.yml</code>, or <code>.github/*.yaml</code> change</li>
+<li><code>PR Intake Checks</code>: <code>pull_request_target</code> on opened/reopened/synchronize/edited/ready_for_review</li>
+<li><code>Label Policy Sanity</code>: PR/push when <code>.github/label-policy.json</code>, <code>.github/workflows/pr-labeler.yml</code>, or <code>.github/workflows/pr-auto-response.yml</code> changes</li>
+<li><code>PR Labeler</code>: <code>pull_request_target</code> lifecycle events</li>
+<li><code>PR Auto Responder</code>: issue opened/labeled, <code>pull_request_target</code> opened/labeled</li>
+<li><code>Stale PR Check</code>: daily schedule, manual dispatch</li>
+<li><code>Dependabot</code>: weekly dependency maintenance windows</li>
+<li><code>PR Hygiene</code>: every 12 hours schedule, manual dispatch</li>
+</ul>
+<h2 id="fast-triage-guide"><a class="header" href="#fast-triage-guide">Fast Triage Guide</a></h2>
+<ol>
+<li><code>CI Required Gate</code> failing: start with <code>.github/workflows/ci-run.yml</code>.</li>
+<li>Docker failures on PRs: inspect <code>.github/workflows/pub-docker-img.yml</code> <code>pr-smoke</code> job.</li>
+<li>Release failures on tags: inspect <code>.github/workflows/pub-release.yml</code>.</li>
+<li>Security failures: inspect <code>.github/workflows/sec-audit.yml</code> and <code>deny.toml</code>.</li>
+<li>Workflow syntax/lint failures: inspect <code>.github/workflows/workflow-sanity.yml</code>.</li>
+<li>PR intake failures: inspect <code>.github/workflows/pr-intake-checks.yml</code> sticky comment and run logs.</li>
+<li>Label policy parity failures: inspect <code>.github/workflows/pr-label-policy-check.yml</code>.</li>
+<li>Docs failures in CI: inspect <code>docs-quality</code> job logs in <code>.github/workflows/ci-run.yml</code>.</li>
+<li>Strict delta lint failures in CI: inspect <code>lint-strict-delta</code> job logs and compare with <code>BASE_SHA</code> diff scope.</li>
+</ol>
+<h2 id="maintenance-rules"><a class="header" href="#maintenance-rules">Maintenance Rules</a></h2>
+<ul>
+<li>Keep merge-blocking checks deterministic and reproducible (<code>--locked</code> where applicable).</li>
+<li>Keep merge-blocking rust quality policy aligned across <code>.github/workflows/ci-run.yml</code>, <code>dev/ci.sh</code>, and <code>.githooks/pre-push</code> (<code>./scripts/ci/rust_quality_gate.sh</code> + <code>./scripts/ci/rust_strict_delta_gate.sh</code>).</li>
+<li>Use <code>./scripts/ci/rust_strict_delta_gate.sh</code> (or <code>./dev/ci.sh lint-delta</code>) as the incremental strict merge gate for changed Rust lines.</li>
+<li>Run full strict lint audits regularly via <code>./scripts/ci/rust_quality_gate.sh --strict</code> (for example through <code>./dev/ci.sh lint-strict</code>) and track cleanup in focused PRs.</li>
+<li>Keep docs markdown gating incremental via <code>./scripts/ci/docs_quality_gate.sh</code> (block changed-line issues, report baseline issues separately).</li>
+<li>Keep docs link gating incremental via <code>./scripts/ci/collect_changed_links.py</code> + lychee (check only links added on changed lines).</li>
+<li>Prefer explicit workflow permissions (least privilege).</li>
+<li>Keep Actions source policy restricted to approved allowlist patterns (see <code>docs/actions-source-policy.md</code>).</li>
+<li>Use path filters for expensive workflows when practical.</li>
+<li>Keep docs quality checks low-noise (incremental markdown + incremental added-link checks).</li>
+<li>Keep dependency update volume controlled (grouping + PR limits).</li>
+<li>Avoid mixing onboarding/community automation with merge-gating logic.</li>
+</ul>
+<h2 id="automation-side-effect-controls"><a class="header" href="#automation-side-effect-controls">Automation Side-Effect Controls</a></h2>
+<ul>
+<li>Prefer deterministic automation that can be manually overridden (<code>risk: manual</code>) when context is nuanced.</li>
+<li>Keep auto-response comments deduplicated to prevent triage noise.</li>
+<li>Keep auto-close behavior scoped to issues; maintainers own PR close/merge decisions.</li>
+<li>If automation is wrong, correct labels first, then continue review with explicit rationale.</li>
+<li>Use <code>superseded</code> / <code>stale-candidate</code> labels to prune duplicate or dormant PRs before deep review.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>
