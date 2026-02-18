@@ -33,8 +33,9 @@ jobs:
         run: |
           # 使用中文 SUMMARY
           cp docs/SUMMARY_zh.md docs/SUMMARY.md
-          # 使用中文配置构建
-          mdbook build -d book -c book_zh.toml
+          # 使用中文配置（替换默认 book.toml）
+          cp book_zh.toml book.toml
+          mdbook build -d book
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
