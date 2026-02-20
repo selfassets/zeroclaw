@@ -61,7 +61,7 @@ async fn execute_job_with_retry(
     for attempt in 0..=retries {
         let (success, output) = match job.job_type {
             JobType::Shell => run_job_command(config, security, job).await,
-            JobType::Agent => run_agent_job(config, job).await,
+            JobType::Agent => run_agent_job(config, security, job).await,
         };
         last_output = output;
 
@@ -116,7 +116,31 @@ async fn execute_and_persist_job(
     (job.id.clone(), success)
 }
 
-async fn run_agent_job(config: &Config, job: &CronJob) -> (bool, String) {
+async fn run_agent_job(
+    config: &Config,
+    security: &SecurityPolicy,
+    job: &CronJob,
+) -> (bool, String) {
+    if !security.can_act() {
+        return (
+            false,
+            "blocked by security policy: autonomy is read-only".to_string(),
+        );
+    }
+
+    if security.is_rate_limited() {
+        return (
+            false,
+            "blocked by security policy: rate limit exceeded".to_string(),
+        );
+    }
+
+    if !security.record_action() {
+        return (
+            false,
+            "blocked by security policy: action budget exhausted".to_string(),
+        );
+    }
     let name = job.name.clone().unwrap_or_else(|| "cron-job".to_string());
     let prompt = job.prompt.clone().unwrap_or_default();
     let prefixed_prompt = format!("[cron:{} {name}] {prompt}", job.id);
@@ -475,13 +499,15 @@ mod tests {
     use chrono::{Duration as ChronoDuration, Utc};
     use tempfile::TempDir;
 
-    fn test_config(tmp: &TempDir) -> Config {
+    async fn test_config(tmp: &TempDir) -> Config {
         let config = Config {
             workspace_dir: tmp.path().join("workspace"),
             config_path: tmp.path().join("config.toml"),
             ..Config::default()
         };
-        std::fs::create_dir_all(&config.workspace_dir).unwrap();
+        tokio::fs::create_dir_all(&config.workspace_dir)
+            .await
+            .unwrap();
         config
     }
 
@@ -513,7 +539,7 @@ mod tests {
     #[tokio::test]
     async fn run_job_command_success() {
         let tmp = TempDir::new().unwrap();
-        let config = test_config(&tmp);
+        let config = test_config(&tmp).await;
         let job = test_job("echo scheduler-ok");
         let security = SecurityPolicy::from_config(&config.autonomy, &config.workspace_dir);
 
@@ -526,7 +552,7 @@ mod tests {
     #[tokio::test]
     async fn run_job_command_failure() {
         let tmp = TempDir::new().unwrap();
-        let config = test_config(&tmp);
+        let config = test_config(&tmp).await;
         let job = test_job("ls definitely_missing_file_for_scheduler_test");
         let security = SecurityPolicy::from_config(&config.autonomy, &config.workspace_dir);
 
@@ -539,7 +565,7 @@ mod tests {
     #[tokio::test]
     async fn run_job_command_times_out() {
         let tmp = TempDir::new().unwrap();
-        let mut config = test_config(&tmp);
+        let mut config = test_config(&tmp).await;
         config.autonomy.allowed_commands = vec!["sleep".into()];
         let job = test_job("sleep 1");
         let security = SecurityPolicy::from_config(&config.autonomy, &config.workspace_dir);
@@ -553,7 +579,7 @@ mod tests {
     #[tokio::test]
     async fn run_job_command_blocks_disallowed_command() {
         let tmp = TempDir::new().unwrap();
-        let mut config = test_config(&tmp);
+        let mut config = test_config(&tmp).await;
         config.autonomy.allowed_commands = vec!["echo".into()];
         let job = test_job("curl https://evil.example");
         let security = SecurityPolicy::from_config(&config.autonomy, &config.workspace_dir);
@@ -567,7 +593,7 @@ mod tests {
     #[tokio::test]
     async fn run_job_command_blocks_forbidden_path_argument() {
         let tmp = TempDir::new().unwrap();
-        let mut config = test_config(&tmp);
+        let mut config = test_config(&tmp).await;
         config.autonomy.allowed_commands = vec!["cat".into()];
         let job = test_job("cat /etc/passwd");
         let security = SecurityPolicy::from_config(&config.autonomy, &config.workspace_dir);
@@ -582,7 +608,7 @@ mod tests {
     #[tokio::test]
     async fn run_job_command_blocks_readonly_mode() {
         let tmp = TempDir::new().unwrap();
-        let mut config = test_config(&tmp);
+        let mut config = test_config(&tmp).await;
         config.autonomy.level = crate::security::AutonomyLevel::ReadOnly;
         let job = test_job("echo should-not-run");
         let security = SecurityPolicy::from_config(&config.autonomy, &config.workspace_dir);
@@ -596,7 +622,7 @@ mod tests {
     #[tokio::test]
     async fn run_job_command_blocks_rate_limited() {
         let tmp = TempDir::new().unwrap();
-        let mut config = test_config(&tmp);
+        let mut config = test_config(&tmp).await;
         config.autonomy.max_actions_per_hour = 0;
         let job = test_job("echo should-not-run");
         let security = SecurityPolicy::from_config(&config.autonomy, &config.workspace_dir);
@@ -610,16 +636,17 @@ mod tests {
     #[tokio::test]
     async fn execute_job_with_retry_recovers_after_first_failure() {
         let tmp = TempDir::new().unwrap();
-        let mut config = test_config(&tmp);
+        let mut config = test_config(&tmp).await;
         config.reliability.scheduler_retries = 1;
         config.reliability.provider_backoff_ms = 1;
         config.autonomy.allowed_commands = vec!["sh".into()];
         let security = SecurityPolicy::from_config(&config.autonomy, &config.workspace_dir);
 
-        std::fs::write(
+        tokio::fs::write(
             config.workspace_dir.join("retry-once.sh"),
             "#!/bin/sh\nif [ -f retry-ok.flag ]; then\n  echo recovered\n  exit 0\nfi\ntouch retry-ok.flag\nexit 1\n",
         )
+        .await
         .unwrap();
         let job = test_job("sh ./retry-once.sh");
 
@@ -631,7 +658,7 @@ mod tests {
     #[tokio::test]
     async fn execute_job_with_retry_exhausts_attempts() {
         let tmp = TempDir::new().unwrap();
-        let mut config = test_config(&tmp);
+        let mut config = test_config(&tmp).await;
         config.reliability.scheduler_retries = 1;
         config.reliability.provider_backoff_ms = 1;
         let security = SecurityPolicy::from_config(&config.autonomy, &config.workspace_dir);
@@ -646,23 +673,53 @@ mod tests {
     #[tokio::test]
     async fn run_agent_job_returns_error_without_provider_key() {
         let tmp = TempDir::new().unwrap();
-        let config = test_config(&tmp);
+        let config = test_config(&tmp).await;
         let mut job = test_job("");
         job.job_type = JobType::Agent;
         job.prompt = Some("Say hello".into());
+        let security = SecurityPolicy::from_config(&config.autonomy, &config.workspace_dir);
 
-        let (success, output) = run_agent_job(&config, &job).await;
-        assert!(!success, "Agent job without provider key should fail");
-        assert!(
-            !output.is_empty(),
-            "Expected non-empty error output from failed agent job"
-        );
+        let (success, output) = run_agent_job(&config, &security, &job).await;
+        assert!(!success);
+        assert!(output.contains("agent job failed:"));
+    }
+
+    #[tokio::test]
+    async fn run_agent_job_blocks_readonly_mode() {
+        let tmp = TempDir::new().unwrap();
+        let mut config = test_config(&tmp);
+        config.autonomy.level = crate::security::AutonomyLevel::ReadOnly;
+        let mut job = test_job("");
+        job.job_type = JobType::Agent;
+        job.prompt = Some("Say hello".into());
+        let security = SecurityPolicy::from_config(&config.autonomy, &config.workspace_dir);
+
+        let (success, output) = run_agent_job(&config, &security, &job).await;
+        assert!(!success);
+        assert!(output.contains("blocked by security policy"));
+        assert!(output.contains("read-only"));
+    }
+
+    #[tokio::test]
+    async fn run_agent_job_blocks_rate_limited() {
+        let tmp = TempDir::new().unwrap();
+        let mut config = test_config(&tmp);
+        config.autonomy.max_actions_per_hour = 0;
+        let mut job = test_job("");
+        job.job_type = JobType::Agent;
+        job.prompt = Some("Say hello".into());
+        let security = SecurityPolicy::from_config(&config.autonomy, &config.workspace_dir);
+
+        let (success, output) = run_agent_job(&config, &security, &job).await;
+        assert!(!success);
+        assert!(output.contains("blocked by security policy"));
+        assert!(output.contains("rate limit exceeded"));
     }
 
     #[tokio::test]
     async fn persist_job_result_records_run_and_reschedules_shell_job() {
         let tmp = TempDir::new().unwrap();
-        let config = test_config(&tmp);
+        let config = test_config(&tmp).await;
         let job = cron::add_job(&config, "*/5 * * * *", "echo ok").unwrap();
         let started = Utc::now();
         let finished = started + ChronoDuration::milliseconds(10);
@@ -679,7 +736,7 @@ mod tests {
     #[tokio::test]
     async fn persist_job_result_success_deletes_one_shot() {
         let tmp = TempDir::new().unwrap();
-        let config = test_config(&tmp);
+        let config = test_config(&tmp).await;
         let at = Utc::now() + ChronoDuration::minutes(10);
         let job = cron::add_agent_job(
             &config,
@@ -704,7 +761,7 @@ mod tests {
     #[tokio::test]
     async fn persist_job_result_failure_disables_one_shot() {
         let tmp = TempDir::new().unwrap();
-        let config = test_config(&tmp);
+        let config = test_config(&tmp).await;
         let at = Utc::now() + ChronoDuration::minutes(10);
         let job = cron::add_agent_job(
             &config,
@@ -730,7 +787,7 @@ mod tests {
     #[tokio::test]
     async fn deliver_if_configured_handles_none_and_invalid_channel() {
         let tmp = TempDir::new().unwrap();
-        let config = test_config(&tmp);
+        let config = test_config(&tmp).await;
         let mut job = test_job("echo ok");
 
         assert!(deliver_if_configured(&config, &job, "x").await.is_ok());
